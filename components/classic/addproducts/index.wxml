@@ -1,0 +1,14 @@
+<!--components/classic/addproducts/index.wxml-->
+<view class="container">
+  <image  class="sub size" 
+          catch:tap="onSub" 
+          src="{{subSrc}}"
+          mode="aspectFit">
+  </image>
+  <text class="count">{{count}}</text>
+  <image  class="add size" 
+          catch:tap="onAdd" 
+          src="{{addSrc}}"
+          mode="aspectFit">
+  </image>
+</view>

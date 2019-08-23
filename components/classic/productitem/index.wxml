@@ -1,0 +1,18 @@
+<!--components/classic/classicproductlistitem/index.wxml-->
+<view class="container">
+    <image  class="product-img" 
+              mode='aspectFit'
+              src="{{item.url}}"
+              lazy-load="true">
+    </image>
+      <view class="product-des">
+        <text class="title">{{item.title}}</text>
+        <text class="price">￥{{item.price}}</text>
+        <text class="buy-count">{{item.totalBuyCount}}人购买</text>
+        <v-add-products class="buy"
+                        count="{{item.buyCount}}"
+                        bind:onAdd="handleAddCount"
+                        bind:onSub="handleSubCount">
+        </v-add-products>
+      </view>
+</view>

@@ -1,0 +1,14 @@
+<!--pages/classic/index.wxml-->
+<view class="container">
+  <!-- <view class="title"></view> -->
+  <v-title-list class="title-list"
+                list="{{classic}}"
+                bind:onClick="handleTitleItem"
+                selectedIndex="{{selectedTitleIndex}}">
+  </v-title-list>
+  <v-product-list class="product-list"
+                  list="{{products}}"
+                  bind:onAdd="handleAddCount"
+                  bind:onSub="handleSubCount">
+  </v-product-list>
+</view>

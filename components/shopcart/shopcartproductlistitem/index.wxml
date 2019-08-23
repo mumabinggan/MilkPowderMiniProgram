@@ -1,0 +1,21 @@
+<!--components/classic/shopcartlistitem/index.wxml-->
+<view class="container">
+  <image class="selected-button"
+          src="{{item.isSelected ? selectedStateImage : unselectedStateImage}}"
+          bind:tap="onSelect">
+  </image>
+  <image class="product-pic"
+          src="{{item.url}}"
+          mode='aspectFit'
+          lazy-load="true">
+  </image>
+  <view class="product-des">
+    <text class="title">{{item.title}}</text>
+    <text class="price">{{item.price}}</text>
+    <v-add-products class="buy"
+                    count="{{item.buyCount}}"
+                    bind:onAdd="handleAddCount"
+                    bind:onSub="handleSubCount">
+    </v-add-products>
+  </view>
+</view>

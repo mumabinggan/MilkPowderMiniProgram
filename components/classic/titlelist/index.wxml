@@ -1,0 +1,14 @@
+<!--components/classic/titlelist/index.wxml-->
+<view class="container">
+  <scroll-view class="scroll"
+               scroll-y
+               >
+    <view wx:for="{{list}}" 
+          wx:key="{{item.id}}"
+          class="item {{index==selectedIndex ? 'selected' : ''}}"
+          bind:tap="click"
+          data-id="{{index}}">
+        {{item.name}}
+      </view>
+  </scroll-view>
+</view>

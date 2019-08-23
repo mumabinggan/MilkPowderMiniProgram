@@ -1,0 +1,14 @@
+<!--components/classic/shopcartsettlement/index.wxml-->
+<view class="container">
+  <view class="select-products">
+    <image class="select-button"
+            src="{{isSelectedAll ? selectedStateImage : unselectedStateImage }}"></image>
+    <text class="select-text">全选</text>
+  </view>
+  <view class="price">
+    <text class="currentTotalPriceTitle currentTotalPriceFont">合计:<text class="currentTotalPrice currentTotalPriceFont">￥{{currentPrice}}</text></text>
+    <text class="totalPrice">总价:￥{{totalPrice}}  优惠:￥{{preferentialPrice}}</text>
+  </view>
+  <view class="settlement"
+        bind:tap="onSettlement">去结算({{selectedProductsCount}})</view>
+</view>

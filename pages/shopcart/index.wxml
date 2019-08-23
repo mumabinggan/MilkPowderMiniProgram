@@ -1,0 +1,9 @@
+<!--pages/cart/index.wxml-->
+<view class="container">
+  <v-product-list class="product-list"
+                  list="{{shopcart.products}}">
+  </v-product-list>
+  <v-settlement class="settlement"
+                shopcart="{{shopcart}}">
+  </v-settlement>
+</view>

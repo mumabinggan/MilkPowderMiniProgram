@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/shopcart/index",
+    "pages/classic/classic",
+    "pages/home/index",
+    "pages/mine/index",
+    "components/classic/titlelist/index",
+    "components/classic/productlist/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3D8946",
+    "navigationBarTitleText": "蔬果到家",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "pagePath": "pages/shopcart/index",
+        "selectedIconPath": "/images/tab/tab_cart_selected.png",
+        "iconPath": "/images/tab/tab_cart.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/classic/classic",
+        "selectedIconPath": "/images/tab/tab_classic_selected.png",
+        "iconPath": "/images/tab/tab_classic.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/home/index",
+        "selectedIconPath": "/images/tab/tab_home_selected.png",
+        "iconPath": "/images/tab/tab_home.png",
+        "text": "限时购"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "selectedIconPath": "/images/tab/tab_mine_selected.png",
+        "iconPath": "/images/tab/tab_mine.png",
+        "text": "会员"
+      }
+    ]
+  }
+}

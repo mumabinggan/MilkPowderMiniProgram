@@ -1,0 +1,15 @@
+<!--components/classic/shopcartlist/index.wxml-->
+<view class="container">
+  <scroll-view class="product-list"
+                scroll-y>
+    <v-product-item class="item"
+                      wx:for="{{list}}" 
+                      wx:key="{{item.id}}" 
+                      item="{{item}}"
+                      bind:tap="click"
+                      data-id="{{index}}"
+                      bind:onSub="handleSubCount"
+                      bind:onAdd="handleAddCount">
+    </v-product-item>
+  </scroll-view>
+</view>

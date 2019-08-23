@@ -1,0 +1,78 @@
+/* components/classic/shopcartsettlement/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.select-products {
+  width: 110rpx;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.select-button {
+  width: 40rpx;
+  height: 40rpx;
+  box-sizing: border-box;
+}
+
+.select-text {
+  font-size: 28rpx;
+  display: block;
+  color: black;
+}
+
+.price {
+  width: auto;
+  height: 100%;
+  padding: 6rpx 20rpx;
+  box-sizing: border-box;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column
+}
+
+.currentTotalPriceTitle {
+  color: #444444
+}
+
+.currentTotalPrice {
+  color: #ED604E
+}
+
+.currentTotalPriceFont {
+  width: 100%;
+  height: 60rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 60rpx;
+}
+
+.totalPrice {
+  width: 100%;
+  height: 40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.settlement {
+  width: auto;
+  height: 80rpx;
+  background-color: #ED604E;
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  padding: 0 40rpx;
+  border-radius: 40rpx;
+  color: white
+}
+
+
