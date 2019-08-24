@@ -1,12 +1,12 @@
 import {
-  ShopCartResponse
-} from 'shopcartresponse.js'
+  JHBaseResponse
+} from 'baseresponse.js'
 
 import {
-  ShopCart
-} from 'shopcart.js'
+  AddShopCart
+} from 'addshopcart.js'
 
-class AddCartResponse extends ShopCartResponse {
+class AddCartResponse extends JHBaseResponse {
   constructor() {
     super()
   }
@@ -15,7 +15,7 @@ class AddCartResponse extends ShopCartResponse {
     let item = new AddCartResponse()
     item.code = 1
     item.msg = "得到成功"
-    item.data = ShopCart.test()
+    item.data = AddShopCart.test()
     return item
   }
 }

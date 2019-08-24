@@ -12,7 +12,7 @@ Component({
       type: ShopCart,
       value: null,
       observer: function (newValue, oldValue, changePath) {
-        console.log("shopcart")
+        console.log("shopcart change")
         this.handleShopCartChange()
       }
     }
@@ -24,7 +24,8 @@ Component({
   data: {
     selectedStateImage: '/images/shopcartselected/selected.png',
     unselectedStateImage: '/images/shopcartselected/unselected.png',
-    isSelectedAll: false
+    isSelectedAll: false,
+    selectedProductsCount: 0
   },
 
   /**
@@ -42,16 +43,25 @@ Component({
 
     handleShopCartChange:function() {
       let isSelectedAll = true
+      let selectedProductsCount = 0
       var arr = this.data.shopcart.products
       for (let item of arr) {
-        isSelectedAll = item.isSelected
-        if (!isSelectedAll) {
-          break
+        if (item.isSelected) {
+          selectedProductsCount += item.buyCount
+        }
+        if (isSelectedAll) {
+          isSelectedAll = item.isSelected
         }
       }
       this.setData({
-        isSelectedAll: isSelectedAll
+        isSelectedAll: isSelectedAll,
+        selectedProductsCount: selectedProductsCount
       })
+    },
+
+    onSelect:function() {
+      this.triggerEvent('onSelect',
+        this.data.isSelectedAll)
     }
   }
 })

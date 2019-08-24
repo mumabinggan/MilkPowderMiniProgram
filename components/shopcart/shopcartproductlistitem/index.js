@@ -20,7 +20,17 @@ Component({
    */
   methods: {
     onSelect:function() {
-      
+      this.triggerEvent('onSelect',
+        this.dataset.id)
+    },
+
+    handleAddCount: function () {
+      this.triggerEvent('onAdd',
+        this.dataset.id)
+    },
+
+    handleSubCount: function () {
+      this.triggerEvent('onSub', this.dataset.id)
     }
   }
 })

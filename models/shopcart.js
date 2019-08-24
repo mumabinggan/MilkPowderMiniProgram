@@ -8,20 +8,24 @@ import {
 
 class ShopCart {
   constructor() {
-    price: 0.0;
-    des: null;
+    totalPrice: 34.0;
+    currentTotalPrice: 232.0;
+    favourablePrice: 2.0;
     products: []
   }
 
   static test() {
     let item = new ShopCart()
-    item.price = 4322.00
-    item.des = "不包含运费"
+    item.totalPrice = 4322.00
+    item.currentTotalPrice = 12;
+    item.favourablePrice = 122;
     let product = ShopCartProductItem.test()
-    item.products = [product, product, product, 
-                      product, product, product,
-                      product, product, product, 
-                      product, product, product]
+    let product1 = ShopCartProductItem.test()
+    let product2 = ShopCartProductItem.test()
+    let product3 = ShopCartProductItem.test()
+    let product4 = ShopCartProductItem.test()
+    item.products = [product, product1, product2, 
+      product3, product4]
     return item
   }
 }

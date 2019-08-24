@@ -65,11 +65,11 @@
 
 .settlement {
   width: auto;
-  height: 80rpx;
+  height: 76rpx;
   background-color: #ED604E;
   font-size: 36rpx;
   font-weight: bold;
-  line-height: 80rpx;
+  line-height: 76rpx;
   padding: 0 40rpx;
   border-radius: 40rpx;
   color: white

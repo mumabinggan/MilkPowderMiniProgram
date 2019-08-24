@@ -1,9 +1,14 @@
 <!--pages/cart/index.wxml-->
 <view class="container">
   <v-product-list class="product-list"
-                  list="{{shopcart.products}}">
+                  list="{{shopcart.products}}"
+                  bind:tap="handleTap"
+                  bind:onSelect="handleSelectProduct"
+                  bind:onAdd="handleAddCount"
+                  bind:onSub="handleSubCount">
   </v-product-list>
   <v-settlement class="settlement"
-                shopcart="{{shopcart}}">
+                shopcart="{{shopcart}}"
+                bind:onSelect="handleSelectAllProduct">
   </v-settlement>
 </view>

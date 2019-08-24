@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    list: null
+    list: {
+      type: Array,
+      value: null,
+      observer: function (newValue, oldValue, changePath) {
+        console.log("products change")
+        //this.handleShopCartChange()
+      }
+    }
   },
 
   /**
@@ -18,11 +25,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onAdd: function () {
-      this.triggerEvent('onAdd', {}, {})
+    onSelect: function (e) {
+      this.triggerEvent('onSelect',
+        e.detail)
     },
-    onSub: function () {
-      this.triggerEvent('onSub', {}, {})
+
+    handleAddCount: function (e) {
+      this.triggerEvent('onAdd', e.detail)
+    },
+
+    handleSubCount: function (e) {
+      this.triggerEvent('onSub', e.detail)
     }
   }
 })

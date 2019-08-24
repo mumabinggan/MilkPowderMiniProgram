@@ -6,8 +6,9 @@
                       wx:for="{{list}}" 
                       wx:key="{{item.id}}" 
                       item="{{item}}"
-                      bind:tap="click"
-                      data-id="{{index}}"
+                      data-id="{{item.id}}"
+                      bind:tap="onClick"
+                      bind:onSelect="onSelect"
                       bind:onSub="handleSubCount"
                       bind:onAdd="handleAddCount">
     </v-product-item>
