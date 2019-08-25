@@ -8,7 +8,7 @@
           class="item {{index==selectedIndex ? 'selected' : ''}}"
           bind:tap="click"
           data-id="{{index}}">
-        {{item.name}}
-      </view>
+        {{item.title}}
+    </view>
   </scroll-view>
 </view>

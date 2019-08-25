@@ -24,8 +24,11 @@ class ShopCart {
     let product2 = ShopCartProductItem.test()
     let product3 = ShopCartProductItem.test()
     let product4 = ShopCartProductItem.test()
+    let product5 = ShopCartProductItem.test()
+    let product6 = ShopCartProductItem.test()
+    let product7 = ShopCartProductItem.test()
     item.products = [product, product1, product2, 
-      product3, product4]
+      product3, product4, product5, product6, product7]
     return item
   }
 }

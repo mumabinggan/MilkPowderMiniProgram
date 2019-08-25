@@ -1,0 +1,32 @@
+/* components/classic/classiclist/index.wxss */
+.container {
+  width: 160rpx;
+  height: 230rpx;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 160rpx;
+  overflow: hidden;
+  padding: 10rpx;
+  box-sizing: border-box
+}
+
+.name {
+  width: 100%;
+  height: 68rpx;
+  text-align: center;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #6F6F6F;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+}

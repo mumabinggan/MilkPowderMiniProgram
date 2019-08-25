@@ -6,9 +6,34 @@
                 bind:onClick="handleTitleItem"
                 selectedIndex="{{selectedTitleIndex}}">
   </v-title-list>
-  <v-product-list class="product-list"
+  <!-- <v-product-list class="product-list"
                   list="{{products}}"
                   bind:onAdd="handleAddCount"
                   bind:onSub="handleSubCount">
-  </v-product-list>
+  </v-product-list> -->
+
+  <scroll-view class="classicitem-content"
+                scroll-y>
+    <text class="title">热门品类</text>
+    <view class="sub-classic-container basecontainer">
+      <v-classic-item wx:for="{{subClassic}}" 
+                      wx:key="{{item.id}}"
+                      class="item"
+                      item="{{item}}"
+                      bind:tap="onClick"
+                      data-id="{{item.id}}">
+      </v-classic-item>
+    </view>
+    <text class="title">热门品牌</text>
+    <view class="branch-container basecontainer">
+      <v-classic-item wx:for="{{branches}}" 
+                      wx:key="{{item.id}}"
+                      class="item"
+                      item="{{item}}"
+                      bind:tap="onClick"
+                      data-id="{{item.id}}">
+      </v-classic-item>
+    </view>
+  </scroll-view>
+
 </view>

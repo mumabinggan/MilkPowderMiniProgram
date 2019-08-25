@@ -1,0 +1,11 @@
+<!--components/classic/classiclist/index.wxml-->
+<view class="container">
+  <image class="image"
+          mode='aspectFit'
+          src="{{item.url}}"
+          lazy-load="true">
+  </image>
+  <!-- <view class="name"></view> -->
+  <text class="name">{{item.title}}
+  </text>
+</view>

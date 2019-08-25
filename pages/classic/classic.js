@@ -17,7 +17,8 @@ Page({
   data: {
     selectedTitleIndex: 0,
     classic:[],
-    products: []
+    subClassic: [],
+    branches: []
   },
 
   /**
@@ -146,8 +147,10 @@ Page({
   
   fetchProducts:function() {
     var classicItem = this.data.classic[this.data.selectedTitleIndex]
+    console.log(classicItem.classics)
     this.setData({
-      products: classicItem.products
+      subClassic: classicItem.classics,
+      branches: classicItem.hotBranches
     })
   }
 })

@@ -3,6 +3,6 @@
   "disableScroll": true,
   "usingComponents": {
     "v-title-list": "/components/classic/titlelist/index",
-    "v-product-list": "/components/classic/productlist/index"
+    "v-classic-item": "/components/classic/classicitem/index"
   }
 }
