@@ -6,7 +6,8 @@ const apiConfig = {
   cart_select_product: "",
   cart_cancel_select_product: "",
   cart_select_all_product: "",
-  cart_cancel_select_all_product: ""
+  cart_cancel_select_all_product: "",
+  product_list: ""
 }
 
 export { apiConfig }

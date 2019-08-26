@@ -1,0 +1,40 @@
+<!--pages/productlist/index.wxml-->
+<view class="container">
+  <v-filter-tool class="filter-tool"
+                  bind:onChangeShowType="handleChangeShowType">
+  </v-filter-tool>
+  <scroll-view class="product-row-list base-list"
+                scroll-y
+                wx:if="{{isRowType}}">
+    <v-product-row-item class="item-row"
+                      wx:for="{{list}}" 
+                      wx:key="{{item.id}}" 
+                      item="{{item}}"
+                      data-id="{{item.id}}"
+                      bind:tap="onClick"
+                      bind:onSelect="onSelect"
+                      bind:onAddToCart="handleAddToCart">
+    </v-product-row-item>
+    <view class="footer"></view>
+  </scroll-view>
+  <scroll-view class="product-column-list base-list"
+                scroll-y
+                wx:if="{{!isRowType}}">
+    <v-product-column-item class="item-column"
+                      wx:for="{{list}}" 
+                      wx:key="{{item.id}}" 
+                      item="{{item}}"
+                      data-id="{{item.id}}"
+                      bind:tap="onClick"
+                      bind:onSelect="onSelect"
+                      bind:onAddToCart="handleAddToCart">
+    </v-product-column-item>
+    <view class="footer"></view>
+  </scroll-view>
+  <v-filter-item-list class="filter-list base-action-list"
+                      wx:if="{{isShowBranchList || isShowClassicList}}">
+  </v-filter-item-list>
+  <v-sort-item-list class="sort-list base-action-list"
+                    wx:if="{{isShowSortList}}">
+  </v-sort-item-list>
+</view>

@@ -18,7 +18,6 @@ import {
   SelectShopCartProductResponse
 } from '../models/selectshopcartproductresponse.js'
 
-
 let http = new HTTP()
 
 class ShopCartViewModel {

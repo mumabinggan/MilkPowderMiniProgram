@@ -1,0 +1,30 @@
+<!--components/productlist/productfiltertool/index.wxml-->
+<view class="container">
+  <view class="sort-list base-select">
+  
+    <text class="title {{isSelectedSort?'selected-title' : ''}}">综合</text>
+    <image class="sort-icon"
+            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+    </image>
+  </view>
+
+  <view class="classic base-select">
+    <text class="title {{isSelectedSort?'selected-title' : ''}}">品类</text>
+    <image class="sort-icon"
+            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+    </image>
+  </view>
+  
+  <view class="filter base-select">
+    <text class="title {{isSelectedSort?'selected-title' : ''}}">品牌</text>
+    <image class="sort-icon"
+            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+    </image>
+  </view>
+  
+  <image class="show-type"
+          src="{{isShowRowList ? showRowListIcon : showColumnListIcon}}"
+          mode="aspectFit"
+          bind:tap="onChangeShowType">
+  </image>
+</view>

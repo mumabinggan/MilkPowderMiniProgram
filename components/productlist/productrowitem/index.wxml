@@ -1,4 +1,4 @@
-<!--components/classic/classicproductlistitem/index.wxml-->
+<!--components/productlist/productrowitem/index.wxml-->
 <view class="container">
     <image  class="product-img" 
               mode='aspectFit'
@@ -7,12 +7,13 @@
     </image>
     <view class="product-des">
       <text class="title">{{item.title}}</text>
-      <text class="price">￥{{item.price}}</text>
+      <text class="price">￥{{item.currentPrice}}</text>
       <text class="buy-count">{{item.totalBuyCount}}人购买</text>
-      <v-add-products class="buy"
-                      count="{{item.buyCount}}"
-                      bind:onAdd="handleAddCount"
-                      bind:onSub="handleSubCount">
-      </v-add-products>
+      <image class="buy"
+              mode='aspectFit'
+              src="{{buyIcon}}"
+              bind:tap="onBuy">
+      </image>
     </view>
+    <view class="line-view"></view>
 </view>

@@ -2,7 +2,7 @@
 <view class="container">
   <view class="select-products">
     <image class="select-button"
-            src="{{isSelectedAll ? selectedStateImage : unselectedStateImage }}"
+            src="{{isSelectedAll ? selectedStateImage : unselectedStateImage}}"
             bind:tap="onSelect"></image>
     <text class="select-text">全选</text>
   </view>

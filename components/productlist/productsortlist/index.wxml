@@ -1,0 +1,6 @@
+<!--components/productlist/productsortlist/index.wxml-->
+<view class="container">
+  <scroll-view class="scroll-view">
+  </scroll-view>
+  <view class="mask-bg"></view>
+</view>

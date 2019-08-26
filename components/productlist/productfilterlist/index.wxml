@@ -1,0 +1,12 @@
+<!--components/productlist/productfilterlist/index.wxml-->
+<view class="container">
+  <view class="content-view">
+    <scroll-view class="scroll-view">
+    </scroll-view>
+    <view class="action-container">
+      <text class="reset base-action-view">重 置</text>
+      <text class="confirm base-action-view">确 定</text>
+    </view>
+  </view>
+  <view class="mask-bg"></view>
+</view>
