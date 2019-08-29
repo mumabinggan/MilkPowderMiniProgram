@@ -1,30 +1,32 @@
 <!--components/productlist/productfiltertool/index.wxml-->
 <view class="container">
-  <view class="sort-list base-select">
-  
-    <text class="title {{isSelectedSort?'selected-title' : ''}}">综合</text>
+  <view class="sort-list base-select"
+        bind:tap="showSortList">
+    <text class="title selected-title">{{sortfilterCondition.sortItem.title}}</text>
     <image class="sort-icon"
-            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+            src="{{sortfilterCondition.isShowSortList ? (moreUpSelectedIcon) : (moreDownSelectedIcon)}}">
     </image>
   </view>
 
-  <view class="classic base-select">
-    <text class="title {{isSelectedSort?'selected-title' : ''}}">品类</text>
+  <view class="classic base-select"
+        bind:tap="showClassicList">
+    <text class="title {{hasSelectedClassic?'selected-title' : ''}}">品类</text>
     <image class="sort-icon"
-            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+            src="{{sortfilterCondition.isShowClassicList ? (hasSelectedClassic ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedClassic ? moreDownSelectedIcon : moreDownIcon)}}">
     </image>
   </view>
   
-  <view class="filter base-select">
-    <text class="title {{isSelectedSort?'selected-title' : ''}}">品牌</text>
+  <view class="filter base-select"
+        bind:tap="showBranchList">
+    <text class="title {{hasSelectedBranch?'selected-title' : ''}}">品牌</text>
     <image class="sort-icon"
-            src="{{isShowSortList ? (isSelectedSort ? moreUpSelectedIcon : moreUpIcon) : (isSelectedSort ? moreDownSelectedIcon : moreDownIcon)}}">
+            src="{{sortfilterCondition.isShowBranchList ? (hasSelectedBranch ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedBranch ? moreDownSelectedIcon : moreDownIcon)}}">
     </image>
   </view>
   
   <image class="show-type"
-          src="{{isShowRowList ? showRowListIcon : showColumnListIcon}}"
+          src="{{sortfilterCondition.isRowType ? showColumnListIcon: showRowListIcon}}"
           mode="aspectFit"
-          bind:tap="onChangeShowType">
+          bind:tap="changeShowType">
   </image>
 </view>

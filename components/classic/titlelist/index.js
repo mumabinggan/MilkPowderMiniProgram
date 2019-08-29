@@ -20,8 +20,7 @@ Component({
    */
   methods: {
     click:function(e) {
-      let index = e.currentTarget.dataset.id
-      this.triggerEvent('onClick', index)
+      this.triggerEvent('onClick', e.currentTarget.dataset.id)
     }
   }
 })

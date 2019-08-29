@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onBuy:function(e) {
+      this.triggerEvent('onAddToCart', this.dataset.id)
+    }
   }
 })

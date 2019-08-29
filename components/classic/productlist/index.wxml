@@ -9,8 +9,8 @@
                       item="{{item}}"
                       bind:tap="click"
                       data-id="{{index}}"
-                      bind:onSub="handleSubCount"
-                      bind:onAdd="handleAddCount">
+                      catch:onSub="handleSubCount"
+                      catch:onAdd="handleAddCount">
       </v-product-item>
   </scroll-view>
 </view>

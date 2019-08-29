@@ -1,11 +1,17 @@
 <!--pages/productlist/index.wxml-->
 <view class="container">
   <v-filter-tool class="filter-tool"
-                  bind:onChangeShowType="handleChangeShowType">
+                  sortfilterCondition="{{sortfilterCondition}}"
+                  bind:onChangeShowType="handleChangeShowType"
+                  bind:onSort="handleShowSortList"
+                  bind:onClassic="handleShowClassicList"
+                  bind:onBranch="handleShowBranchList">
   </v-filter-tool>
   <scroll-view class="product-row-list base-list"
                 scroll-y
-                wx:if="{{isRowType}}">
+                enable-back-to-top="true"
+                bindscroll="scroll"
+                wx:if="{{sortfilterCondition.isRowType}}">
     <v-product-row-item class="item-row"
                       wx:for="{{list}}" 
                       wx:key="{{item.id}}" 
@@ -19,7 +25,9 @@
   </scroll-view>
   <scroll-view class="product-column-list base-list"
                 scroll-y
-                wx:if="{{!isRowType}}">
+                enable-back-to-top="true"
+                bindscroll="didScroll"
+                wx:if="{{!sortfilterCondition.isRowType}}">
     <v-product-column-item class="item-column"
                       wx:for="{{list}}" 
                       wx:key="{{item.id}}" 
@@ -31,10 +39,32 @@
     </v-product-column-item>
     <view class="footer"></view>
   </scroll-view>
-  <v-filter-item-list class="filter-list base-action-list"
-                      wx:if="{{isShowBranchList || isShowClassicList}}">
+  <v-filter-item-list class="branch-filter-list base-action-list"
+                      wx:if="{{sortfilterCondition.isShowBranchList}}"
+                      list="{{branchlist}}"
+                      bind:onHide="handleHideBranchFilterList"
+                      bind:onClickItem="handleBranchFilterItem"
+                      bind:onConfirm="handleConfirmBranch"
+                      bind:onReset="handleResetBranch">
+  </v-filter-item-list>
+  <v-filter-item-list class="classic-filter-list base-action-list"
+                      wx:if="{{sortfilterCondition.isShowClassicList}}"
+                      list="{{classiclist}}"
+                      bind:onHide="handleHideClassicFilterList"
+                      bind:onClickItem="handleClassicFilterItem"
+                      bind:onConfirm="handleConfirmClassic"
+                      bind:onReset="handleResetClassic">
   </v-filter-item-list>
   <v-sort-item-list class="sort-list base-action-list"
-                    wx:if="{{isShowSortList}}">
+                    wx:if="{{sortfilterCondition.isShowSortList}}"
+                    list="{{sortlist}}"
+                    bind:onHide="handleHideSortList"
+                    bind:onClickItem="handleSortItem">
   </v-sort-item-list>
+  <v-product-quick-tool class="quick-tool"
+                        shopCount="{{shopCount}}"
+                        showTopIcon="{{showTopIcon}}"
+                        onToShopCart="handleToShopCart"
+                        onToTop="handleToTop">
+  </v-product-quick-tool>
 </view>

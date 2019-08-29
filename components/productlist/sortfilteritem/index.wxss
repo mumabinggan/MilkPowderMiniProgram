@@ -1,0 +1,28 @@
+/* components/productlist/sortitem/index.wxss */
+.container {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: gray;
+}
+
+.selected-title {
+  color: red
+}
+
+.selected-img {
+  width: 30rpx;
+  height: 30rpx;
+}

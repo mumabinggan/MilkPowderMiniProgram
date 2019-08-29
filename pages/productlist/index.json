@@ -6,6 +6,7 @@
     "v-sort-item-list": "/components/productlist/productsortlist/index",
     "v-filter-item-list": "/components/productlist/productfilterlist/index",
     "v-product-row-item": "/components/productlist/productrowitem/index",
-    "v-product-column-item": "/components/productlist/productcolumnitem/index"
+    "v-product-column-item": "/components/productlist/productcolumnitem/index",
+    "v-product-quick-tool": "/components/productlist/productlistquicktool/index"
   }
 }

@@ -22,6 +22,10 @@
   font-size: 30rpx;
 }
 
+.selected-title {
+  color: #ED604E
+}
+
 .sort-icon {
   box-sizing: border-box;
   margin-left: 10rpx;

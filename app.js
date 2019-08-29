@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    shopcartCount: null
+    shopcartCount: 0
   }
 })

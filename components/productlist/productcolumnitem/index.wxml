@@ -12,7 +12,7 @@
     <image class="buy"
               mode='aspectFit'
               src="{{buyIcon}}"
-              bind:tap="onBuy">
+              catch:tap="onBuy">
     </image>
   </view>
 </view>

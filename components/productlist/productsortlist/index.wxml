@@ -1,6 +1,16 @@
 <!--components/productlist/productsortlist/index.wxml-->
 <view class="container">
-  <scroll-view class="scroll-view">
+  <scroll-view class="scroll-view"
+                scroll-y>
+    <v-sort-filter-item class="item"
+                        wx:for="{{list}}" 
+                        wx:key="{{item.id}}" 
+                        item="{{item}}"
+                        data-id="{{item.id}}"
+                        bind:tap="onClick">
+    </v-sort-filter-item>
   </scroll-view>
-  <view class="mask-bg"></view>
+  <view class="mask-bg"
+        bind:tap="onHide">
+  </view>
 </view>

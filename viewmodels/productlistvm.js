@@ -10,43 +10,63 @@ import {
   ProductListResponse
 } from '../models/productlistresponse.js'
 
-var ProductListSortType = {
-  //综合
-  Comprehensive: 0,
-  //销量
-  SalesCount: 1,
-  //上新
-  New: 2,
-  //价格从低到高
-  PriceUp: 3,
-  //价格从高到低
-  PriceDown: 4
-}
-
-var ProductListSortStates = [
-  (ProductListSortType.Comprehensive, "综合"),
-  (ProductListSortType.SalesCount, "销量"),
-  (ProductListSortType.New, "新品"),
-  (ProductListSortType.PriceUp, "价格从低到高"),
-  (ProductListSortType.PriceDown, "价格从高到低")
-]
+import {
+  ProductSortFilterCondition, ProductSortItem
+} from '../models/productsortfiltercondition.js'
 
 let http = new HTTP()
 
 class ProductListViewModel {
-  fetchProductList(pCategoryId, cCateogryIds, branchIds, callback) {
+
+  constructor() {
+    this.sortfilterCondition = ProductSortFilterCondition.test()
+  }
+
+  fetchChildrenClassicIds() {
+    var ids = []
+    for (let item of sortfilterCondition.classics) {
+      if (item.isSelected) {
+        ids.push(item.id)
+      }
+    }
+    return ids
+  }
+
+  fetchBranchIds() {
+    var ids = []
+    for (let item of sortfilterCondition.branches) {
+      if (item.isSelected) {
+        ids.push(item.id)
+      }
+    }
+    return ids
+  }
+
+  getSortType() {
+    for (let item of sortfilterCondition.sortlist) {
+      if (item.isSelected) {
+        return item.id
+      }
+    }
+    return 0
+  }
+
+  fetchProductList(callback) {
     let res = ProductListResponse.test()
     console.log(res)
     callback.success(res)
     return
+    let subClassicIds = fetchChildrenClassicIds()
+    let branchIds = fetchBranchIds()
+    let sortType = getSortType()
     http.request({
       url: apiConfig.product_list,
       method: 'POST',
       data: {
-        pCategoryId: userId,
-        cCategoryId: cCateogryIds,
+        pClassicId: sortfilterCondition.pClassicId,
+        subClassicIds: subClassicIds,
         branchIds: branchIds,
-        sortType: null
+        sortType: sortType
       },
       success: (res) => {
         callback.success(res)

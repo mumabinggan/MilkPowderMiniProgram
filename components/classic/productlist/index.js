@@ -20,13 +20,10 @@ Component({
    */
   methods: {
     handleAddCount:function(e) {
-      var index = e.detail
-      console.log(index)
-      this.triggerEvent('onAdd', index)
+      this.triggerEvent('onAdd', e.detail)
     },
     handleSubCount: function (e) {
-      let index = e.detail
-      this.triggerEvent('onSub', index)
+      this.triggerEvent('onSub', e.detail)
     }
   }
 })

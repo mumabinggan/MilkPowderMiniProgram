@@ -54,3 +54,9 @@
   top: 82rpx;
   bottom: 0;
 }
+
+.quick-tool {
+  position: fixed;
+  right: 20rpx;
+  bottom: 140rpx;
+}

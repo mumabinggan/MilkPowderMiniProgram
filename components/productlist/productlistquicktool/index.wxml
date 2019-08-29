@@ -1,0 +1,21 @@
+<!--components/productlist/productlistquicktool/index.wxml-->
+<view class="container">
+  <view class="shopcart base-item"
+        catch:tap="onToShopCart">
+    <image class="shopcart-icon"
+            src="{{shopcartIcon}}"
+            mode="aspectFit">
+    </image>
+    <text class="shop-count"
+          wx:if="{{shopCount != 0}}">{{shopCount}}</text>
+  </view>
+  <view class="to-top base-item"
+        wx:if="{{showTopIcon}}"
+        catch:tap="onToTop">
+    <image class="to-top-icon"
+            src="{{toTopIcon}}"
+            mode="aspectFit">
+    </image>
+    <text class="to-top-title">顶部</text>
+  </view>
+</view>
