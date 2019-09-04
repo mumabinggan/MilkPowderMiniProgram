@@ -1,0 +1,26 @@
+/* components/mine/userinfogroup/index.wxss */
+.container {
+  width: 710rpx;
+  height: 400rpx;
+  position: relative;
+}
+
+.user-header-bg {
+  display: inline-block;
+  width: 220rpx;
+  height: 100rpx;
+}
+
+.user-info-container {
+  width: 100%;
+  position: absolute;
+  top: 92rpx;
+  left: 0rpx;
+  bottom: 0rpx;
+  border-width: 0rpx 1rpx 1rpx 1rpx;
+  border-color: #e4e4e4;
+  border-style: solid;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  background-color: white
+}

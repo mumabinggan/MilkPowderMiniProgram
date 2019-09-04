@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-order-group-item": "/components/mine/mineservicegroupitem/index"
+  }
+}

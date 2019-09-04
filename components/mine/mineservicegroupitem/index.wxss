@@ -1,0 +1,21 @@
+/* components/mine/mineservicegroupitem/index.wxss */
+.container {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.title {
+  width: 100%;
+  font-size: 26rpx;
+  text-align: center;
+  color: black
+}

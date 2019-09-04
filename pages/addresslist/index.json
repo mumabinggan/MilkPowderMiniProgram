@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "v-address-list-item": "/components/address/addresslistitem/index"
+  }
+}

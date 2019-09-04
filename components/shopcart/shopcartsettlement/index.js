@@ -33,7 +33,6 @@ Component({
    */
   methods: {
     onSettlement:function() {
-      console.log("asdd")
       this.setData({
         a: this.data.b,
         b: this.data.a + this.data.b,

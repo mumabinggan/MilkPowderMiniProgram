@@ -1,0 +1,8 @@
+<!--components/mine/mineservicegroupitem/index.wxml-->
+<view class="container">
+  <image class="icon"
+          src="{{item.url}}"
+          mode="aspectFit">
+  </image>
+  <text class="title">{{item.title}}</text>
+</view>

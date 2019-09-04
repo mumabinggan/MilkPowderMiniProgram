@@ -1,0 +1,45 @@
+<!--pages/addaddress/index.wxml-->
+<view class="container">
+  <view class="address-info"
+                scroll-y>
+    <view class="receiver base-container">
+      <text class="recerver-title title-css">收货人</text>
+      <input class="recerver-input input-css"
+              wx:if="{{!showRegionPicker}}">{{name}}</input>
+    </view>
+    <view class="sep-line"></view>
+    <view class="phone base-container">
+      <text class="phone-title title-css">手机号码</text>
+      <input class="phone-input input-css"
+              wx:if="{{!showRegionPicker}}">{{phone}}</input>
+    </view>
+    <view class="sep-line"></view>
+    <view class="region base-container"
+          catch:tap="onSelectRegion">
+      <text class="region-title title-css">所有地区</text>
+      <text class="region-content input-css">{{regionStr}}</text>
+    </view>
+    <view class="sep-line"></view>
+    <view class="address">
+      <text class="address-title title-css">详细地址</text>
+      <textarea class="address-textarea"
+                auto-height="true"
+                wx:if="{{!showRegionPicker}}">{{address}}</textarea>
+    </view>
+  </view>
+  <view class="address-extra-info">
+    <text class="set-default-address-title title-css">设置默认地址</text>
+    <switch class="set-default-address-switch" bindchange="switchChange" checked="{{isDefault}}"/>
+  </view>
+  <view class="action-view"
+        bind:tap="onSave"
+        wx:if="false">
+    <text class="">保存</text>
+  </view>
+  <v-region-picker class="region-picker"
+                    list="{{region}}"
+                    wx:if="{{showRegionPicker}}"
+                    bind:onSelectFinish="handleSelectRegionFinish"
+                    bind:onHide="handleHidePicker">
+  </v-region-picker>
+</view>

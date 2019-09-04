@@ -1,7 +1,10 @@
-// pages/mine/index.js
-import {
-  ServiceItem
-} from '../../models/serviceitem.js'
+// pages/address/index.js
+import { AddressViewModel } from '../../viewmodels/addressviewmodel.js'
+
+import { UserUtils } from
+ '../../utils/userutil.js'
+
+let addressVM = new AddressViewModel()
 
 Page({
 
@@ -9,26 +12,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList: [ServiceItem.waitPay(),
-                ServiceItem.waitShip(),
-                ServiceItem.waitReceipt(),
-                ServiceItem.waitComment()
-                ],
-    serviceList: [ServiceItem.waitPay(),
-                  ServiceItem.waitShip(),
-                  ServiceItem.waitReceipt(),
-                  ServiceItem.waitComment(),
-                  ServiceItem.waitReceipt(),
-                  ServiceItem.waitComment()
-                  ]
+    list: null,
+    canAdd: false,
+    isSelected: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '会员',
+    addressVM.fetchAddressList(UserUtils.user.userId, {
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          list: res.data,
+        })
+      },
+      fail: (err) => {
+        console.log(err)
+      }
     })
   },
 
@@ -79,5 +81,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onAddAddress: function(e) {
+    //TODO 添加地址
+  },
+
+  onAddressItem: function(e) {
+    if (this.data.isSelected) {
+      //TODO 选择地址
+    } else {
+      //编辑地址
+    }
   }
 })

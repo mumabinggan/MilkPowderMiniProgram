@@ -1,0 +1,9 @@
+<!--components/address/addresslistitem/index.wxml-->
+<view class="container">
+  <text class="image">{{firstName}}</text>
+  <view class="info">
+    <text class="name">{{item.name}}</text>
+    <text class="phone">{{item.phone}}</text>
+    <text class="address">{{item.detailAddress}}</text>  
+  </view>
+</view>

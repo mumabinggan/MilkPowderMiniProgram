@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "v-user-info-group": "/components/mine/userinfogroup/index",
+    "v-service-group": "/components/mine/mineordergroup/index"
+  }
 }

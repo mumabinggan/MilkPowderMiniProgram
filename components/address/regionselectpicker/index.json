@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-region-list-item": "/components/address/regionlistitem/index"
+  }
+}

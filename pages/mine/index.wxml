@@ -1,2 +1,18 @@
 <!--pages/mine/index.wxml-->
-<text>pages/mine/index.wxml</text>
+<view class="container">
+  <image class="header-bg-image"></image>
+  <scroll-view class="content-container"
+                scroll-y>
+    <v-user-info-group class="user-info-group">
+    </v-user-info-group>
+    <v-service-group class="order-container"
+                      title="我的订单"
+                      detailTitle="查看全部订单"
+                      list="{{orderList}}">
+    </v-service-group>
+    <v-service-group class="service-container"
+                      title="我的服务"
+                      list="{{serviceList}}">
+    </v-service-group>
+  </scroll-view>
+</view>

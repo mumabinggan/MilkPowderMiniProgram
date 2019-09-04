@@ -23,7 +23,6 @@ Component({
    */
   methods: {
     onAdd:function() {
-      console.log("onAdd")
       this.triggerEvent('onAdd', {}, {})
     },
     onSub:function() {

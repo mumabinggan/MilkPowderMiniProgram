@@ -1,0 +1,11 @@
+<!--components/mine/userinfogroup/index.wxml-->
+<view class="container">
+  <image class="user-header-bg"
+          src="{{userHeaderBg}}"
+          mode="aspectFit">
+  </image>
+  <view class="user-info-container">
+    <image class="user-avatar"></image>
+    <text class="user-name"></text>
+  </view>
+</view>

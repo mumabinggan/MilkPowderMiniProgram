@@ -1,0 +1,110 @@
+/* pages/addaddress/index.wxss */
+.container {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between */
+}
+
+.address-info {
+  width: 100%;
+}
+
+.base-container {
+  width: 100%;
+  height: 110rpx;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  justify-content: space-between
+}
+
+.sep-line {
+  position: relative;
+  left: 30rpx;
+  width: 720rpx;
+  height: 1rpx;
+  background-color: #e4e4e4  
+}
+
+.title-css {
+  padding-left: 30rpx;
+  width: 160rpx;
+  height: 100%;
+  font-size: 28rpx;
+  color: gray;
+  line-height: 110rpx;
+}
+
+.input-css {
+  width: 595rpx;
+  height: 100%;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+  line-height: 110rpx;
+}
+
+.region-content {
+  height: 100%;
+  line-height: 110rpx;
+}
+
+.address {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between
+}
+
+.address-textarea {
+  width: 595rpx;
+  padding: 22rpx 0;
+  font-size: 28rpx;
+}
+
+.address-extra-info {
+  width: 100%;
+  height: 110rpx;
+  border-top: 20rpx solid #F6F6F6;
+  border-bottom: 1rpx solid #F6F6F6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.set-default-address-title {
+  width: 200rpx;
+}
+
+.set-default-address-switch {
+  text-align: center;
+  padding-right: 20rpx;
+}
+
+.action-view {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: #EC5C2A
+}
+
+.region-picker {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

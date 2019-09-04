@@ -7,7 +7,11 @@ const apiConfig = {
   cart_cancel_select_product: "",
   cart_select_all_product: "",
   cart_cancel_select_all_product: "",
-  product_list: ""
+  product_list: "",
+  address_list: "",
+  address_add: "",
+  address_edit: "",
+  address_delete: "",
 }
 
 export { apiConfig }

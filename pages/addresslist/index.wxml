@@ -1,0 +1,15 @@
+<!--pages/address/index.wxml-->
+<view class="container">
+  <view class="address-container {{canAdd?'address-container-padding':''}}">
+    <v-address-list-item wx:for="{{list}}" 
+                          wx:key="{{item.id}}"
+                          class="item"
+                          item="{{item}}"
+                          catch:tap="onAddressItem"
+                          data-id="{{item.id}}">
+    </v-address-list-item>
+  </view>
+  <text class="add-address"
+        wx:if="{{canAdd}}"
+        catch:tap="onAddAddress">添加新地址</text>
+</view>

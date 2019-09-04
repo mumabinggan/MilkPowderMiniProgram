@@ -1,0 +1,29 @@
+<!--components/address/regionselectpicker/index.wxml-->
+<view class="container">
+  <view class="mask"
+        catch:tap="onHide">
+  </view>
+  <view class="content-container">
+    <view class="title">所在地区</view>
+    <view class="selected-item-list">
+      <text wx:for="{{titleList}}" 
+            wx:key="{{item.id}}" 
+            data-id="{{index}}"
+            class="item base-title {{index == selectedIndex - 1 ? 'selected-title' : ''}}"
+            bind:tap="onTitleItem">{{item.name}}
+      </text>
+      <text class="select base-title"
+            wx:if="{{showSelectTitle}}">请选择</text>
+    </view>
+    <scroll-view class="list"
+                  scroll-y>
+      <v-region-list-item class="list-item"
+                          wx:for="{{currentList}}" 
+                          wx:key="{{item.id}}" 
+                          item="{{item}}"
+                          data-id="{{item.id}}"
+                          bind:tap="onListItem">
+      </v-region-list-item>
+    </scroll-view>
+  </view>
+</view>

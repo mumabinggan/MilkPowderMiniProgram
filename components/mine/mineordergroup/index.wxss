@@ -1,0 +1,62 @@
+/* components/mine/mineordergroup/index.wxss */
+.container {
+  width: 710rpx;
+  /* height: 600rpx; */
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  border: 1rpx solid #e4e4e4;
+  display: flex;
+  flex-direction: column
+}
+
+.order-title-container {
+  width: 100%;
+  height: 90rpx;
+}
+
+.order-title {
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #434343;
+  float: left;
+  margin-left: 30rpx;
+}
+
+.order-detail-icon {
+  width: 30rpx;
+  height: 100%;
+  float: right;
+  margin-right: 10rpx;
+}
+
+.order-detail-des {
+  height: 100%;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #434343;
+  float: right;
+  margin-right: 4rpx;
+  box-sizing: border-box;
+}
+
+.order-sep-line {
+  width: 100%;
+  height: 2rpx;
+  background-color: #e4e4e4
+}
+
+.order-items-container {
+  padding-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.item {
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 40rpx;
+}

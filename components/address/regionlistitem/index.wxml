@@ -1,0 +1,7 @@
+<!--components/address/regionlistitem/index.wxml-->
+<view class="container">
+  <text class="title {{item.isSelected?'selected-title':''}}">{{item.name}}</text>
+  <image class="selected-img"
+          wx:if="{{item.isSelected}}"
+          src="{{selectedIcon}}"></image>
+</view>

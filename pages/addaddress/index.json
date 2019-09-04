@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "v-region-picker": "/components/address/regionselectpicker/index"
+  }
+}

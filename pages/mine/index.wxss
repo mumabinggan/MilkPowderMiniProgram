@@ -1,1 +1,52 @@
 /* pages/mine/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.header-bg-image {
+  display: block;
+  width: 100%;
+  height: 300rpx;
+  background-color: red;
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  bottom: 0;
+  top: 0;
+  top: -300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.user-info-group {
+  display: inline-block;
+}
+
+.order-container {
+  margin-top: 40rpx;
+  display: inline-block;
+  width: 712rpx;
+}
+
+.service-container {
+  margin-top: 40rpx;
+  display: inline-block;
+  width: 712rpx;
+  box-sizing: border-box;
+  padding-bottom: 30rpx;
+}
+
+
+
