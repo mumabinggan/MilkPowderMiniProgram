@@ -9,8 +9,7 @@
     "pages/home/index",
     "pages/productlist/index",
     "components/classic/titlelist/index",
-    "components/classic/productlist/index",
-    "pages/balance/index"
+    "components/classic/productlist/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
