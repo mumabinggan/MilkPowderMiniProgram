@@ -1,0 +1,27 @@
+/* components/productdetail/pricedetailpricedes/index.wxss */
+.container {
+  width: 100%;
+}
+
+.price-des-container {
+  padding: 0 20rpx 130rpx;
+  box-sizing: border-box;
+}
+
+.base-title {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-top: 20rpx;
+  display: inline-block;
+}
+
+.base-content {
+  font-size: 26rpx;
+  color: gray
+}
+
+.price-summary {
+  display: inline-block;
+  line-height: 44rpx;
+  margin-top: 20rpx;
+}

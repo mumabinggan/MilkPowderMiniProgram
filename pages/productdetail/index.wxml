@@ -1,0 +1,24 @@
+<!--pages/productdetail/index.wxml-->
+<view class="container">
+  <v-product-info-view class="product-info-view"
+                        product="{{product}}"
+                        bind:onShare="handleShare">
+  </v-product-info-view>
+  <v-product-detail-view class="product-detail-view"
+                          product="{{product}}">
+  </v-product-detail-view>
+  <v-product-price-des-view class="product-price-des-view">
+  </v-product-price-des-view>
+  <v-product-detail-toolbar class="toolbar"
+                            bind:onHome="handleToHome"
+                            bind:onFavorite="handleFavorite"
+                            bind:onAddToShopCart="handleAddToShopCart"
+                            bind:onBuy="handleBuy">
+  </v-product-detail-toolbar>
+  <v-product-quick-tool class="quick-tool"
+                        shopCount="{{shopCount}}"
+                        showTopIcon="{{showTopIcon}}"
+                        onToShopCart="handleToShopCart"
+                        onToTop="handleToTop">
+  </v-product-quick-tool>
+</view>

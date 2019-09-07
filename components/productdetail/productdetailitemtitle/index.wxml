@@ -1,0 +1,5 @@
+<!--components/productdetail/productdetailitemtitle/index.wxml-->
+<view class="container">
+  <view class="line-view"></view>
+  <text class="title">{{title}}</text>
+</view>

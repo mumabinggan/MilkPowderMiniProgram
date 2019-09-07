@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-product-detail-item-title": "/components/productdetail/productdetailitemtitle/index"
+  }
+}

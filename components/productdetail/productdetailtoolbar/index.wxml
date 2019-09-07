@@ -1,0 +1,23 @@
+<!--components/productdetail/producttoolbar/index.wxml-->
+<view class="container">
+  <view class="home-view"
+        catch:tap="onHome">
+    <image class="home-image"
+            src="{{homeIcon}}"
+            mode="aspectFit">
+    </image>
+    <text class="title">首页</text>
+  </view>
+  <view class="favorite-view"
+        catch:tap="onFavorite">
+    <image class="favorite-image"
+            src="{{product.isFavorite ? favoriteIcon : unFavoriteIcon}}"
+            mode="aspectFit">
+    </image>
+    <text class="title">收藏</text>
+  </view>
+  <text class="shop-cart-view"
+        catch:tap="onAddToShopCart">加入购物车</text>
+  <text class="buy-view"
+        catch:tap="onBuy">立即购买</text>
+</view>

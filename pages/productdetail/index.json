@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "v-product-info-view": "/components/productdetail/productinfoview/index",
+    "v-product-detail-view": "/components/productdetail/productdetailview/index",
+    "v-product-price-des-view": "/components/productdetail/pricedetailpricedes/index",
+    "v-product-detail-toolbar": "/components/productdetail/productdetailtoolbar/index",
+    "v-product-quick-tool": "/components/productlist/productlistquicktool/index"
+  }
+}

@@ -1,0 +1,14 @@
+<!--components/productdetail/pricedetailpricedes/index.wxml-->
+<view class="container">
+  <v-product-detail-item-title class="price-title"
+                                title="价格说明">
+  </v-product-detail-item-title>
+  <view class="price-des-container">
+    <text class="line-price-title base-title">划线价格：<text class="line-price-content base-content">{{linePriceDes}}</text>
+    </text>
+    <text class="unline-price-title base-title">未划线价格：<text class="unline-price-title base-content">{{unlinePriceDes}}</text>
+    </text>
+    <text class="price-summary base-content">{{summaryPriceDes}}</text>
+  </view>
+</view>
+

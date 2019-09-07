@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/productdetail/index",
     "pages/addaddress/index",
     "pages/addresslist/index",
     "pages/mine/index",
@@ -8,7 +9,8 @@
     "pages/home/index",
     "pages/productlist/index",
     "components/classic/titlelist/index",
-    "components/classic/productlist/index"
+    "components/classic/productlist/index",
+    "pages/balance/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

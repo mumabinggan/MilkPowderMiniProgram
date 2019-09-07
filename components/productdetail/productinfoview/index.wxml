@@ -1,0 +1,30 @@
+<!--components/productdetail/productinfo/index.wxml-->
+<view class="container">
+  <swiper class="carousel-view"
+          indicator-dots
+          circular
+          autoplay>
+    <swiper-item class="carousel-view-item" 
+                  wx:for="{{product.urls}}" 
+                  wx:key="{{item.id}}" 
+                  item="{{item}}"
+                  data-id="{{item.id}}">
+      <image class="slide-image"
+              src="{{item}}"
+              mode='aspectFit'/>
+    </swiper-item>
+  </swiper>
+  <view class="product-brief-info">
+    <text class="price"><text class="price-unit">¥ </text>
+      <text class="current-price-int">320</text>
+      <text class="current-price-dots">.00 </text>
+      <text class="origin-price">¥330.00</text>
+    </text>
+    <image class="shareIcon"
+            src="{{shareIcon}}"
+            mode="aspectFit"
+            catch:tap="onShare"></image>
+    <text class="title">播放器的Container用xib生成并且一次会加载全横屏，全竖屏，全局小屏，小屏，以及不同尺寸的错误层，会有不必要的内存和启动时间的消耗</text>
+    <text class="buy-count">已有{{item.totalBuyCount}}人购买</text>
+  </view>
+</view>

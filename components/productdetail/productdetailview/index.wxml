@@ -1,0 +1,15 @@
+<!--components/productdetail/productdetailview/index.wxml-->
+<view class="container">
+  <v-product-detail-item-title class="product-detail-title"
+                                title="宝贝详情">
+  </v-product-detail-item-title>
+  <view class="content-container">
+    <image class="item"
+            wx:for="{{product.detailPictures}}"
+            wx:key="{{index}}" 
+            data-id="{{index}}"
+            src="{{item}}"
+            mode="aspectFit">
+    </image>
+  </view>
+</view>
