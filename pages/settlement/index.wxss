@@ -6,12 +6,12 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: #F2F2F2
 }
 
 .scroll-view {
   padding-bottom: 100rpx;
   box-sizing: border-box;
+  background-color: #F2F2F2
 }
 
 .footer {
