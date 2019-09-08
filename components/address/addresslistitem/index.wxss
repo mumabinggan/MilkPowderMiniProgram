@@ -43,3 +43,10 @@
   display: inline-block;
   font-size: 26rpx;
 }
+
+.more {
+  padding: 0 0 0 10rpx;
+  width: 30rpx;
+  height: 80rpx;
+  flex-shrink: 0;
+}

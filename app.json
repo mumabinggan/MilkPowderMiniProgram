@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/settlement/index",
+    "pages/addresslist/index",
     "pages/productdetail/index",
     "pages/addaddress/index",
-    "pages/addresslist/index",
     "pages/mine/index",
     "pages/classic/classic",
     "pages/shopcart/index",

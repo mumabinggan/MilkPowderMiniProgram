@@ -1,0 +1,73 @@
+/* components/settlement/settlementprice/index.wxss */
+.container {
+  width: 100%;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  background-color: white
+}
+
+.container-title {
+  display: inline-block;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-bottom: 1rpx solid #e4e4e4;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.price-container {
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+
+.price-item {
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between
+}
+
+.title {
+  width: 30%;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+
+.value {
+  width: 60%;
+  font-size: 28rpx;
+  text-align: right;
+  line-height: 50rpx;
+  color: #EC5C2A
+}
+
+.sep-line {
+  width: 100%;
+  height: 1rpx;
+  margin-left: 20rpx;
+  box-sizing: border-box;
+  background-color: #e4e4e4
+}
+
+.current-total-price {
+  display: inline-block;
+  width: 100%;
+  height: 80rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: right;
+}
+
+.current-total-price .value {
+  color: #EC5C2A;
+  font-size: 30rpx;
+}

@@ -15,6 +15,10 @@ Component({
         console.log("change address")
         this.handleAddressChange()
       }
+    },
+    isMore: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -22,7 +26,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    firstName: null
+    firstName: null,
+    addressMore: 'images/address_more.png'
   },
 
   /**

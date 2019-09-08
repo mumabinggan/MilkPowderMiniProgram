@@ -6,4 +6,8 @@
     <text class="phone">{{item.phone}}</text>
     <text class="address">{{item.detailAddress}}</text>  
   </view>
+  <image class="more"
+          wx:if="{{isMore}}"
+          src="{{addressMore}}"
+          mode="aspectFit"></image>
 </view>

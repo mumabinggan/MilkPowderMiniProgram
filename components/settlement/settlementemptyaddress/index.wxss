@@ -1,0 +1,32 @@
+/* components/settlement/settlementaddress/index.wxss */
+.container {
+  width: 100%;
+  height: 120rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white
+}
+
+.address-icon {
+  width: 56rpx;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.add-address-des {
+  width: 100%;
+  height: 100%;
+  line-height: 120rpx;
+  padding-left: 10rpx;
+  font-size: 30rpx;
+}
+
+.more {
+  /* padding: 0 0 0 10rpx; */
+  width: 30rpx;
+  height: 80rpx;
+  flex-shrink: 0;
+}

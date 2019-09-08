@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #F2F2F2
+}
+
+.scroll-view {
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  height: 20rpx;
+  background-color: #F2F2F2
+}
+
+.toolbar {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

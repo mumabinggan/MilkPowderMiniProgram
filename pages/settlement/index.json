@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "v-address-item": "/components/address/addresslistitem/index",
+    "v-empty-address-item": "/components/settlement/settlementemptyaddress/index",
+    "v-product-group": "/components/settlement/settlementproductgroup/index",
+    "v-remarks": "/components/settlement/settlementremarks/index",
+    "v-price": "/components/settlement/settlementprice/index",
+    "v-toolbar": "/components/settlement/settlementtoolbar/index"
+  }
+}

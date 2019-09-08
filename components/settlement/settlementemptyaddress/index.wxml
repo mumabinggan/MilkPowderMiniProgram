@@ -1,0 +1,12 @@
+<!--components/settlement/settlementaddress/index.wxml-->
+<view class="container">
+  <image class="address-icon"
+          src="{{addressIcon}}"
+          mode="aspectFit">
+  </image>
+  <text class="add-address-des">添加收货信息</text>
+  <image class="more"
+          src="{{addressMore}}"
+          mode="aspectFit">
+  </image>
+</view>

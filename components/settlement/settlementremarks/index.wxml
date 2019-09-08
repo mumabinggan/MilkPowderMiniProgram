@@ -1,0 +1,11 @@
+<!--components/settlement/settlementremarks/index.wxml-->
+<view class="container">
+  <text class="title">店铺备注</text>
+  <input class="value"
+          placeholder="给商家留言"
+          confirm-type="done"
+          bindblur="onUnFocus"
+          bindfocus="onFocus"
+          bind:tap="onClick">
+  </input>
+</view>

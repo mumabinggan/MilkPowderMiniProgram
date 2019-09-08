@@ -1,0 +1,33 @@
+<!--pages/settlement/index.wxml-->
+<view class="container">
+  <scroll-view class="scroll-view"
+                scroll-y>
+    <v-address-item class="address"
+                  wx:if="{{address}}"
+                  item="{{address}}"
+                  isMore="{{true}}"
+                  catch:tap="onAddress">
+    </v-address-item>
+    <v-empty-address-item class="address"
+                          wx:if="{{address == null}}">
+    </v-empty-address-item>
+    <v-product-group class="product-group"
+                      products="{{products}}">
+    </v-product-group>
+    <v-remarks class="remarks"
+                hidden="{{!canEditRemarks}}"
+                remarks="{{remarks}}"
+                catch:unFocus="handleRemarksUnFocus"
+                catch:focus="handleRemarksFocus">
+    </v-remarks>
+    <v-price class="product-group"
+              price="{{price}}">
+    </v-price>
+    <view class="footer"></view>
+  </scroll-view>
+  <v-toolbar class="toolbar"
+              price="{{price}}"
+              onBuy="{{handleBuy}}"
+              totalCount="{{totalCount}}">
+  </v-toolbar>
+</view>

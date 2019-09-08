@@ -1,0 +1,16 @@
+<!--components/settlement/settlementproductitem/index.wxml-->
+<view class="container">
+    <image  class="product-img" 
+              mode='aspectFit'
+              src="{{item.url}}"
+              lazy-load="true">
+    </image>
+    <view class="product-des">
+      <text class="title">{{item.title}}</text>
+      <view class="price-count">
+        <text class="price">￥{{item.currentPrice}}</text>
+        <text class="buy-count">x{{item.buyCount}}</text>
+      </view>
+    </view>
+    <view class="line-view"></view>
+</view>
