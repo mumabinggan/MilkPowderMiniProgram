@@ -13,6 +13,10 @@ const apiConfig = {
   address_add: "",
   address_edit: "",
   address_delete: "",
+  order_list: "",
+  order_delete: "",
+  order_commit: "",
+  order_detail: "",
 }
 
 export { apiConfig }

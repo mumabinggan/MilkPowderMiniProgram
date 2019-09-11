@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-order-tabsview": "/components/orderlist/ordertabsview/index",
+    "v-product-info-view": "/components/orderlist/orderlistitem/index"
+  }
+}

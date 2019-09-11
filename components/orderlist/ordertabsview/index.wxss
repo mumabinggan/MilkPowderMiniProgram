@@ -1,0 +1,29 @@
+/* components/orderlist/ordertabsview/index.wxss */
+.container {
+  width: 100%;
+  height: 90rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #e4e4e4
+}
+
+.container .item {
+  width: 25%;
+  height: 100%;
+  text-align: center
+}
+
+.container .title {
+  display: inline-block;
+  height: 100%;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.selected-title {
+  color: #EC5C2A;
+  box-sizing: border-box;
+  border-bottom: 6rpx solid #EC5C2A;
+}

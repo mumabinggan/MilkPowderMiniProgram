@@ -1,0 +1,21 @@
+<!--pages/orderlist/index.wxml-->
+<view class="container">
+  <v-order-tabsview class="tabsview">
+  </v-order-tabsview>
+  <scroll-view class="scroll-view"
+                scroll-y>
+    <v-product-info-view class="item"
+                          wx:for="{{orderList}}" 
+                          wx:key="{{item.id}}" 
+                          item="{{item}}"
+                          data-id="{{item.id}}"
+                          catch:tap="handleToOrderDetail"
+                          catch:onUrge="handleUrgeOrder"
+                          catch:onDelete="handleDeleteOrder"
+                          catch:onPay="handlePayOrder"
+                          catch:onRePay="handleRePayOrder"
+                          catch:onComment="handleCommentOrder"
+                          catch:onConfirm="handleConfirmOrder">
+    </v-product-info-view>
+  </scroll-view>
+</view>

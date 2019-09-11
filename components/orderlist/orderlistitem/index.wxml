@@ -1,0 +1,64 @@
+<!--components/orderlist/orderlistitem/index.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="store-view">
+      <image class="store-icon" 
+            mode='aspectFit'
+            src="{{storeIcon}}"
+            lazy-load="true">
+      </image>
+      <text class="store-name">{{item.storeName}}</text>
+    </view>
+    <view class="order-state-view">
+      <text class="order-state">{{item.stateStr}}</text>
+      <view class="order-sep-line">|</view>
+      <image class="delete-icon" 
+              mode='aspectFit'
+              src="{{deleteOrderIcon}}"
+              lazy-load="true"
+              catch:tap="onDelete">
+      </image>
+    </view>
+  </view>
+
+  <view class="middle">
+    <scroll-view class="products"
+                  scroll-x
+                  wx:if="{{item.products.length>1}}">
+      <view class="product-item"
+            wx:for="{{item.products}}"
+            wx:key="{{index}}">
+        <image class="product-item-img" 
+                mode='aspectFit'
+                src="{{item.url}}"
+                lazy-load="true">
+        </image>
+        <text class="product-item-count">x{{item.buyCount}}</text>
+      </view>  
+    </scroll-view>
+    <view class="product"
+          wx:if="{{item.products.length==1}}">
+
+    </view>
+    <text class="total-count">共{{order.buyCount}}件商品 <text class="price-title">实付金额：</text><text class="price">￥{{item.currentTotalPrice}}</text></text>
+  </view>
+  <view class="footer">
+    <text class="wait-pay-title"
+          wx:if="{{showWaitPay}}">支付剩余x时x分</text>
+    <text class="urge base-btn"
+          wx:if="{{showUrge}}"
+          catch:tap="onUrge">我要催单</text>
+    <text class="pay base-btn"
+          wx:if="{{showWaitPay}}"
+          catch:tap="onPay">待支付</text>
+    <text class="comment base-btn"
+          wx:if="{{showWaitComment}}"
+          catch:tap="onComment">待评论</text>
+    <text class="confirm base-btn"
+          wx:if="{{showWaitConfirm}}"
+          catch:tap="onConfirm">待确认</text>
+    <text class="reBuy base-btn"
+          wx:if="{{showReBuy}}"
+          catch:tap="onReBuy">再次购买</text>
+  </view>
+</view>

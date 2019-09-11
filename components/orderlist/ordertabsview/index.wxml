@@ -1,0 +1,13 @@
+<!--components/orderlist/ordertabsview/index.wxml-->
+<view class="container">
+  <view class="item" 
+        wx:for="{{titles}}"
+        wx:key="{{index}}" 
+        data-id="{{index}}"
+        catch:tap="onClick">
+    <text class="title {{currentIndex == index ? 'selected-title':''}}"
+          wx:key="{{index}}" 
+        data-id="{{index}}">{{item}}
+    </text>
+  </view>
+</view>
