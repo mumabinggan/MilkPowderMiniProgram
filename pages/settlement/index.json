@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "v-sepline": "/components/common/sepline/index",
     "v-address-item": "/components/address/addresslistitem/index",
     "v-empty-address-item": "/components/settlement/settlementemptyaddress/index",
     "v-product-group": "/components/settlement/settlementproductgroup/index",

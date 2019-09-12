@@ -1,0 +1,20 @@
+<!--components/orderlist/orderactionlist/index.wxml-->
+<view class="container">
+  <text class="wait-pay-title"
+          wx:if="{{showWaitPay && showOrderRemainTime}}">支付剩余x时x分</text>
+  <text class="urge base-btn"
+        wx:if="{{showUrge}}"
+        catch:tap="onUrge">我要催单</text>
+  <text class="pay base-btn"
+        wx:if="{{showWaitPay}}"
+        catch:tap="onPay">待支付</text>
+  <text class="comment base-btn"
+        wx:if="{{showWaitComment}}"
+        catch:tap="onComment">待评论</text>
+  <text class="confirm base-btn"
+        wx:if="{{showWaitConfirm}}"
+        catch:tap="onConfirm">待确认</text>
+  <text class="reBuy base-btn"
+        wx:if="{{showReBuy}}"
+        catch:tap="onReBuy">再次购买</text>
+</view>

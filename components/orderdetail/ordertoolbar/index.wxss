@@ -1,0 +1,16 @@
+/* components/orderdetail/ordertoolbar/index.wxss */
+.container {
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.order-action-list {
+  width: 100%;
+  height: 100%;
+}

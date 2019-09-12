@@ -1,0 +1,6 @@
+/* components/common/sepline/index.wxss */
+.container {
+  width: 100%;
+  height: 20rpx;
+  background-color: #F2F2F2
+}

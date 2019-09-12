@@ -1,0 +1,43 @@
+<!--pages/orderdetail/index.wxml-->
+<view class="container">
+  <scroll-view class="scroll-view"
+                scroll-y>
+    <v-order-delivery-view class="delivery-container"
+                          order="{{order}}">
+    </v-order-delivery-view>
+
+    <v-order-address-view class="address-container"
+                          item="{{order.address}}">
+    </v-order-address-view>
+    
+    <v-sepline></v-sepline>
+    
+    <v-products-group class="products-container"
+                      products="{{order.products}}">
+    </v-products-group>
+
+    <v-sepline></v-sepline>
+
+    <v-order-info-view class="order-info-container"
+                        order="{{order}}">
+    </v-order-info-view>
+
+    <v-sepline></v-sepline>
+
+    <v-price class="order-price-container"
+              price="{{order.price}}">
+    </v-price>
+  </scroll-view>
+  
+  <v-order-toolbar class="order-toolbar"
+                    item="{{order}}"
+                    catch:tap="handleToOrderDetail"
+                    catch:onUrge="handleUrgeOrder"
+                    catch:onDelete="handleDeleteOrder"
+                    catch:onPay="handlePayOrder"
+                    catch:onReBuy="handleReBuyOrder"
+                    catch:onComment="handleCommentOrder"
+                    catch:onConfirm="handleConfirmOrder">
+  </v-order-toolbar>
+  
+</view>

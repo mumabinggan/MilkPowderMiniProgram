@@ -1,0 +1,13 @@
+<!--components/orderdetail/ordertoolbar/index.wxml-->
+<view class="container">
+  <v-order-action-list class="order-action-list"
+                        item="{{item}}"
+                        showOrderRemainTime="{{true}}"
+                        catch:onUrge="onUrge"
+                        catch:onDelete="onDelete"
+                        catch:onPay="onPay"
+                        catch:onComment="onComment"
+                        catch:onConfirm="onConfirm"
+                        catch:onReBuy="onReBuy">
+  </v-order-action-list>
+</view>

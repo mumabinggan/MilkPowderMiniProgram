@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "v-sepline": "/components/common/sepline/index",
+    "v-order-delivery-view": "/components/orderdetail/orderdelivery/index",
+    "v-order-address-view": "/components/address/addresslistitem/index",
+    "v-products-group": "/components/settlement/settlementproductgroup/index",
+    "v-order-info-view": "/components/orderdetail/orderinfo/index",
+    "v-price": "/components/settlement/settlementprice/index",
+    "v-order-toolbar": "/components/orderdetail/ordertoolbar/index"
+  }
+}

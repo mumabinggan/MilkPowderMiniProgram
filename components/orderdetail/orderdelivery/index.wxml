@@ -1,0 +1,12 @@
+<!--components/orderdetail/orderdelivery/index.wxml-->
+<view class="container">
+  <image class="icon"
+          src="{{icon}}"
+          mode="aspectFit">
+  </image>
+  <view class="des-info">
+    <text class="title">{{order.stateStr}}</text>
+    <text class="detail">{{order.stateDetailStr}}</text>
+  </view>
+  <text class="title2">XASDFASDFASDF</text>
+</view>

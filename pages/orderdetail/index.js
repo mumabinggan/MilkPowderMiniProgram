@@ -1,10 +1,10 @@
-// pages/orderlist/index.js
+// pages/orderdetail/index.js
 import { OrderViewModel }
   from '../../viewmodels/orderviewmodel.js'
 
 import { UserUtils } from
   '../../utils/userutil.js'
-
+  
 const orderVM = new OrderViewModel()
 
 Page({
@@ -13,18 +13,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList: null
+    order: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let type = 0
-    orderVM.fetchOrderList(UserUtils.user.userId, type, {
+    let orderId = 0
+    orderVM.fetchOrderDetail(UserUtils.user.userId, orderId, {
       success: (res) => {
         this.setData({
-          orderList: res.data
+          order: res.data
         })
       },
       fail: (err) => {
@@ -82,7 +82,7 @@ Page({
 
   },
 
-  handleToOrderDetail:function(e) {
+  handleToOrderDetail: function (e) {
     console.log(e.target.dataset.id)
   },
 

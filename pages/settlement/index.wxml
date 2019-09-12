@@ -11,6 +11,9 @@
     <v-empty-address-item class="address"
                           wx:if="{{address == null}}">
     </v-empty-address-item>
+
+    <v-sepline></v-sepline>
+
     <v-product-group class="product-group"
                       products="{{products}}">
     </v-product-group>
@@ -20,6 +23,9 @@
                 catch:unFocus="handleRemarksUnFocus"
                 catch:focus="handleRemarksFocus">
     </v-remarks>
+
+    <v-sepline></v-sepline>
+
     <v-price class="product-group"
               price="{{price}}">
     </v-price>

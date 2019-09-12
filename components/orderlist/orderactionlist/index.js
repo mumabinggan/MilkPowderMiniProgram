@@ -1,4 +1,4 @@
-// components/orderlist/orderlistitem/index.js
+// components/orderlist/orderactionlist/index.js
 import {
   Order
 } from '../../../models/order.js'
@@ -16,7 +16,13 @@ Component({
       type: Order,
       value: null,
       observer: function (newValue, oldValue, changePath) {
+        console.log(newValue)
+        this.handleOrderChange(newValue)
       }
+    },
+    showOrderRemainTime: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -24,15 +30,28 @@ Component({
    * 组件的初始数据
    */
   data: {
-    deleteOrderIcon: 'images/order_delete.png',
-    storeIcon: '/images/app_icon.png',
+    showUrge: false,
+    showReBuy: false,
+    showWaitPay: false,
+    showWaitComment: false,
+    showWaitConfirm: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onUrge:function(e) {
+    handleOrderChange: function (order) {
+      this.setData({
+        showUrge: OrderUtils.showUrge(order),
+        showReBuy: OrderUtils.showReBuy(order),
+        showWaitPay: OrderUtils.showWaitPay(order),
+        showWaitComment: OrderUtils.showWaitComment(order),
+        showWaitConfirm: OrderUtils.showWaitConfirm(order)
+      })
+    },
+
+    onUrge: function (e) {
       let item = this.properties.item
       this.triggerEvent('onUrge', { item })
     },
@@ -58,6 +77,7 @@ Component({
     },
 
     onReBuy: function (e) {
+      console.log("adsfasdfs")
       let item = this.properties.item
       this.triggerEvent('onReBuy', { item })
     }

@@ -13,7 +13,7 @@
                           catch:onUrge="handleUrgeOrder"
                           catch:onDelete="handleDeleteOrder"
                           catch:onPay="handlePayOrder"
-                          catch:onRePay="handleRePayOrder"
+                          catch:onReBuy="handleReBuyOrder"
                           catch:onComment="handleCommentOrder"
                           catch:onConfirm="handleConfirmOrder">
     </v-product-info-view>

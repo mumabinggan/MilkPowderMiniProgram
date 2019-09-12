@@ -1,0 +1,50 @@
+/* components/orderdetail/orderdelivery/index.wxss */
+.container {
+  width: 100%;
+  height: 140rpx;
+  background-color: #DB3A2E;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.icon {
+  width: 80rpx;
+  height: 100%;
+  background-color: red
+}
+
+.des-info {
+  width: 630rpx;
+  height: 100%;
+  padding: 18rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.title {
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: white
+}
+
+.detail {
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: white
+}
+
+.title2 {
+  display: inline-block;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 24rpx;
+  color: white;
+}

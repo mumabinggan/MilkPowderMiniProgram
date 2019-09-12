@@ -1,4 +1,4 @@
-// components/orderlist/orderlistitem/index.js
+// components/orderdetail/ordertoolbar/index.js
 import {
   Order
 } from '../../../models/order.js'
@@ -17,22 +17,21 @@ Component({
       value: null,
       observer: function (newValue, oldValue, changePath) {
       }
-    }
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    deleteOrderIcon: 'images/order_delete.png',
-    storeIcon: '/images/app_icon.png',
+
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onUrge:function(e) {
+    onUrge: function (e) {
       let item = this.properties.item
       this.triggerEvent('onUrge', { item })
     },
@@ -58,6 +57,7 @@ Component({
     },
 
     onReBuy: function (e) {
+      console.log("as")
       let item = this.properties.item
       this.triggerEvent('onReBuy', { item })
     }

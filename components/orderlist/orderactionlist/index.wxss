@@ -1,0 +1,38 @@
+/* components/orderlist/orderactionlist/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center
+}
+
+.base-btn {
+  display: inline-block;
+  font-size: 26rpx;
+  height: 56rpx;
+  width: 160rpx;
+  line-height: 56rpx;
+  text-align: center;
+  border: 1rpx solid #e4e4e4;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+}
+
+.reBuy,.pay{
+  border-color: #E04429;
+  background-color: #E04429;
+  color: white
+}
+
+.confirm {
+  border-color: #E04429;
+  background-color: white;
+  color: #E04429
+}
+
+.wait-pay-title {
+  height: 100%;
+  line-height: 100rpx;
+  font-size: 26rpx;
+}

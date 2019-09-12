@@ -43,22 +43,15 @@
     <text class="total-count">共{{order.buyCount}}件商品 <text class="price-title">实付金额：</text><text class="price">￥{{item.currentTotalPrice}}</text></text>
   </view>
   <view class="footer">
-    <text class="wait-pay-title"
-          wx:if="{{showWaitPay}}">支付剩余x时x分</text>
-    <text class="urge base-btn"
-          wx:if="{{showUrge}}"
-          catch:tap="onUrge">我要催单</text>
-    <text class="pay base-btn"
-          wx:if="{{showWaitPay}}"
-          catch:tap="onPay">待支付</text>
-    <text class="comment base-btn"
-          wx:if="{{showWaitComment}}"
-          catch:tap="onComment">待评论</text>
-    <text class="confirm base-btn"
-          wx:if="{{showWaitConfirm}}"
-          catch:tap="onConfirm">待确认</text>
-    <text class="reBuy base-btn"
-          wx:if="{{showReBuy}}"
-          catch:tap="onReBuy">再次购买</text>
+    <v-order-action-list class="order-action-list"
+                          item="{{item}}"
+                          showOrderRemainTime="{{true}}"
+                          catch:onUrge="onUrge"
+                          catch:onDelete="onDelete"
+                          catch:onPay="onPay"
+                          catch:onComment="onComment"
+                          catch:onConfirm="onConfirm"
+                          catch:onReBuy="onReBuy">
+    </v-order-action-list>
   </view>
 </view>
