@@ -1,17 +1,17 @@
 {
   "pages": [
-    
+    "pages/addresslist/index",
+    "pages/addaddress/index",
+    "pages/index/index",    
+    "pages/home/index",
+    "pages/productlist/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",
-    "pages/addresslist/index",
     "pages/productdetail/index",
-    "pages/addaddress/index",
     "pages/mine/index",
     "pages/classic/classic",
     "pages/shopcart/index",
-    "pages/home/index",
-    "pages/productlist/index",
     "components/classic/titlelist/index",
     "components/classic/productlist/index"
   ],
@@ -29,7 +29,7 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/shopcart/index",
+        "pagePath": "pages/index/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"

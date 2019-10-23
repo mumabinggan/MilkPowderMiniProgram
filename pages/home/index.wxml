@@ -1,2 +1,17 @@
 <!--pages/home/index.wxml-->
-<text>pages/home/index.wxml</text>
+<view class="container">
+  <swiper class="carousel-view"
+          indicator-dots
+          circular
+          autoplay>
+    <swiper-item class="carousel-view-item" 
+                  wx:for="{{product.urls}}" 
+                  wx:key="{{item.id}}" 
+                  item="{{item}}"
+                  data-id="{{item.id}}">
+      <image class="slide-image"
+              src="{{item}}"
+              mode='aspectFit'/>
+    </swiper-item>
+  </swiper>
+</view>

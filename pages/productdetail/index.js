@@ -22,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    productVM.fetchProductDetail(UserUtils.user.userId, {
+    productVM.fetchProductDetail(UserUtils.user.id, {
       success: (res) => {
         this.setData({
           product: res.data

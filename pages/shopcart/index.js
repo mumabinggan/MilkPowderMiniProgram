@@ -34,7 +34,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '购物车',
     })
-    shopcartVM.fetchShopCartList(UserUtils.user.userId, {
+    shopcartVM.fetchShopCartList(UserUtils.user.id, {
       success: (res) => {
         console.log(res)
         this.setData({

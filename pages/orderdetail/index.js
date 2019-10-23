@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function (options) {
     let orderId = 0
-    orderVM.fetchOrderDetail(UserUtils.user.userId, orderId, {
+    orderVM.fetchOrderDetail(UserUtils.user.id, orderId, {
       success: (res) => {
         this.setData({
           order: res.data

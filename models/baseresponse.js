@@ -6,7 +6,7 @@ class JHBaseResponse {
   }
 
   success() {
-    return this.code == 1
+    return this.code == 0
   }
 }
 

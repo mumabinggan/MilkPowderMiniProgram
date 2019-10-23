@@ -19,3 +19,8 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.button {
+  width: 800rpx;
+  height: 200rpx;
+}

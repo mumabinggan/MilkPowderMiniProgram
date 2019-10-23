@@ -4,6 +4,10 @@ import { AddressViewModel } from '../../viewmodels/addressviewmodel.js'
 import { UserUtils } from
  '../../utils/userutil.js'
 
+import {
+  JHRouterUtils
+} from '../../utils/jsrouterutils.js' 
+
 let addressVM = new AddressViewModel()
 
 Page({
@@ -13,7 +17,7 @@ Page({
    */
   data: {
     list: null,
-    canAdd: false,
+    canAdd: true,
     isSelected: false
   },
 
@@ -21,16 +25,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    addressVM.fetchAddressList(UserUtils.user.userId, {
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          list: res.data,
-        })
-      },
-      fail: (err) => {
-        console.log(err)
-      }
+    let userId = UserUtils.user.id
+    //接收参数
+    this.setData({
+      canAdd: options.canAdd,
+      isSelected: options.isSelected
     })
   },
 
@@ -45,7 +44,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    addressVM.fetchAddressList(UserUtils.user.id, {
+      success: (res) => {
+        console.log(res.data)
+        this.setData({
+          list: res.data,
+        })
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
 
   /**
@@ -85,13 +94,22 @@ Page({
 
   onAddAddress: function(e) {
     //TODO 添加地址
+    wx.navigateTo({
+      url: JHRouterUtils.addAddress()
+    })
   },
 
   onAddressItem: function(e) {
+    let addressId = e.target.dataset.id
+    console.log(addressId)
     if (this.data.isSelected) {
       //TODO 选择地址
     } else {
       //编辑地址
+      console.log(JHRouterUtils.editAddress())
+      wx.navigateTo({
+        url: JHRouterUtils.editAddress(addressId)
+      })
     }
   }
 })

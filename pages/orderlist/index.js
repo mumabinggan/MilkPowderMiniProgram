@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function (options) {
     let type = 0
-    orderVM.fetchOrderList(UserUtils.user.userId, type, {
+    orderVM.fetchOrderList(UserUtils.user.id, type, {
       success: (res) => {
         this.setData({
           orderList: res.data

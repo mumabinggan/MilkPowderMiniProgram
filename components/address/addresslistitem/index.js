@@ -35,6 +35,7 @@ Component({
    */
   methods: {
     handleAddressChange:function() {
+      console.log(this.properties.item)
       this.setData({
         firstName: this.properties.item.name.charAt(0)
       })

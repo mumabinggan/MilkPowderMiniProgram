@@ -4,14 +4,14 @@ import {
 
 class UserUtils {
 
-  static user = new User()
+  static user = null
 
   static clearUser() {
     user = null
   }
 
   static isLogined() {
-    return user == null
+    return user != null
   }
 }
 

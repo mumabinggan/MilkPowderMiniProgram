@@ -5,7 +5,7 @@ import {
 class Town extends BaseRegion {
   constructor() {
     super()
-    this.townId = 0
+    // this.townId = 0
   }
 
   //运城
@@ -13,7 +13,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100000
     item.name = "夏县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -21,7 +21,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100001
     item.name = "平陆县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -29,7 +29,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100002
     item.name = "小店县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -37,7 +37,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100003
     item.name = "高平县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -45,7 +45,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100004
     item.name = "交区县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -54,7 +54,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100005
     item.name = "晋州县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -62,7 +62,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100006
     item.name = "任县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -70,7 +70,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100007
     item.name = "安国县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -78,7 +78,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100008
     item.name = "宜化县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -87,7 +87,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100009
     item.name = "郑州县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 
@@ -95,7 +95,7 @@ class Town extends BaseRegion {
     let item = new Town()
     item.id = 100010
     item.name = "洛阳县县"
-    item.townId = 1000
+    // item.townId = 1000
     return item
   }
 }

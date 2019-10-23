@@ -39,7 +39,7 @@ Page({
       address: address
     })
     let productIds = null
-    settlementVM.fetchSettlement(UserUtils.user.userId, productIds, {
+    settlementVM.fetchSettlement(UserUtils.user.id, productIds, {
       success: (res) => {
         this.setData({
           address: res.data.address,

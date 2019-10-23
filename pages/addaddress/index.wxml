@@ -5,18 +5,20 @@
     <view class="receiver base-container">
       <text class="recerver-title title-css">收货人</text>
       <input class="recerver-input input-css"
-              wx:if="{{!showRegionPicker}}">{{name}}</input>
+              bindinput="handleInputName" 
+              value='{{name}}'></input>
     </view>
     <view class="sep-line"></view>
     <view class="phone base-container">
       <text class="phone-title title-css">手机号码</text>
       <input class="phone-input input-css"
-              wx:if="{{!showRegionPicker}}">{{phone}}</input>
+              bindinput="handleInputPhone"
+              value='{{phone}}'></input>
     </view>
     <view class="sep-line"></view>
     <view class="region base-container"
           catch:tap="onSelectRegion">
-      <text class="region-title title-css">所有地区</text>
+      <text class="region-title title-css">所在地区</text>
       <text class="region-content input-css">{{regionStr}}</text>
     </view>
     <view class="sep-line"></view>
@@ -24,7 +26,7 @@
       <text class="address-title title-css">详细地址</text>
       <textarea class="address-textarea"
                 auto-height="true"
-                wx:if="{{!showRegionPicker}}">{{address}}</textarea>
+                bindinput="handleInputAddress">{{address}}</textarea>
     </view>
   </view>
   <view class="address-extra-info">
