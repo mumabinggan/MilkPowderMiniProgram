@@ -40,7 +40,7 @@
 
 .address {
   margin-top: 10rpx;
-  display: inline-block;
+  display: block;
   font-size: 26rpx;
 }
 

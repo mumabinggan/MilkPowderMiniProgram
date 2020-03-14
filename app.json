@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/addresslist/index",
     "pages/addaddress/index",
     "pages/index/index",    
-    "pages/home/index",
     "pages/productlist/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
