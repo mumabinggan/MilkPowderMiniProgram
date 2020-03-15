@@ -24,9 +24,10 @@ class ClassicModel {
     callback.success(res)
     return
     http.request({
+      method: "POST",
       url: apiConfig.classic_path,
       success: (res) => {
-        res = ClassicResponse.test()
+        console.log(res)
         callback.success(res)
       },
       fail: (err) => {

@@ -16,7 +16,19 @@ class ClassicResponse extends JHBaseResponse {
     let response = new ClassicResponse()
     response.code = 1
     response.msg = "得到成功"
-    response.data = [ClassicItem.test(),
+    response.data = [
+      // ClassicItem.test(),
+      // ClassicItem.test(),
+      // ClassicItem.test(),
+      // ClassicItem.test(),
+      // ClassicItem.test(),
+      // ClassicItem.test(),
+      ClassicItem.test(),
+      ClassicItem.test(),
+      ClassicItem.test(),
+      ClassicItem.test(),
+      ClassicItem.test(),
+      ClassicItem.test(),
       ClassicItem.test(),
       ClassicItem.test(),
       ClassicItem.test()]

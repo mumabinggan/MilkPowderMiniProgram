@@ -15,7 +15,7 @@ export class HTTP {
       header: params.header,
       success: (res) => {
         if (params.success) {
-          params.success(res)
+          params.success(res.data)
         }
       },
       fail: (err) => {

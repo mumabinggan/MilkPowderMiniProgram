@@ -28,14 +28,13 @@ Page({
     wx.setNavigationBarTitle({
       title: '分类',
     })
-
     classicModel.fetchClassic({
       success: (res) => {
-        console.log(res)
+        console.log(res.data)
         this.setData({
           classic: res.data,
         })
-        this.fetchProducts()
+        // this.fetchProducts()
       },
       fail: (err) => {
         console.log(err)
