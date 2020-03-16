@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/classic/classic",
+    "pages/productlist/index",
     "pages/home/index",
     "pages/addresslist/index",
     "pages/addaddress/index",
     "pages/index/index",    
-    "pages/productlist/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",

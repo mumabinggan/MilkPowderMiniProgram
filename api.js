@@ -2,6 +2,7 @@ const baseUrl = "http://localhost:8099"
 
 const apiConfig = {
   classic_path: "user/category/fetchAllList.do",
+  classic_spus: "user/goods/fetchItemByCategoryId.do",
   cart_add_count: "http://bl.7yue.pro/v1/",
   cart_sub_count: "http://bl.7yue.pro/v1/",
   cart_list: "http://bl.7yue.pro/v1/",

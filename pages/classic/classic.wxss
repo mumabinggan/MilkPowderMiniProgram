@@ -20,7 +20,7 @@
 .classicitem-content {
   width: 75%;
   height: 100%;
-  padding: 0 20rpx;
+  /* padding: 0; */
   box-sizing: border-box;
   background-color: #F3F4F7
 }

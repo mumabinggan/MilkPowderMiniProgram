@@ -19,13 +19,34 @@ let http = new HTTP()
 class ClassicModel {
   
   fetchClassic(callback) {
-    let res = ClassicResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+    // let res = ClassicResponse.test()
+    // console.log(res)
+    // callback.success(res)
+    // return
     http.request({
       method: "POST",
       url: apiConfig.classic_path,
+      success: (res) => {
+        console.log(res)
+        callback.success(res)
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
+
+  fetchSpusByClassicId(id, callback) {
+    // let res = ClassicResponse.test()
+    // console.log(res)
+    // callback.success(res)
+    // return
+    http.request({
+      method: "POST",
+      url: apiConfig.classic_spus,
+      data: {
+        id: id
+      },
       success: (res) => {
         console.log(res)
         callback.success(res)

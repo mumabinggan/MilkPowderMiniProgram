@@ -14,26 +14,15 @@
 
   <scroll-view class="classicitem-content"
                 scroll-y>
-    <text class="title">热门品类</text>
-    <view class="sub-classic-container basecontainer">
-      <v-classic-item wx:for="{{subClassic}}" 
-                      wx:key="{{item.id}}"
-                      class="item"
+    <v-product-row-item class="item-row"
+                      wx:for="{{spus}}" 
+                      wx:key="{{item.id}}" 
                       item="{{item}}"
+                      data-id="{{item.id}}"
                       bind:tap="onClick"
-                      data-id="{{item.id}}">
-      </v-classic-item>
-    </view>
-    <text class="title">热门品牌</text>
-    <view class="branch-container basecontainer">
-      <v-classic-item wx:for="{{branches}}" 
-                      wx:key="{{item.id}}"
-                      class="item"
-                      item="{{item}}"
-                      bind:tap="onClick"
-                      data-id="{{item.id}}">
-      </v-classic-item>
-    </view>
+                      bind:onSelect="onSelect"
+                      bind:onAddToCart="handleAddToCart">
+    </v-product-row-item>
   </scroll-view>
 
 </view>

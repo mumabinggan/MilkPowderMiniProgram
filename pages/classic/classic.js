@@ -18,7 +18,8 @@ Page({
     selectedTitleIndex: 0,
     classic:[],
     subClassic: [],
-    branches: []
+    branches: [],
+    spus:[]
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
         this.setData({
           classic: res.data,
         })
-        // this.fetchProducts()
+        this.fetchProducts()
       },
       fail: (err) => {
         console.log(err)
@@ -145,11 +146,24 @@ Page({
   },
   
   fetchProducts:function() {
+    console.log("<><><>><>><><><<>")
     var classicItem = this.data.classic[this.data.selectedTitleIndex]
-    console.log(classicItem.classics)
-    this.setData({
-      subClassic: classicItem.classics,
-      branches: classicItem.hotBranches
+    console.log(classicItem.id)
+    classicModel.fetchSpusByClassicId(classicItem.id, {
+      success: (res) => {
+        console.log(res.data)
+        this.setData({
+          spus: res.data.list,
+        })
+        // this.fetchProducts()
+      },
+      fail: (err) => {
+        console.log(err)
+      }
     })
+    // this.setData({
+    //   subClassic: classicItem.classics,
+    //   branches: classicItem.hotBranches
+    // })
   }
 })
