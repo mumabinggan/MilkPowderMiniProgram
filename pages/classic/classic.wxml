@@ -15,9 +15,12 @@
   <v-refresh-scrollview class="classicitem-content"
                         headerTriggered="{{isRefreshing}}"
                         footerTriggered="{{isLoadingMore}}"
-                        enableFooterRefresh="{{}}"
+                        offset="{{offset}}"
+                        enableFooterRefresh="{{enableLoadingMore}}"
                         bind:onHeaderRefresh="onHeaderRefresh"
-                        bind:onFooterRefresh="onFooterRefresh">
+                        bind:onFooterRefresh="onFooterRefresh"
+                        bind:onEndHeaderTriggered="onEndHeaderTriggered"
+                        bind:onEndFooterTriggered="onEndFooterTriggered">
     <v-product-row-item slot="content"
                        class="item-row"
                       wx:for="{{spus}}" 

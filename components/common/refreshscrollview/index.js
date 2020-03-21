@@ -34,7 +34,7 @@ Component({
     },
     footerRefreshTriggerHeight: {
       type: Number,
-      value: 100    //正数会预加载
+      value: 160    //正数会预加载
     },
     footerTriggered: {
       type: Boolean,
@@ -43,15 +43,18 @@ Component({
         this.handleFooterTriggeredChange(oldValue, newValue)
       }
     },
+
+    offset: {
+      type: Number,
+      value: 0
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    innerHeaderTriggered: false,
-    innerFooterTriggered: false,
-    isTryingFooterRefresh: false
+    isTryingFooterRefresh: false,
   },
 
   /**
@@ -61,35 +64,32 @@ Component({
 
     /**public方法 */
     handleHeaderTriggeredChange(oldValue, newValue) {
-      if (oldValue == newValue) {
-        return
-      }
-      this.setData({
-        innerHeaderTriggered: newValue
-      })
+      //1, 关闭footerTriggered
+      this.triggerEvent('onEndFooterTriggered')
+
+      //2, 
       if (newValue) {
-        this.handleFooterTriggeredChange(this.data.innerFooterTriggered, false)
+        this.setData({
+          isTryingFooterRefresh: false
+        })
       }
     },
 
     handleFooterTriggeredChange(oldValue, newValue) {
-      if (oldValue == newValue) {
-        return
-      }
-      this.setData({
-        innerFooterTriggered: newValue
-      })
-      if (newValue) {
-        this.handleHeaderTriggeredChange(this.data.innerHeaderTriggered, false)
+      //1, 关闭headerTriggered
+      this.triggerEvent('onEndHeaderTriggered')
+
+      //2, 
+      if (!newValue) {
+        this.setData({
+          isTryingFooterRefresh: false
+        })
       }
     },
 
     handleEnableFooterRefreshChange(oldValue, newValue) {
-      if (oldValue == newValue) {
-        return
-      }
       if (!newValue) {
-        this.handleFooterTriggeredChange(this.data.innerFooterTriggered, false)
+        this.handleFooterTriggeredChange(true, false)
       }
     },
 
@@ -108,7 +108,7 @@ Component({
     },
 
     onFooterTryRefresh() {
-      if (this.data.isTryingFooterRefresh) {
+      if (this.data.isTryingFooterRefresh || !this.properties.enableFooterRefresh) {
         return
       }
       this.setData({

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/tests/index",
     "pages/classic/classic",
+    "pages/tests/index",
     "pages/productlist/index",
     "pages/home/index",
     "pages/addresslist/index",
@@ -32,7 +32,7 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/tests/index",
+        "pagePath": "pages/classic/classic",
         "selectedIconPath": "/images/tab/tab_classic_selected.png",
         "iconPath": "/images/tab/tab_classic.png",
         "text": "分类"

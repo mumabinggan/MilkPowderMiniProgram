@@ -23,6 +23,7 @@ Page({
     isRefreshing: false,  //正在下拉
     isLoadingMore: false, //正在上拉
     enableLoadingMore: true,
+    isRequestSpus: false,
     pageNum: 1,
     pageSize: 15,
     spusRequest: null,
@@ -101,11 +102,25 @@ Page({
     this.setData({
       pageNum: 1
     })
+    this.setRefreshing(true, 0)
     this.fetchProducts()
   },
 
   onFooterRefresh() {
+    this.setData({
+        isLoadingMore: true
+    })
     this.fetchProducts()
+  },
+
+  onEndHeaderTriggered() {
+    this.setRefreshing(false, 0)
+  },
+
+  onEndFooterTriggered() {
+    this.setData({
+      isLoadingMore: false
+    })
   },
 
   /**
@@ -165,23 +180,25 @@ Page({
     console.log("===========")
     const touchIndex = e.detail
     let data = this.data
-    if (touchIndex == data.selectedTitleIndex &&
-      data.spus != null && 
-      data.spus.length > 0) {
-          return
+    let spus = data.spus
+    if (touchIndex == data.selectedTitleIndex && 
+      spus != null &&
+      spus.length > 0) {
+        return
     }
     this.setData({
       selectedTitleIndex: e.detail,
       // spus: [],
       pageNum: 1,
-      isLoadingMore: false
+      isLoadingMore: false,
+      offset: 0
     })
     this.setRefreshing(true, 0)
   },
   
   fetchProducts:function() {
     console.log("<><><>><>><><><<>")
-    var classicItem = this.data.classic[this.data.selectedTitleIndex]
+    let classicItem = this.data.classic[this.data.selectedTitleIndex]
     console.log(classicItem.id)
         this.setData({
       //     spus: classicItem.spus,
@@ -191,20 +208,23 @@ Page({
     // return
     const pageNum = this.data.pageNum
     const pageSize = this.data.pageSize
-    console.log("===================")
     console.log(pageNum)
     classicModel.fetchSpusByClassicId(classicItem.id, pageNum, pageSize, {
       success: (res) => {
         console.log(res.data)
         const data = this.data
-        var spus = (data.pageNum == 1) ? [] : data.spus;
+        let spus = (data.pageNum == 1) ? [] : data.spus;
         const newSpus = res.data.list
+        spus = spus.concat(newSpus)
         const hasMore = (newSpus != null && newSpus.length >= data.pageSize)
+        console.log("=============")
+        console.log(hasMore)
         this.setData({
-          spus: spus + newSpus,
+          spus: spus,
           pageNum: pageNum+1,
           enableLoadingMore: hasMore
         })
+        console.log(this.data.spus)
         this.setRefreshing(false, 0)
       },
       fail: (err) => {

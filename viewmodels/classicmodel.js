@@ -18,12 +18,16 @@ let http = new HTTP()
 
 class ClassicModel {
   
+  constructor(spusRequest) {
+    this.spusRequest= spusRequest;
+  }
+
   fetchClassic(callback) {
     // let res = ClassicResponse.test()
     // console.log(res)
     // callback.success(res)
     // return
-    http.request({
+    let request = http.request({
       method: "POST",
       url: apiConfig.classic_path,
       success: (res) => {
@@ -34,6 +38,8 @@ class ClassicModel {
         callback.fail(err)
       }
     })
+    console.log("=========>>========")
+    console.log(request)
   }
 
   fetchSpusByClassicId(id, pageNum, pageSize, callback) {
@@ -41,7 +47,11 @@ class ClassicModel {
     // console.log(res)
     // callback.success(res)
     // return
-    http.request({
+    if (this.spusRequest != null) {
+      this.spusRequest.abort()
+      this.spusRequest = null
+    }
+    this.spusRequest = http.request({
       method: "POST",
       url: apiConfig.classic_spus,
       data: {

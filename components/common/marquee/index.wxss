@@ -17,7 +17,7 @@
     display: block;
     width: 16rpx;
     height: 16rpx;
-    background-color: green;
+    background-color: #3D8946;
     border-radius: 8rpx;
     animation: circle-scale 1.2s linear infinite;
     -webkit-animation: circle-scale 1.2s linear infinite;

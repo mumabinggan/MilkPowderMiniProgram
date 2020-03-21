@@ -2,11 +2,12 @@
 <view class="container">
   <scroll-view class="scroll-view"
                 scroll-y
+                scroll-top="{{offset}}"
                 refresher-enabled="{{enableHeaderRefresh}}"
                 refresher-threshold="{{headerRefreshTriggerHeight}}"
                 refresher-default-style="white"
                 refresher-background="lightgreen"
-                refresher-triggered="{{innerHeaderTriggered}}"
+                refresher-triggered="{{headerTriggered}}"
                 bindrefresherpulling="onHeaderTryRefresh"
                 bindrefresherrefresh="onHeaderRefresh"
                 bindrefresherrestore="onHeaderRefreshRestore"
@@ -14,10 +15,18 @@
                 bindscrolltolower="onFooterTryRefresh"
                 lower-threshold="{{footerRefreshTriggerHeight}}">
                 <slot name="content"></slot>
-                <view class="footer"
-                  wx:if="{{innerFooterTriggered && enableFooterRefresh}}">
-                  <v-marquee class="loading"></v-marquee>
+                <view class="footer">
+                  <v-marquee
+                        wx:if="{{footerTriggered && enableFooterRefresh}}"
+                    ></v-marquee>
+                  
+                  <view class="finished-view" 
+                  wx:if="{{!enableFooterRefresh}}">
+                    <view class="line"></view>
+                    <text class="text">我们是有底线的</text>
+                    <view class="line"></view>
+                  </view>
+                  
                 </view>
-                
   </scroll-view>
 </view>

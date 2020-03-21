@@ -8,7 +8,7 @@ export class HTTP {
       params.method = 'GET'
     }
     console.log(params.data)
-    wx.request({
+    let request = wx.request({
       url: config.base_api_url + params.url,
       method: params.method,
       data: params.data,
@@ -24,6 +24,7 @@ export class HTTP {
         }
       }
     })
+    return request
   }
 
   _showErrorToast(errCode) {
