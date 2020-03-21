@@ -1,0 +1,7 @@
+{
+  "component": false,
+  "usingComponents": {
+    "v-marquee": "/components/common/marquee/index",
+    "v-refresh-scrollview": "/components/common/refreshscrollview/index"
+  }
+}

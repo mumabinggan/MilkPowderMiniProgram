@@ -12,9 +12,14 @@
                   bind:onSub="handleSubCount">
   </v-product-list> -->
 
-  <scroll-view class="classicitem-content"
-                scroll-y>
-    <v-product-row-item class="item-row"
+  <v-refresh-scrollview class="classicitem-content"
+                        headerTriggered="{{isRefreshing}}"
+                        footerTriggered="{{isLoadingMore}}"
+                        enableFooterRefresh="{{}}"
+                        bind:onHeaderRefresh="onHeaderRefresh"
+                        bind:onFooterRefresh="onFooterRefresh">
+    <v-product-row-item slot="content"
+                       class="item-row"
                       wx:for="{{spus}}" 
                       wx:key="{{item.id}}" 
                       item="{{item}}"
@@ -23,6 +28,6 @@
                       bind:onSelect="onSelect"
                       bind:onAddToCart="handleAddToCart">
     </v-product-row-item>
-  </scroll-view>
+  </v-refresh-scrollview>
 
 </view>

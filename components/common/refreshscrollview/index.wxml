@@ -1,0 +1,23 @@
+<!--components/common/refreshscrollview/index.wxml-->
+<view class="container">
+  <scroll-view class="scroll-view"
+                scroll-y
+                refresher-enabled="{{enableHeaderRefresh}}"
+                refresher-threshold="{{headerRefreshTriggerHeight}}"
+                refresher-default-style="white"
+                refresher-background="lightgreen"
+                refresher-triggered="{{innerHeaderTriggered}}"
+                bindrefresherpulling="onHeaderTryRefresh"
+                bindrefresherrefresh="onHeaderRefresh"
+                bindrefresherrestore="onHeaderRefreshRestore"
+                bindrefresherabort="onHeaderTryRefreshAbort"
+                bindscrolltolower="onFooterTryRefresh"
+                lower-threshold="{{footerRefreshTriggerHeight}}">
+                <slot name="content"></slot>
+                <view class="footer"
+                  wx:if="{{innerFooterTriggered && enableFooterRefresh}}">
+                  <v-marquee class="loading"></v-marquee>
+                </view>
+                
+  </scroll-view>
+</view>

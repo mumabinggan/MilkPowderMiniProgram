@@ -1,6 +1,6 @@
 /* pages/classic/index.wxss */
 .container {
-  width: 100%;
+  width: 102%;
   position: absolute;
   left: 0;
   right: 0;
@@ -12,13 +12,13 @@
 }
 
 .title-list {
-  width: 25%;
+  width: 24%;
   height: 100%;
   background-color: #F7F7F7
 }
 
 .classicitem-content {
-  width: 75%;
+  width: 76%;
   height: 100%;
   /* padding: 0; */
   box-sizing: border-box;
@@ -51,8 +51,14 @@
   display: inline-block;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
+} */
+
+.footer {
+  width: 100%;
+  height: 50rpx;
+  background-color: red
 }

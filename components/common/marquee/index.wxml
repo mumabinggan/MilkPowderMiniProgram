@@ -1,0 +1,11 @@
+<!--components/common/marquee/index.wxml-->
+<view class="container">
+  <view class="load-circle">
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+        <text></text>
+  </view>
+</view>
+

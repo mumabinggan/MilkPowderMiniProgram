@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/tests/index",
     "pages/classic/classic",
     "pages/productlist/index",
     "pages/home/index",
     "pages/addresslist/index",
     "pages/addaddress/index",
-    "pages/index/index",    
+    "pages/index/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",
@@ -13,9 +14,11 @@
     "pages/mine/index",
     "pages/shopcart/index",
     "components/classic/titlelist/index",
-    "components/classic/productlist/index"
+    "components/classic/productlist/index",
+    "components/common/refreshscrollview/index"
   ],
   "window": {
+    "onReachBottomDistance": 50,
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3D8946",
     "navigationBarTitleText": "蔬果到家",
@@ -29,7 +32,7 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/classic/classic",
+        "pagePath": "pages/tests/index",
         "selectedIconPath": "/images/tab/tab_classic_selected.png",
         "iconPath": "/images/tab/tab_classic.png",
         "text": "分类"

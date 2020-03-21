@@ -27,12 +27,17 @@ class ClassicItem {
     let length = Number.parseInt(Math.random() * 10) + 10
     let classics = new Array()
     let branches = new Array()
+    let spus = new Array()
     for (let num = 0; num < length; ++num) {
+      let item = new ClassicItem()
+      item.name = "dfasdfa"
+      spus.push(item)
       classics.push(ClassicItem.test1())
       branches.push(BranchItem.test())
     }
     item.classics = classics
     item.hotBranches = branches
+    item.spus = spus
     return item
   }
 

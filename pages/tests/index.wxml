@@ -1,0 +1,6 @@
+<!--pages/tests/index.wxml-->
+<view class="container">
+  <!-- <v-refresh-scrollview class="scrollview">
+  </v-refresh-scrollview> -->
+  <view class="scrollview"></view>
+</view>

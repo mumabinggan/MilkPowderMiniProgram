@@ -36,7 +36,7 @@ class ClassicModel {
     })
   }
 
-  fetchSpusByClassicId(id, callback) {
+  fetchSpusByClassicId(id, pageNum, pageSize, callback) {
     // let res = ClassicResponse.test()
     // console.log(res)
     // callback.success(res)
@@ -45,7 +45,9 @@ class ClassicModel {
       method: "POST",
       url: apiConfig.classic_spus,
       data: {
-        id: id
+        id: id,
+        pageNum: pageNum,
+        pageSize: pageSize
       },
       success: (res) => {
         console.log(res)

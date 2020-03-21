@@ -26,8 +26,9 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 8rpx;
+  padding-right: 20rpx;
 }
 
 .product-des .title {
@@ -47,6 +48,7 @@
   font-size: 28rpx;
   font-weight: bold;
   display: block;
+  margin-top: 16rpx;
   color: #3D8946;
 }
 
@@ -61,7 +63,7 @@
   padding: 20rpx;
   box-sizing: border-box;
   position: absolute;
-  right: 0;
+  right: 10rpx;
   bottom: -4rpx;
 }
 

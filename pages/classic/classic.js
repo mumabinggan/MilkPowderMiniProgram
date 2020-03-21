@@ -19,7 +19,14 @@ Page({
     classic:[],
     subClassic: [],
     branches: [],
-    spus:[]
+    spus:[],
+    isRefreshing: false,  //正在下拉
+    isLoadingMore: false, //正在上拉
+    enableLoadingMore: true,
+    pageNum: 1,
+    pageSize: 15,
+    spusRequest: null,
+    refreshingTimeoutId: null
   },
 
   /**
@@ -33,9 +40,10 @@ Page({
       success: (res) => {
         console.log(res.data)
         this.setData({
-          classic: res.data,
+          classic: res.data
         })
-        this.fetchProducts()
+        this.setRefreshing(true, 0)
+        // this.fetchProducts()
       },
       fail: (err) => {
         console.log(err)
@@ -47,7 +55,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    // setTimeout(() => {
+    //   this.setData({
+    //     triggered: true,
+    //   })
+    // }, 1000)
   },
 
   /**
@@ -82,7 +94,18 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    
+  },
 
+  onHeaderRefresh() {
+    this.setData({
+      pageNum: 1
+    })
+    this.fetchProducts()
+  },
+
+  onFooterRefresh() {
+    this.fetchProducts()
   },
 
   /**
@@ -139,31 +162,74 @@ Page({
   },
 
   handleTitleItem: function(e) {
+    console.log("===========")
+    const touchIndex = e.detail
+    let data = this.data
+    if (touchIndex == data.selectedTitleIndex &&
+      data.spus != null && 
+      data.spus.length > 0) {
+          return
+    }
     this.setData({
-      selectedTitleIndex: e.detail
+      selectedTitleIndex: e.detail,
+      // spus: [],
+      pageNum: 1,
+      isLoadingMore: false
     })
-    this.fetchProducts()
+    this.setRefreshing(true, 0)
   },
   
   fetchProducts:function() {
     console.log("<><><>><>><><><<>")
     var classicItem = this.data.classic[this.data.selectedTitleIndex]
     console.log(classicItem.id)
-    classicModel.fetchSpusByClassicId(classicItem.id, {
+        this.setData({
+      //     spus: classicItem.spus,
+      // branches: classicItem.hotBranches,
+          // isRefreshing: false
+    })
+    // return
+    const pageNum = this.data.pageNum
+    const pageSize = this.data.pageSize
+    console.log("===================")
+    console.log(pageNum)
+    classicModel.fetchSpusByClassicId(classicItem.id, pageNum, pageSize, {
       success: (res) => {
         console.log(res.data)
+        const data = this.data
+        var spus = (data.pageNum == 1) ? [] : data.spus;
+        const newSpus = res.data.list
+        const hasMore = (newSpus != null && newSpus.length >= data.pageSize)
         this.setData({
-          spus: res.data.list,
+          spus: spus + newSpus,
+          pageNum: pageNum+1,
+          enableLoadingMore: hasMore
         })
-        // this.fetchProducts()
+        this.setRefreshing(false, 0)
       },
       fail: (err) => {
         console.log(err)
+        this.setRefreshing(false, 0)
       }
     })
-    // this.setData({
-    //   subClassic: classicItem.classics,
-    //   branches: classicItem.hotBranches
-    // })
+  },
+
+  setRefreshing:function(isRefreshing, timeout) {
+    clearTimeout(this.data.refreshingTimeoutId)
+    if (timeout == 0) {
+      this.setData({
+        isRefreshing: isRefreshing,
+      })
+    } else {
+      const that = this
+      var refreshingTimeoutId = setTimeout(function () {
+        that.setData({
+          isRefreshing: isRefreshing,
+        })
+      }, timeout);
+      that.setData({
+        refreshingTimeoutId: refreshingTimeoutId,
+      })
+    }
   }
 })

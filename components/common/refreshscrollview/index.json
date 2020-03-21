@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-marquee": "/components/common/marquee/index"
+  }
+}
