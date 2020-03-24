@@ -40,6 +40,7 @@ class OMCartStorageUtils {
     let list = getApp().globalData.shopcartList
     let contain = false
     let index = null
+    console.log("=========saf:" + list.length)
     for (let num = 0; num < list.length; ++num) {
       let item = list[num]
       if (item.id == value.id && item.skuId == value.skuId) {
@@ -80,9 +81,12 @@ class OMCartStorageUtils {
     if (count > 0) {
       return count
     }
-    let length = this.fetchItemsSync().length
-    getApp().globalData.shopcartProductCount = length
-    return length
+    let list = this.fetchItemsSync()
+    list.forEach(item => {
+      count += item.count
+    })
+    getApp().globalData.shopcartProductCount = count
+    return count
   }
 }
 

@@ -38,13 +38,13 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/shopcart/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"
       },
       {
-        "pagePath": "pages/home/index",
+        "pagePath": "pages/index/index",
         "selectedIconPath": "/images/tab/tab_home_selected.png",
         "iconPath": "/images/tab/tab_home.png",
         "text": "限时购"
