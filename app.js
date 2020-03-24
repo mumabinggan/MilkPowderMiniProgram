@@ -22,18 +22,18 @@ App({
     console.log("asdfasd====")
     let userId = wx.getStorageSync('userId')
     console.log(userId)
-    if (userId != "") {
-      let user = new User()
-      user.id = userId
-      UserUtils.user = user
-    }
+    // if (userId != "") {
+    //   let user = new User()
+    //   user.id = userId
+    //   UserUtils.user = user
+    // }
     wx.checkSession({
       success: function (res) {
         console.log("asdfasd")
         let userId = wx.getStorageSync('userId')
-        let user = new User()
-        user.id = userId
-        UserUtils.user = user
+        // let user = new User()
+        // user.id = userId
+        // UserUtils.user = user
         // 获取用户信息
         that.getUserInfo({
           success: function (res) {
@@ -55,10 +55,10 @@ App({
                 key: 'cookie',
                 data: cookiesStr, // 从返回数据的响应头中取cookie
               })
-              let user = new User()
-              let userId = res.data.data.userId
-              user.id = userId
-              UserUtils.user = user
+              // let user = new User()
+              // let userId = res.data.data.userId
+              // user.id = userId
+              // UserUtils.user = user
               wx.setStorage({
                 key: 'userId',
                 data: res.data.data.userId
@@ -169,6 +169,8 @@ App({
 
   globalData: {
     userInfo: null,
-    shopcartCount: 0
+    shopcartList: [],
+    shopcartProductCount: 0,
+    deviceInfo: null
   }
 })

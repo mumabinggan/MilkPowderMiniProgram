@@ -3,6 +3,10 @@ import {
   apiConfig
 } from '../../api.js'
 
+import {
+  OMCartStorageUtils
+} from '../../utils/cartstorageutils.js'
+
 //获取应用实例
 const app = getApp()
 
@@ -20,7 +24,7 @@ Page({
     })
   },
   onLoad: function () {
-  
+    OMCartStorageUtils.fetchItemsSync()
   },
   getUserInfo: function(e) {
     let key = 'cookie'

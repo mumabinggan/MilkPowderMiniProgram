@@ -3,9 +3,22 @@ import { ClassicModel } from '../../viewmodels/classicmodel.js'
 
 import { UserUtils } from '../../utils/userutil.js'
 
+import { JHDeviceUtils } from '../../utils/deviceutils.js'
+
 import {
   AddCartResponse, AddCart
 } from '../../models/addcartresponse.js'
+import { JHStorageUtils } from '../../utils/storageutils.js'
+
+import { OMCartStorageUtils } from '../../utils/cartstorageutils.js'
+
+import {
+  JHObjectUtils
+} from '../../utils/objectutils.js'
+
+import {
+  ShopCartProductLocalItem
+} from '../../models/shopcartproductlocalitem.js'
 
 let classicModel = new ClassicModel()
 
@@ -44,12 +57,21 @@ Page({
           classic: res.data
         })
         this.setRefreshing(true, 0)
-        // this.fetchProducts()
+        if (JHDeviceUtils.isDevTools) {
+          this.fetchProducts()
+        }
       },
       fail: (err) => {
         console.log(err)
       }
     })
+
+    let count = OMCartStorageUtils.fetchItemsCountSync()
+    wx.showToast({
+      title: "" + count,
+    })
+    // JHStorageUtils.addItemSync("caolimma", "sss")
+    // JHStorageUtils.fetchItemAsync("caolimma")
   },
 
   /**
@@ -123,59 +145,6 @@ Page({
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  handleAddCount: function(e) {
-    this.handleBuyCount(e.detail, true)
-  },
-  
-  handleSubCount: function(e) {
-    this.handleBuyCount(e.detail, false)
-  },
-
-  handleBuyCount: function(index, isAdd) {
-    if (UserUtils.isLogined) {
-      let userId = UserUtils.user.id
-      classicModel.cartChangeCount(isAdd, 0, userId, {
-        success: (res) => {
-          console.log("sf=", res)
-          this.handleBuyCountSuccess(index, isAdd, res)
-        },
-        fail: (err) => {
-          console.log(err)
-        }
-      })
-    } else {
-      //TODO:登录
-    }
-  },
-
-  //操作商品数量成功
-  handleBuyCountSuccess: function (index, isAdd, res) {
-    if (res == null || !res.success()) {
-      //TODU 错误提示
-      wx.showToast({
-        title: res.msg,
-        duration: 2000
-      })
-      return
-    }
-    var buyCount = this.data.products[index].buyCount
-    buyCount = isAdd ? buyCount + 1 : buyCount - 1
-    if (buyCount < 0) {
-      return
-    }
-    var ab = "products[" + index + "].buyCount"
-    this.setData({
-      [ab]: buyCount
-    })
-  },
-
   handleTitleItem: function(e) {
     console.log("===========")
     const touchIndex = e.detail
@@ -197,9 +166,14 @@ Page({
   },
   
   fetchProducts:function() {
-    console.log("<><><>><>><><><<>")
     let classicItem = this.data.classic[this.data.selectedTitleIndex]
     console.log(classicItem.id)
+    console.log("============pruduct=========")
+    let json = JSON.stringify(classicItem)
+    console.log(json)
+    console.log("============pruduct=========")
+    let model = JSON.parse(json)
+    console.log(model)
         this.setData({
       //     spus: classicItem.spus,
       // branches: classicItem.hotBranches,
@@ -251,5 +225,70 @@ Page({
         refreshingTimeoutId: refreshingTimeoutId,
       })
     }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
+  handleAddToCartIfNeed: function(e) {
+    let index = e.detail
+    let items = this.data.spus
+    let item = items[index]
+    if (JHObjectUtils.isNullOrUndefined(item)) {
+      wx.showToast({
+        title: '数据有错误, 刷新后重试',
+      })
+      return
+    }
+    const skuIds = item.skuIds
+    if (JHObjectUtils.isNullOrUndefined(skuIds)) {
+      wx.showToast({
+        title: '数据有错误, 刷新后重试',
+      })
+      return
+    }
+    if (skuIds.length == 1) {
+      //无规格
+      this.handleAddToCart(item)
+    } else {
+      //有规格
+    }
+    
+  },
+
+  handleAddToCart: function(item) {
+    if (UserUtils.isLogined()) {
+      
+    } else {
+      item.skuId = item.skuIds[0]
+      let localItem = new ShopCartProductLocalItem(item)
+      console.log(localItem)
+      OMCartStorageUtils.addItemToCartAsync(localItem)
+    }
+  },
+
+  //操作商品数量成功
+  handleBuyCountSuccess: function (index, isAdd, res) {
+    if (res == null || !res.success()) {
+      //TODU 错误提示
+      wx.showToast({
+        title: res.msg,
+        duration: 2000
+      })
+      return
+    }
+    var buyCount = this.data.products[index].buyCount
+    buyCount = isAdd ? buyCount + 1 : buyCount - 1
+    if (buyCount < 0) {
+      return
+    }
+    var ab = "products[" + index + "].buyCount"
+    this.setData({
+      [ab]: buyCount
+    })
   }
 })

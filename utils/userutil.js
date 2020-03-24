@@ -2,16 +2,20 @@ import {
   User
 } from '../models/user.js'
 
+import {
+  JHObjectUtils
+} from 'objectutils.js'
+
 class UserUtils {
 
   static user = null
 
   static clearUser() {
-    user = null
+    this.user = null
   }
 
   static isLogined() {
-    return user != null
+    return !JHObjectUtils.isNullOrUndefined(this.user)
   }
 }
 

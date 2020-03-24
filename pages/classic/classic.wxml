@@ -26,10 +26,10 @@
                       wx:for="{{spus}}" 
                       wx:key="{{item.id}}" 
                       item="{{item}}"
-                      data-id="{{item.id}}"
+                      data-id="{{index}}"
                       bind:tap="onClick"
                       bind:onSelect="onSelect"
-                      bind:onAddToCart="handleAddToCart">
+                      bind:onAddToCart="handleAddToCartIfNeed">
     </v-product-row-item>
   </v-refresh-scrollview>
 
