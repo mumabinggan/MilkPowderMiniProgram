@@ -11,7 +11,7 @@ from '../../viewmodels/settlementviewmodel.js'
 import { UserUtils } from 
 '../../utils/userutil.js'
 
-import { ArrayUtils } 
+import { JHArrayUtils } 
 from '../../utils/arrayutils.js'
 
 let settlementVM = new SettlementViewModel()

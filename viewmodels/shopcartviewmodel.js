@@ -18,19 +18,38 @@ import {
   SelectShopCartProductResponse
 } from '../models/selectshopcartproductresponse.js'
 
+import { UserUtils } from '../utils/userutil.js'
+
+import { JHObjectUtils } from '../utils/objectutils'
+
+import { JHArrayUtils } from '../utils/arrayutils'
+
 let http = new HTTP()
 
 class ShopCartViewModel {
-  fetchShopCartList(userId, callback) {
-    let res = ShopCartResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  
+  fetchShopCartList(callback) {
     http.request({
       url: apiConfig.cart_list,
       method: 'POST',
+      success: (res) => {
+        callback.success(res)
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
+
+  fetchShopCartListOfLogout(list, callback) {
+    if (JHArrayUtils.isNullOrEmpty(list)) {
+      return callback.success(new ShopCartResponse())
+    }
+    http.request({
+      url: apiConfig.cart_list_unlogin,
+      method: 'POST',
       data: {
-        userId: userId
+        list: list
       },
       success: (res) => {
         callback.success(res)

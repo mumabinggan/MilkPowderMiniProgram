@@ -1,6 +1,7 @@
 class JHObjectUtils {
 
   static isNullOrUndefined(obj) {
+    console.log(obj)
     return (obj == null || typeof(obj) == undefined);
   }
 

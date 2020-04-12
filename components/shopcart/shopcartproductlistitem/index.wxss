@@ -7,7 +7,7 @@
   display: flex;
   flex-flow:row;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
 
 .selected-button {
@@ -17,14 +17,16 @@
 }
 
 .product-pic {
-  width: 140rpx;
-  height: 140rpx;
+  width: 160rpx;
+  height: 160rpx;
   margin-right: 20rpx;
 }
 
 .product-des {
   width: auto;
-  height: 140rpx;
+  height: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
   position: relative;
   flex:1;
   display: flex;
@@ -34,7 +36,7 @@
 
 .title {
   width: 100%;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: black;
   word-wrap: break-word;
   word-break: break-all;
@@ -46,10 +48,24 @@
   -webkit-box-orient: vertical
 }
 
+.sub-title {
+  width: 100%;
+  font-size: 24rpx;
+  color: black;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical
+}
+
 .price {
-  background-color: yellow;
-  font-size: 30rpx;
-  color: #F3A31D;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #3D8946;
   float: left;
   position: relative;
   left: 0;
@@ -61,7 +77,7 @@
   height: 60rpx;
   position: absolute;
   right: 0;
-  bottom: -10rpx
+  bottom: 10rpx
 }
 
 .line {

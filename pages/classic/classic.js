@@ -50,6 +50,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '分类',
     })
+    wx.showLoading()
     classicModel.fetchClassic({
       success: (res) => {
         console.log(res.data)
@@ -60,15 +61,12 @@ Page({
         if (JHDeviceUtils.isDevTools) {
           this.fetchProducts()
         }
+        wx.hideLoading()
       },
       fail: (err) => {
         console.log(err)
+        wx.hideLoading()
       }
-    })
-
-    let count = OMCartStorageUtils.fetchItemsCountSync()
-    wx.showToast({
-      title: "" + count,
     })
     // JHStorageUtils.addItemSync("caolimma", "sss")
     // JHStorageUtils.fetchItemAsync("caolimma")
@@ -146,13 +144,14 @@ Page({
   },
 
   handleTitleItem: function(e) {
-    console.log("===========")
+    console.log("=====handleTitle======")
     const touchIndex = e.detail
     let data = this.data
     let spus = data.spus
     if (touchIndex == data.selectedTitleIndex && 
       spus != null &&
       spus.length > 0) {
+        console.log("=====back======")
         return
     }
     this.setData({
@@ -185,14 +184,11 @@ Page({
     console.log(pageNum)
     classicModel.fetchSpusByClassicId(classicItem.id, pageNum, pageSize, {
       success: (res) => {
-        console.log(res.data)
         const data = this.data
         let spus = (data.pageNum == 1) ? [] : data.spus;
         const newSpus = res.data.list
         spus = spus.concat(newSpus)
         const hasMore = (newSpus != null && newSpus.length >= data.pageSize)
-        console.log("=============")
-        console.log(hasMore)
         this.setData({
           spus: spus,
           pageNum: pageNum+1,
@@ -265,7 +261,7 @@ Page({
       
     } else {
       item.skuId = item.skuIds[0]
-      let localItem = new ShopCartProductLocalItem(item)
+      let localItem = ShopCartProductLocalItem.fromProduct(item)
       console.log(localItem)
       OMCartStorageUtils.addItemToCartAsync(localItem)
     }

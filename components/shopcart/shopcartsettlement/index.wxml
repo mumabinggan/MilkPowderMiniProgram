@@ -7,8 +7,8 @@
     <text class="select-text">全选</text>
   </view>
   <view class="price">
-    <text class="currentTotalPriceTitle currentTotalPriceFont">合计:<text class="currentTotalPrice currentTotalPriceFont">￥{{shopcart.totalPrice}}</text></text>
-    <text class="totalPrice">总价:￥{{shopcart.currentTotalPrice}}　优惠:￥{{shopcart.favourablePrice}}</text>
+    <text class="currentTotalPriceTitle currentTotalPriceFont">合计:<text class="currentTotalPrice currentTotalPriceFont">￥{{shopcart.price.totalPrice}}</text></text>
+    <text class="totalPrice">总价:￥{{shopcart.price.currentPrice}}　优惠:￥{{shopcart.price.reducePrice}}</text>
   </view>
   <view class="settlement"
         bind:tap="onSettlement">去结算({{selectedProductsCount}})</view>

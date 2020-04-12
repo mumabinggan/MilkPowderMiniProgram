@@ -1,4 +1,4 @@
-class ArrayUtils {
+class JHArrayUtils {
   static removeItem(arr, delVal) {
     if (arr instanceof Array) {
       var index = arr.indexOf(delVal);
@@ -7,6 +7,13 @@ class ArrayUtils {
       }
     }
   }
+
+  static isNullOrEmpty(arr) {
+    if (arr == undefined || arr == null || arr.length == 0) {
+      return true
+    }
+    return false
+  }
 }
 
-export { ArrayUtils }
+export { JHArrayUtils }

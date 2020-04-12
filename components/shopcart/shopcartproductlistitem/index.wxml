@@ -1,19 +1,21 @@
 <!--components/classic/shopcartlistitem/index.wxml-->
-<view class="container">
+<view class="container"
+  bind:tap="onTouch">
   <image class="selected-button"
-          src="{{item.isSelected ? selectedStateImage : unselectedStateImage}}"
+          src="{{item.checked ? selectedStateImage : unselectedStateImage}}"
           bind:tap="onSelect">
   </image>
   <image class="product-pic"
-          src="{{item.url}}"
+  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584294871521&di=0c49eb0cea738eb0113930129ae6a0b9&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1073959151%2C665782074%26fm%3D214%26gp%3D0.jpg"
           mode='aspectFit'
           lazy-load="true">
   </image>
   <view class="product-des">
-    <text class="title">{{item.title}}</text>
-    <text class="price">{{item.price}}</text>
+    <text class="title">{{item.name}}我们是虽是是是是是是是是是是</text>
+    <text class="sub-title">{{item.specList}}是是是</text>
+    <text class="price">￥{{item.price}}</text>
     <v-add-products class="buy"
-                    count="{{item.buyCount}}"
+                    count="{{item.count}}"
                     bind:onAdd="handleAddCount"
                     bind:onSub="handleSubCount">
     </v-add-products>

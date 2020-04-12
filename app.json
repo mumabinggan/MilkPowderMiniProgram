@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/shopcart/index",
     "pages/classic/classic",
     "pages/tests/index",
     "pages/productlist/index",
@@ -12,7 +13,6 @@
     "pages/settlement/index",
     "pages/productdetail/index",
     "pages/mine/index",
-    "pages/shopcart/index",
     "components/classic/titlelist/index",
     "components/classic/productlist/index",
     "components/common/refreshscrollview/index"
@@ -32,16 +32,16 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/classic/classic",
-        "selectedIconPath": "/images/tab/tab_classic_selected.png",
-        "iconPath": "/images/tab/tab_classic.png",
-        "text": "分类"
-      },
-      {
         "pagePath": "pages/shopcart/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"
+      },
+      {
+        "pagePath": "pages/classic/classic",
+        "selectedIconPath": "/images/tab/tab_classic_selected.png",
+        "iconPath": "/images/tab/tab_classic.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/index/index",

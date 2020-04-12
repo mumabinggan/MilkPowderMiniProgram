@@ -20,8 +20,13 @@ Component({
    */
   methods: {
     onSelect:function() {
-      this.triggerEvent('onSelect',
-        this.dataset.id)
+      this.triggerEvent('onSelect', this.dataset.id)
+    },
+
+    onTouch: function(e) {
+      this.triggerEvent('onTouch', this.dataset.id)
+      console.log("onTouch")
+      console.log(this.dataset.id)
     },
 
     handleAddCount: function () {

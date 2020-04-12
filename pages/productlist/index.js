@@ -8,7 +8,7 @@ import {
 } from '../../models/productsortfiltercondition.js'
 
 import { UserUtils } from '../../utils/userutil.js'
-import { ArrayUtils } from '../../utils/arrayutils.js'
+import { JHArrayUtils } from '../../utils/arrayutils.js'
 
 const productListVM = new ProductListViewModel()
 const shopcartVM = new ShopCartViewModel()

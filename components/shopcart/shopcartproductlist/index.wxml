@@ -6,8 +6,8 @@
                       wx:for="{{list}}" 
                       wx:key="{{item.id}}" 
                       item="{{item}}"
-                      data-id="{{item.id}}"
-                      bind:tap="onClick"
+                      data-id="{{index}}"
+                      bind:onTouch="onTouch"
                       bind:onSelect="onSelect"
                       bind:onSub="handleSubCount"
                       bind:onAdd="handleAddCount">

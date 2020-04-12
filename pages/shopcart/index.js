@@ -2,7 +2,20 @@
 import { ShopCartViewModel } from '../../viewmodels/shopcartviewmodel.js'
 
 import { UserUtils } from '../../utils/userutil.js'
-import { ArrayUtils } from '../../utils/arrayutils.js'
+import { JHArrayUtils } from '../../utils/arrayutils.js'
+import {
+  OMCartStorageUtils
+} from '../../utils/cartstorageutils.js'
+import {
+  ShopCartProductLocalItem
+} from '../../models/shopcartproductlocalitem.js'
+import {
+  ShopCart
+} from '../../models/shopcart.js'
+import {
+  JHLoadingUtils
+} from '../../utils/jhloadingutils.js'
+
 
 let shopcartVM = new ShopCartViewModel()
 
@@ -34,7 +47,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '购物车',
     })
-    shopcartVM.fetchShopCartList(UserUtils.user.id, {
+    getApp().globalData.triggerRefreshShopcart = false
+    let count = OMCartStorageUtils.fetchItemsCountSync()
+    this.loadDatas({
       success: (res) => {
         console.log(res)
         this.setData({
@@ -58,7 +73,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // wx.showLoading()
+    getApp().globalData.triggerRefreshShopcart = true
+    if (getApp().globalData.triggerRefreshShopcart) {
+      this.loadDatas({
+        success: (res) => {
+          console.log(res)
+          this.setData({
+            shopcart: res.data
+          })
+        },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    }
   },
 
   /**
@@ -96,6 +125,22 @@ Page({
 
   },
 
+  loadDatas: function (callback) {
+    if (UserUtils.isLogined()) {
+      console.log("=====logined===")
+    } else {
+      let list = getApp().globalData.shopcartBriefListOfLogout
+      shopcartVM.fetchShopCartListOfLogout(list, {
+        success: (res) => {
+          callback.success(res)
+        },
+        fail: (err) => {
+          callback.fail(err)
+        }
+      })
+    }
+  },
+
   handleAddCount: function (e) {
     console.log(e.detail)
     this.handleBuyCount(e.detail, true)
@@ -105,8 +150,10 @@ Page({
     this.handleBuyCount(e.detail, false)
   },
 
-  handleBuyCount: function (productId, isAdd) {
-    if (UserUtils.isLogined) {
+  handleBuyCount: function (index, isAdd) {
+    let products = this.data.shopcart.products
+    let item = products[index]
+    if (UserUtils.isLogined()) {
       let userId = UserUtils.user.id
       shopcartVM.changeCartShopCount(isAdd, productId, userId, {
         success: (res) => {
@@ -117,23 +164,43 @@ Page({
         }
       })
     } else {
-      //TODO:登录
+      //TODO:未登录
+      console.log("测试+++++++")
+      console.log(isAdd)
+      let localItem = ShopCartProductLocalItem.fromShopCartProduct(item)
+      if (isAdd) {
+        OMCartStorageUtils.addItemCountToCartAsync(localItem)
+      } else {
+        OMCartStorageUtils.subItemCountToCartAsync(localItem)
+      }
+      JHLoadingUtils.show()
+      this.loadDatas({
+        success: (res) => {
+          JHLoadingUtils.hide()
+          this.setData({
+            shopcart: res.data
+          })
+          console.log(this.data.shopcart)
+        },
+        fail: (err) => {
+          JHLoadingUtils.hide()
+          console.log(err)
+          if (isAdd) {
+            OMCartStorageUtils.subItemCountToCartAsync(localItem)
+          } else {
+            OMCartStorageUtils.addItemCountToCartAsync(localItem)
+          }
+        }
+      })
     }
   },
 
   handleSelectProduct: function (e) {
-    let productId = e.detail
-    let isSelect = true
+    let index = e.detail
     let products = this.data.shopcart.products
-    for (let item of products) {
-      if (item.id == productId) {
-        isSelect = item.isSelected
-        break
-      }
-    }
-    isSelect = !isSelect
-    console.log("sd" + isSelect)
-    if (UserUtils.isLogined) {
+    let item = products[index]
+    if (UserUtils.isLogined()) {
+      console.log("isLogin")
       let userId = UserUtils.user.id
       shopcartVM.selectCartShopProduct(isSelect, productId, userId, {
         success: (res) => {
@@ -145,24 +212,62 @@ Page({
       })
     } else {
       //TODO:登录
+      let localItem = ShopCartProductLocalItem.fromShopCartProduct(item)
+      localItem.checked = !localItem.checked
+      OMCartStorageUtils.updateItemCheckedToCartAsync(localItem)
+      JHLoadingUtils.show()
+      this.loadDatas({
+        success: (res) => {
+          JHLoadingUtils.hide()
+          this.setData({
+            shopcart: res.data
+          })
+          console.log(this.data.shopcart)
+        },
+        fail: (err) => {
+          JHLoadingUtils.hide()
+          console.log(err)
+          localItem.checked = !localItem.checked
+          OMCartStorageUtils.updateItemCheckedToCartAsync(localItem)
+        }
+      })
     }
   },
 
   handleSelectAllProduct: function (e) {
-    let isSelect = !e.detail
-    console.log("sd" + isSelect)
-    if (UserUtils.isLogined) {
+    let checked = !e.detail
+    if (UserUtils.isLogined()) {
       let userId = UserUtils.user.id
-      shopcartVM.selectCartShopAllProduct(isSelect, userId, {
+      shopcartVM.selectCartShopAllProduct(checked, userId, {
         success: (res) => {
-          this.handleProductSuccess(0, isSelect ? ChangeProductType.SelectAll : ChangeProductType.UnSelectAll, res)
+          this.handleProductSuccess(0, checked ? ChangeProductType.SelectAll : ChangeProductType.UnSelectAll, res)
         },
         fail: (err) => {
           console.log(err)
         }
       })
     } else {
-      //TODO:登录
+      //TODO:未登录
+      let list = getApp().globalData.shopcartBriefListOfLogout
+      if (JHArrayUtils.isNullOrEmpty(list)) {
+        return
+      }
+      list.concat().forEach(item => {
+        item.checked = checked
+      })
+      wx.showLoading()
+      shopcartVM.fetchShopCartListOfLogout(list, {
+        success: (res) => {
+          this.setData({
+            shopcart: res.data
+          })
+          wx.hideLoading()
+        },
+        fail: (err) => {
+          wx.hideLoading()
+          wx.showToast(err)
+        }
+      })
     }
   },
 
@@ -187,7 +292,7 @@ Page({
             changeType == ChangeProductType.SubCount) {
             item.buyCount = item.buyCount + ((changeType == ChangeProductType.AddCount) ? 1 : -1)
             if (item.buyCount == 0) {
-              ArrayUtils.removeItem(products, item)
+              JHArrayUtils.removeItem(products, item)
             }
           }
           if (changeType == ChangeProductType.Selected ||
@@ -207,7 +312,13 @@ Page({
     })
   },
 
-  handleTap:function() {
-
+  //跳转到详情页面
+  handleTouchProduct:function(e) {
+    let index = e.detail
+    let products = this.data.shopcart.products[index]
+    if (JHArrayUtils.isNullOrEmpty(products)) {
+      return
+    }
+    let item = products[index]
   }
 })

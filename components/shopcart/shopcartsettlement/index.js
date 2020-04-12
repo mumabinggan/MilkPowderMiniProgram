@@ -3,6 +3,8 @@ import {
   ShopCart
 } from '../../../models/shopcart.js'
 
+import { JHArrayUtils } from '../../../utils/arrayutils.js'
+
 Component({
   /**
    * 组件的属性列表
@@ -43,13 +45,19 @@ Component({
     handleShopCartChange:function() {
       let isSelectedAll = true
       let selectedProductsCount = 0
-      var arr = this.data.shopcart.products
-      for (let item of arr) {
-        if (item.isSelected) {
-          selectedProductsCount += item.buyCount
-        }
-        if (isSelectedAll) {
-          isSelectedAll = item.isSelected
+      let arr = this.data.shopcart.products
+      console.log("=====asdfasdfasss=======+++===")
+      console.log(this.data.shopcart)
+      if (JHArrayUtils.isNullOrEmpty(arr)) {
+        isSelectedAll = false
+      } else {
+        for (let item of arr) {
+          if (item.checked) {
+            selectedProductsCount += item.count
+          }
+          if (isSelectedAll) {
+            isSelectedAll = item.checked
+          }
         }
       }
       this.setData({

@@ -9,14 +9,7 @@ import {
 class ShopCartResponse extends JHBaseResponse {
   constructor() {
     super()
-  }
-
-  static test() {
-    let item = new ShopCartResponse()
-    item.code = 1
-    item.msg = "得到成功"
-    item.data = ShopCart.test()
-    return item
+    this.data = new ShopCart()
   }
 }
 

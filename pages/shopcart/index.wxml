@@ -2,7 +2,7 @@
 <view class="container">
   <v-product-list class="product-list"
                   list="{{shopcart.products}}"
-                  bind:tap="handleTap"
+                  bind:onTouch="handleTouchProduct"
                   bind:onSelect="handleSelectProduct"
                   bind:onAdd="handleAddCount"
                   bind:onSub="handleSubCount">

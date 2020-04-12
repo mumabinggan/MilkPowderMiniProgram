@@ -15,7 +15,15 @@ class UserUtils {
   }
 
   static isLogined() {
+    console.log("=====++++++")
     return !JHObjectUtils.isNullOrUndefined(this.user)
+  }
+
+  static userId() {
+    if (this.isLogined) {
+      return this.user.userId
+    }
+    return 0
   }
 }
 

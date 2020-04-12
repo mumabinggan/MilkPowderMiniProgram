@@ -30,6 +30,11 @@ Component({
         e.detail)
     },
 
+    onTouch: function(e) {
+      this.triggerEvent('onTouch',
+        e.detail)
+    },
+
     handleAddCount: function (e) {
       this.triggerEvent('onAdd', e.detail)
     },

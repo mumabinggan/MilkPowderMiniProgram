@@ -169,7 +169,8 @@ App({
 
   globalData: {
     userInfo: null,
-    shopcartList: [],
+    triggerRefreshShopcart: true,
+    shopcartBriefListOfLogout: [], //没有登录的购物车商品简要信息
     shopcartProductCount: 0,
     deviceInfo: null
   }
