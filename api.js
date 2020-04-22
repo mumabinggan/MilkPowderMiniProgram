@@ -23,8 +23,8 @@ const apiConfig = {
   order_delete: "",
   order_commit: "",
   order_detail: "",
-  login: baseUrl + "user/wxLogin.do?", 
-  updateUserInfo: baseUrl + "user/wxUpdateUserInfo.do?"
+  login: "user/wxLogin.do?", 
+  updateUserInfo: "user/wxUpdateUserInfo.do?"
 }
 
 export { apiConfig }

@@ -6,12 +6,38 @@ import {
   JHObjectUtils
 } from 'objectutils.js'
 
+import {
+  JHStorageUtils
+} from 'storageutils.js'
+
 class UserUtils {
 
   static user = null
 
+  static userStoreKey = "kUserKey"
+
+  static fetchUser() {
+    let str = JHStorageUtils.fetchItemSync(this.userStoreKey)
+    if (!JHObjectUtils.isNullOrUndefined(str)) {
+      let item = JSON.parse(str)
+      this.user = item
+    }
+  }
+
   static clearUser() {
-    this.user = null
+    if (this.isLogined()) {
+      JHStorageUtils.delItemAsync(this.userStoreKey)
+      this.user = null
+    }    
+  }
+
+  static setUser(user) {
+    if (user == null) {
+      this.clearUser()
+    } else {
+      JHStorageUtils.addItemAsync(this.userStoreKey, JSON.stringify(user))
+    }
+    this.user = user
   }
 
   static isLogined() {
@@ -20,10 +46,17 @@ class UserUtils {
   }
 
   static userId() {
-    if (this.isLogined) {
+    if (this.isLogined()) {
       return this.user.userId
     }
     return 0
+  }
+
+  static token() {
+    if (this.isLogined()) {
+      return this.user.token
+    }
+    return null
   }
 }
 

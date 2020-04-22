@@ -7,13 +7,23 @@ import {
   OMCartStorageUtils
 } from '../../utils/cartstorageutils.js'
 
+import {
+  HTTP
+} from '../../utils/http.js'
+
+import {
+  UserUtils
+} from '../../utils/userutil.js'
+
 //获取应用实例
 const app = getApp()
+
+let http = new HTTP()
 
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {},
+    userInfo: app.globalData.userInfo,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -26,53 +36,54 @@ Page({
   onLoad: function () {
     OMCartStorageUtils.fetchItemsSync()
   },
+  getPhoneNumber: function(e) {
+    console.log(e)
+  },
   getUserInfo: function(e) {
-    let key = 'cookie'
-    let cookie = wx.getStorageSync(key);
-    var that = this
-    wx.getStorage({
-      key: 'cookie',
-      success: (cookie) => {
-        console.log(cookie)
-        that.wxUpdateUserInfo(e.detail)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-          userInfo: e.detail.userInfo,
-          hasUserInfo: true
-        })
-      }
+    let data = e.detail
+    this.wxUpdateUserInfo(data)
+    app.globalData.userInfo = data.userInfo
+    this.setData({
+      userInfo: data.userInfo,
+      hasUserInfo: true
     })
   },
 
-  wxUpdateUserInfo:function(userInfo) {
-    console.log(userInfo)
-    var rawData = userInfo.rawData
-    var signature = userInfo.signature
-    var encryptedData = userInfo.encryptedData
-    var iv = userInfo.iv
-    if (userInfo == null ||
+  wxUpdateUserInfo:function(e) {
+    console.log(e)
+    console.log("wwwwwwwww")
+    let rawData = e.rawData
+    let signature = e.signature
+    let encryptedData = e.encryptedData
+    let iv = e.iv
+    console.log(rawData)
+    if (e == null ||
         rawData == null ||
         signature == null ||
         encryptedData == null ||
         iv == null) {
           return
     }
-    console.log(userInfo)
-    wx.request({
+    console.log("+=+=+=+++++++")
+    http.request({
       method: "POST",
       url: apiConfig.updateUserInfo,
+      header: {
+        'token': UserUtils.token(),
+      },
       data: {
         rawData: rawData,
         signature: signature,
         encryptedData: encryptedData,
         iv: iv
       },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'cookie': wx.getStorageSync("cookie") // 设置cookie
-      },
       success: function (res) {
-        console.log(res.data)
+        console.log("+=+=+=+++++++")
+        console.log(res)
+        let data = res.data
+        if (!JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
+          UserUtils.user = data
+        }
       }
     })
   }

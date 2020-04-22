@@ -8,32 +8,28 @@ import {
 } from '/utils/userutil.js'
 
 import {
+  JHObjectUtils
+} from '/utils/objectutils.js'
+
+import {
+  HTTP
+} from '/utils/http.js'
+
+import {
   User
 } from '/models/user.js'
+
+let http = new HTTP()
 
 //app.js
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    var that = this
-    console.log("asdfasd====")
-    let userId = wx.getStorageSync('userId')
-    console.log(userId)
-    // if (userId != "") {
-    //   let user = new User()
-    //   user.id = userId
-    //   UserUtils.user = user
-    // }
+    let that = this
     wx.checkSession({
       success: function (res) {
-        console.log("asdfasd")
-        let userId = wx.getStorageSync('userId')
-        // let user = new User()
-        // user.id = userId
-        // UserUtils.user = user
+        UserUtils.fetchUser()
+        console.log("check success")
         // 获取用户信息
         that.getUserInfo({
           success: function (res) {
@@ -42,27 +38,17 @@ App({
         })
       },
 　　　 fail: function (res) {
+        console.log("check fail")
       　　that.wxLogin({
             success: function (res) {
-              let cookies = cookieParser(res.header["Set-Cookie"])
-              console.log(cookies)
-              var cookieStrs = []
-              cookies.forEach(function (val, index, arr) {
-                cookieStrs.push(val["cookieStr"])
-              });
-              let cookiesStr = cookieStrs.join(";")
-              wx.setStorage({
-                key: 'cookie',
-                data: cookiesStr, // 从返回数据的响应头中取cookie
-              })
-              // let user = new User()
-              // let userId = res.data.data.userId
-              // user.id = userId
-              // UserUtils.user = user
-              wx.setStorage({
-                key: 'userId',
-                data: res.data.data.userId
-              })
+              let data = res.data
+              if (res.code == 0 && !JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
+                UserUtils.setUser(res.data)
+              } else {
+                wx.showToast("登录错误, 请重试")
+              }
+              console.log(res)
+              console.log("wxLogin success")
               // 获取用户信息
               that.getUserInfo({
                 success: function(res) {
@@ -82,20 +68,23 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res)
-        wx.request({
-          method: "POST",
+        http.request({
           url: apiConfig.login,
+          method: 'POST',
           data: {
             code: res.code
           },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
+          success: (res) => {
+            if (res.data == null) {
+              wx.showToast("登录错误, 请稍候重试")
+            } else {
+              if (res.code == 0) {                
+                param.success(res)
+              }
+            }            
           },
-          success: function (res) {
-            console.log(res.data)
-            if (res.data.code == 0 && param.success) {
-              param.success(res)
-            }
+          fail: (err) => {
+            param.fail(err)
           }
         })
       }
@@ -123,7 +112,7 @@ App({
                 this.userInfoReadyCallback(res)
               }
               if (param.success) {
-                param.success(res.userInfo)
+                param.success(res)
               }
             }
           })
@@ -132,37 +121,45 @@ App({
     })
   },
 
-  wxUpdateUserInfo: function (userInfo) {
+  wxUpdateUserInfo: function (e) {
     console.log("=+++++++++++++++")
-    console.log(userInfo)
-    var rawData = userInfo.rawData
-    var signature = userInfo.signature
-    var encryptedData = userInfo.encryptedData
-    var iv = userInfo.iv
-    if (userInfo == null ||
+    console.log(e)
+    let rawData = e.rawData
+    let signature = e.signature
+    let encryptedData = e.encryptedData
+    let iv = e.iv
+    console.log(rawData)
+    console.log(signature)
+    console.log(encryptedData)
+    console.log(iv)
+    console.log("=+++++++++++++++")
+    if (e == null ||
       rawData == null ||
       signature == null ||
       encryptedData == null ||
       iv == null) {
       return
     }
-    console.log(userInfo)
-    wx.request({
-      method: "POST",
+    console.log(UserUtils.user)
+    http.request({
+      method: 'POST',
       url: apiConfig.updateUserInfo,
+      header: {
+        'token': UserUtils.token(),
+      },
       data: {
         rawData: rawData,
         signature: signature,
         encryptedData: encryptedData,
         iv: iv
       },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'cookie': wx.getStorageSync("cookie") // 设置cookie
-      },
       success: function (res) {
         console.log("=====+++++++++==ad=====")
-        console.log(res.data)
+        console.log(res)
+        let data = res.data
+        if (!JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
+          UserUtils.setUser(data)
+        }
       }
     })
   },
