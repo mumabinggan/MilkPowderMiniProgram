@@ -3,14 +3,18 @@
   <scroll-view class="product-list"
                 scroll-y>
     <v-product-item class="item"
-                      wx:for="{{list}}" 
+                      wx:for="{{items}}" 
                       wx:key="{{item.id}}" 
                       item="{{item}}"
                       data-id="{{index}}"
+                      data-index="{{index}}"
+                      bindtouchstart="touchstart" bindtouchmove="touchmove"
                       bind:onTouch="onTouch"
                       bind:onSelect="onSelect"
                       bind:onSub="handleSubCount"
-                      bind:onAdd="handleAddCount">
+                      bind:onAdd="handleAddCount"
+                      bind:onDelete="handleDelete">
     </v-product-item>
+
   </scroll-view>
 </view>

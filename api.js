@@ -10,6 +10,8 @@ const apiConfig = {
   cart_list_unlogin: "user/shopcart/fetchShopCartByAddItems.do",
   cart_check_product: "user/shopcart/updateItemCheckedByUpdateItem.do",
   cart_check_all_product: "user/shopcart/updateAllItemsCheckedByChecked.do",
+  cart_delete_product: "user/shopcart/deleteItemByDeleteItem.do",
+  cart_fetch_products_count: "user/shopcart/fetchShopCartCount.do",
   product_list: "",
   product_detail: "",
   address_detail: "shipping/fetchShipping.do?",

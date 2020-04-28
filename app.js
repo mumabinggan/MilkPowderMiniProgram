@@ -19,7 +19,12 @@ import {
   User
 } from '/models/user.js'
 
+import {
+  ShopCartViewModel
+} from '/viewmodels/shopcartviewmodel.js'
+
 let http = new HTTP()
+let shopcartVM = new ShopCartViewModel() 
 
 //app.js
 App({
@@ -34,6 +39,7 @@ App({
         that.getUserInfo({
           success: function (res) {
             that.wxUpdateUserInfo(res)
+            that.fetchShopCartCount()
           }
         })
       },
@@ -53,6 +59,7 @@ App({
               that.getUserInfo({
                 success: function(res) {
                   that.wxUpdateUserInfo(res)
+                  that.fetchShopCartCount()
                 }
               })
             }
@@ -117,6 +124,22 @@ App({
             }
           })
         }
+      }
+    })
+  },
+
+  fetchShopCartCount: function() {
+    shopcartVM.fetchCartShopProductsCount({
+      success: (res) => {
+        if (res.code == 0) {
+          let number = res.data.toString()
+          wx.setTabBarBadge({
+            index: 1,
+            text: number
+          })
+        }
+      },
+      fail: (err) => {
       }
     })
   },

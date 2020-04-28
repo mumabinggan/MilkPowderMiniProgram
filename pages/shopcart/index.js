@@ -202,6 +202,24 @@ Page({
     }
   },
 
+  handleDelete: function(e) {
+    let products = this.data.shopcart.products
+    let item = products[e.detail]
+    console.log("]]]]]]]]]]]]")
+    console.log(item)
+    if (UserUtils.isLogined()) {
+      let that = this
+      shopcartVM.deleteCartShopProduct(item, {
+        success: (res) => {
+          that.handleResponse(res)
+        },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    }
+  },
+
   handleSelectProduct: function (e) {
     let index = e.detail
     let products = this.data.shopcart.products

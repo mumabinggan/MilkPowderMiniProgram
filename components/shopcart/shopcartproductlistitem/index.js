@@ -36,6 +36,10 @@ Component({
 
     handleSubCount: function () {
       this.triggerEvent('onSub', this.dataset.id)
+    },
+
+    handleDelete: function() {
+      this.triggerEvent('onDelete', this.dataset.id)
     }
   }
 })

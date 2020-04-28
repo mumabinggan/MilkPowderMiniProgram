@@ -5,7 +5,8 @@
                   bind:onTouch="handleTouchProduct"
                   bind:onSelect="handleSelectProduct"
                   bind:onAdd="handleAddCount"
-                  bind:onSub="handleSubCount">
+                  bind:onSub="handleSubCount"
+                  bind:onDelete="handleDelete">
   </v-product-list>
   <v-settlement class="settlement"
                 shopcart="{{shopcart}}"

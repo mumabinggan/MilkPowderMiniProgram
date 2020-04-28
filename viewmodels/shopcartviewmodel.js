@@ -133,6 +133,37 @@ class ShopCartViewModel {
       }
     })
   }
+
+  deleteCartShopProduct(item, callback) {
+    http.request({
+      url: apiConfig.cart_delete_product,
+      method: 'POST',
+      data: {
+        id: item.id
+      },
+      success: (res) => {
+        callback.success(res)
+        console.log(res)
+      },
+      fail: (err) => {
+        console.log(err)
+        callback.fail(err)
+      }
+    })
+  }
+
+  fetchCartShopProductsCount(callback) {
+    http.request({
+      url: apiConfig.cart_fetch_products_count,
+      method: 'POST',
+      success: (res) => {
+        callback.success(res)
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
+  }
 }
 
 export { ShopCartViewModel }
