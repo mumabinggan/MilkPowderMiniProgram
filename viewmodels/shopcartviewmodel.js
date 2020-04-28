@@ -60,17 +60,31 @@ class ShopCartViewModel {
     })
   }
 
-  changeCartShopCount(isAdd, userId, productId, callback) {
-    let res = AddCartResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  addGoodToShopCart(item, callback) {
+    http.request({
+      url: apiConfig.add_good_to_cart,
+      method: 'POST',
+      data: {
+        spuId: item.id,
+        skuId: item.skuId,
+        count: 1,
+        checked: true,
+      },
+      success: (res) => {
+        callback.success(res)
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
+
+  changeCartShopCount(item, isAdd, callback) {
     http.request({
       url: isAdd ? apiConfig.cart_add_count : apiConfig.cart_sub_count,
       method: 'POST',
       data: {
-        userId: userId,
-        productId: productId
+        id: item.id
       },
       success: (res) => {
         callback.success(res)
@@ -83,17 +97,13 @@ class ShopCartViewModel {
     })
   }
 
-  selectCartShopProduct(isSelect, userId, productId, callback) {
-    let res = SelectShopCartProductResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  selectCartShopProduct(item, checked, callback) {
     http.request({
-      url: isSelect ? apiConfig.cart_select_product : apiConfig.cart_cancel_select_product,
+      url: apiConfig.cart_check_product,
       method: 'POST',
       data: {
-        userId: userId,
-        productId: productId
+        id: item.id,
+        checked: checked
       },
       success: (res) => {
         callback.success(res)
@@ -106,16 +116,12 @@ class ShopCartViewModel {
     })
   }
 
-  selectCartShopAllProduct(isSelect, userId, callback) {
-    let res = SelectShopCartProductResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  selectCartShopAllProduct(checked, callback) {
     http.request({
-      url: isSelect ? apiConfig.cart_select_all_product : apiConfig.cart_cancel_select_all_product,
+      url: apiConfig.cart_check_all_product,
       method: 'POST',
       data: {
-        userId: userId
+        checked: checked
       },
       success: (res) => {
         callback.success(res)

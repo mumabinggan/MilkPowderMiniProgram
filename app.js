@@ -144,9 +144,6 @@ App({
     http.request({
       method: 'POST',
       url: apiConfig.updateUserInfo,
-      header: {
-        'token': UserUtils.token(),
-      },
       data: {
         rawData: rawData,
         signature: signature,
@@ -154,7 +151,6 @@ App({
         iv: iv
       },
       success: function (res) {
-        console.log("=====+++++++++==ad=====")
         console.log(res)
         let data = res.data
         if (!JHObjectUtils.isNullOrEmptyOrUndefined(data)) {

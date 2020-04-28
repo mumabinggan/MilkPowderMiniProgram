@@ -127,7 +127,14 @@ Page({
 
   loadDatas: function (callback) {
     if (UserUtils.isLogined()) {
-      console.log("=====logined===")
+      shopcartVM.fetchShopCartList({
+        success: (res) => {
+          callback.success(res)
+        },
+        fail: (err) => {
+          callback.fail(err)
+        }
+      })
     } else {
       let list = getApp().globalData.shopcartBriefListOfLogout
       shopcartVM.fetchShopCartListOfLogout(list, {
@@ -154,13 +161,13 @@ Page({
     let products = this.data.shopcart.products
     let item = products[index]
     if (UserUtils.isLogined()) {
-      let userId = UserUtils.user.id
-      shopcartVM.changeCartShopCount(isAdd, productId, userId, {
+      let that = this
+      shopcartVM.changeCartShopCount(item, isAdd, {
         success: (res) => {
-          this.handleProductSuccess(productId, isAdd ? ChangeProductType.AddCount : ChangeProductType.SubCount, res)
+          that.handleResponse(res)
         },
         fail: (err) => {
-          console.log(err)
+          console.log("网络访问失败, 请稍后重试")
         }
       })
     } else {
@@ -201,10 +208,10 @@ Page({
     let item = products[index]
     if (UserUtils.isLogined()) {
       console.log("isLogin")
-      let userId = UserUtils.user.id
-      shopcartVM.selectCartShopProduct(isSelect, productId, userId, {
+      let that = this
+      shopcartVM.selectCartShopProduct(item, !item.checked, {
         success: (res) => {
-          this.handleProductSuccess(productId, isSelect ? ChangeProductType.Selected : ChangeProductType.UnSelected, res)
+          that.handleResponse(res)
         },
         fail: (err) => {
           console.log(err)
@@ -237,10 +244,10 @@ Page({
   handleSelectAllProduct: function (e) {
     let checked = !e.detail
     if (UserUtils.isLogined()) {
-      let userId = UserUtils.user.id
-      shopcartVM.selectCartShopAllProduct(checked, userId, {
+      let that = this
+      shopcartVM.selectCartShopAllProduct(checked, {
         success: (res) => {
-          this.handleProductSuccess(0, checked ? ChangeProductType.SelectAll : ChangeProductType.UnSelectAll, res)
+          that.handleResponse(res)
         },
         fail: (err) => {
           console.log(err)
@@ -267,6 +274,19 @@ Page({
           wx.hideLoading()
           wx.showToast(err)
         }
+      })
+    }
+  },
+
+  handleResponse: function(res) {
+    if (res.code == 0) {
+      this.setData({
+        shopcart: res.data
+      })
+    } else {
+      wx.showToast({
+        title: res.msg,
+        icon: "none"
       })
     }
   },

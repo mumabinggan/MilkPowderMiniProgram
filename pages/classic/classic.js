@@ -20,7 +20,11 @@ import {
   ShopCartProductLocalItem
 } from '../../models/shopcartproductlocalitem.js'
 
+import { ShopCartViewModel } 
+from '../../viewmodels/shopcartviewmodel.js'
+
 let classicModel = new ClassicModel()
+let shopCartModel = new ShopCartViewModel()
 
 Page({
 
@@ -50,18 +54,31 @@ Page({
     wx.setNavigationBarTitle({
       title: '分类',
     })
+    console.log("====分类=====")
     wx.showLoading()
     classicModel.fetchClassic({
       success: (res) => {
         console.log(res.data)
-        this.setData({
-          classic: res.data
-        })
-        this.setRefreshing(true, 0)
-        if (JHDeviceUtils.isDevTools) {
-          this.fetchProducts()
-        }
+        console.log(res.code)
         wx.hideLoading()
+        if (res.code == 0) {
+          this.setData({
+            classic: res.data
+          })
+          this.setRefreshing(true, 0)
+          if (JHDeviceUtils.isDevTools) {
+            this.fetchProducts()
+          }
+        } else {
+          //todo:重试loading
+          console.log("asdfasdfasdf")
+          wx.showToast({
+            title: '刷新后重试',
+            duration: 2000,
+            icon: 'none'
+          })
+          // wx.showToast("分类加载失败, 请重试")
+        }
       },
       fail: (err) => {
         console.log(err)
@@ -247,18 +264,36 @@ Page({
       })
       return
     }
-    if (skuIds.length == 1) {
-      //无规格
-      this.handleAddToCart(item)
-    } else {
-      //有规格
-    }
+    //todo
+    item.skuId = item.skuIds[0]
+    this.handleAddToCart(item)
+    // if (skuIds.length == 1) {
+    //   //无规格
+    //   this.handleAddToCart(item)
+    // } else {
+    //   //有规格
+    // }
     
   },
 
   handleAddToCart: function(item) {
+    console.log("===handleAddToCart===")
     if (UserUtils.isLogined()) {
-      
+      shopCartModel.addGoodToShopCart(item, {
+        success: (res) => {
+          console.log("=====success====")
+          console.log(res)
+          wx.showToast({
+            title: res.msg,
+          })
+        },
+        fail: (err) => {
+          console.log("=====fail====")
+          wx.showToast({
+            title: "网络错误, 请稍后重试",
+          })
+        }
+      })
     } else {
       item.skuId = item.skuIds[0]
       let localItem = ShopCartProductLocalItem.fromProduct(item)

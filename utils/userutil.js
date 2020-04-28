@@ -41,7 +41,6 @@ class UserUtils {
   }
 
   static isLogined() {
-    console.log("=====++++++")
     return !JHObjectUtils.isNullOrUndefined(this.user)
   }
 

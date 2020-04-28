@@ -46,8 +46,6 @@ Component({
       let isSelectedAll = true
       let selectedProductsCount = 0
       let arr = this.data.shopcart.products
-      console.log("=====asdfasdfasss=======+++===")
-      console.log(this.data.shopcart)
       if (JHArrayUtils.isNullOrEmpty(arr)) {
         isSelectedAll = false
       } else {

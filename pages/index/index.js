@@ -15,6 +15,10 @@ import {
   UserUtils
 } from '../../utils/userutil.js'
 
+import {
+  JHObjectUtils
+} from '../../utils/objectutils.js'
+
 //获取应用实例
 const app = getApp()
 
@@ -68,9 +72,6 @@ Page({
     http.request({
       method: "POST",
       url: apiConfig.updateUserInfo,
-      header: {
-        'token': UserUtils.token(),
-      },
       data: {
         rawData: rawData,
         signature: signature,

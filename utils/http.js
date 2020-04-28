@@ -2,6 +2,10 @@ import {
   requestConfig as config
 } from '../config.js'
 
+import {
+  UserUtils
+} from 'userutil.js'
+
 export class HTTP {
   request(params) {
     if (!params.method) {
@@ -12,7 +16,10 @@ export class HTTP {
       url: config.base_api_url + params.url,
       method: params.method,
       data: params.data,
-      header: params.header,
+      // header: params.header,
+      header: {
+        'token': UserUtils.token(),
+      },
       success: (res) => {
         if (params.success) {
           params.success(res.data)
