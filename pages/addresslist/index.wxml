@@ -1,12 +1,15 @@
 <!--pages/address/index.wxml-->
 <view class="container">
   <view class="address-container {{canAdd?'address-container-padding':''}}">
-    <v-address-list-item wx:for="{{list}}" 
+    <v-address-list-item wx:for="{{items}}" 
                           wx:key="{{item.id}}"
                           class="item"
                           item="{{item}}"
                           catch:tap="onAddressItem"
-                          data-id="{{item.id}}">
+                          data-id="{{item.id}}"
+                          data-index="{{index}}"
+                          bindtouchstart="touchstart" bindtouchmove="touchmove"
+                          bind:onDelete="handleDelete">
     </v-address-list-item>
   </view>
   <text class="add-address"

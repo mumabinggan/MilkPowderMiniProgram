@@ -6,7 +6,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: red;
+  background-color: #f4f4f4;
 }
 
 .address-container-padding {
@@ -21,9 +21,9 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  font-size: 36rpx;
-  font-weight: bold;
+  font-size: 32rpx;
+  font-weight: 550;
   text-align: center;
-  color: white;
-  background-color: #EC5C2A
+  color: #3D8946;
+  background-color: white
 }

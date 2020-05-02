@@ -1,13 +1,14 @@
 <!--components/address/addresslistitem/index.wxml-->
-<view class="container">
-  <text class="image">{{firstName}}</text>
-  <view class="info">
-    <text class="name">{{item.name}}</text>
-    <text class="phone">{{item.phone}}</text>
-    <text class="address">{{item.detailAddress}}</text>  
+<view class="container {{item.isTouchMove ? 'touch-move-active' : ''}}">
+  <view class="content">
+    <text class="image">{{firstName}}</text>
+    <view class="info">
+      <text class="name">{{item.name}}</text>
+      <text class="phone">{{item.phone}}</text>
+      <text class="address"><text class="default" wx:if="{{item.isDefault==true}}">默认</text>{{item.detailAddress}}
+      </text>  
+    </view>
+    <text class="edit">编辑</text>
   </view>
-  <image class="more"
-          wx:if="{{isMore}}"
-          src="{{addressMore}}"
-          mode="aspectFit"></image>
+  <view class="delete" catch:tap="handleDelete">删除</view>
 </view>

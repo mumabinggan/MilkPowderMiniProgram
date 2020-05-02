@@ -17,9 +17,9 @@
     </view>
     <view class="sep-line"></view>
     <view class="region base-container"
-          catch:tap="onSelectRegion">
-      <text class="region-title title-css">所在地区</text>
-      <text class="region-content input-css">{{regionStr}}</text>
+          catch:tap="handleSelectCommunity">
+      <text class="region-title title-css">所在小区</text>
+      <text class="region-content input-css">{{communityName}}</text>
     </view>
     <view class="sep-line"></view>
     <view class="address">
@@ -38,10 +38,4 @@
         wx:if="false">
     <text class="">保存</text>
   </view>
-  <v-region-picker class="region-picker"
-                    list="{{region}}"
-                    wx:if="{{showRegionPicker}}"
-                    bind:onSelectFinish="handleSelectRegionFinish"
-                    bind:onHide="handleHidePicker">
-  </v-region-picker>
 </view>

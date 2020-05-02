@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/community/index",
+    "pages/addresslist/index",
+    "pages/addaddress/index",
     "pages/shopcart/index",
     "pages/classic/classic",
     "pages/tests/index",
     "pages/productlist/index",
     "pages/home/index",
-    "pages/addresslist/index",
-    "pages/addaddress/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",
@@ -38,7 +39,7 @@
         "text": "限时购"
       },
       {
-        "pagePath": "pages/shopcart/index",
+        "pagePath": "pages/addresslist/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"

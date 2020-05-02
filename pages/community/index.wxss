@@ -1,0 +1,22 @@
+/* pages/community/index.wxss */
+.container {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.item {
+  width: 100%;
+  height: 90rpx;
+  padding-left: 30rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-bottom:0.5rpx solid #f4f4f4
+}
+
+.selected-item {
+  color: red;
+}

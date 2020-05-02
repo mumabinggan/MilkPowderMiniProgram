@@ -39,6 +39,10 @@ Component({
       this.setData({
         firstName: this.properties.item.name.charAt(0)
       })
+    },
+
+    handleDelete: function() {
+      this.triggerEvent('onDelete', this.dataset.id)
     }
   }
 })

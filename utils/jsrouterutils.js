@@ -11,6 +11,7 @@ const JHRouter = {
   mine: "pages/mine/index",
   classic: "pages/classic/classic",
   shopcart: "pages/shopcart/index",
+  addCommunity: "/pages/community/index"
 }
 
 class JHRouterUtils {
@@ -24,6 +25,10 @@ class JHRouterUtils {
 
   static editAddress(addressId) {
     return JHRouter.addAddress + "?isAdd=" + 0 + "&addressId=" + addressId
+  }
+
+  static addCommunity(id) {
+    return JHRouter.addCommunity + "?id=" + id
   }
 }
 

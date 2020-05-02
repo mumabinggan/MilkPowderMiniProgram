@@ -11,6 +11,10 @@ import {
   Address
 } from '../../models/address.js'
 
+import {
+  JHRouterUtils
+} from '../../utils/jsrouterutils.js'
+
 import { AddressViewModel } from '../../viewmodels/addressviewmodel.js'
 
 let addressVM = new AddressViewModel()
@@ -26,21 +30,10 @@ Page({
     item: null,
     name: "",
     phone: "",
+    communityName: "",
+    communityId: 0,
     address: "",
-    provinceName: "",
-    provinceId: "",
-    cityName: "",
-    cityId: "",
-    countyName: "",
-    countyId: "",
-    townName: "",
-    townId: "",
-    isDefault: false,
-    regionStr: "",
-    region: [Province.shanXi(),
-      Province.hebei(),
-      Province.henan()],
-    showRegionPicker: false,
+    isDefault: false
   },
 
   /**
@@ -51,6 +44,7 @@ Page({
       isAdd: (options.isAdd == "1")?true:false,
       addressId: options.addressId
     })
+    
     let data = this.data;
     let title = data.isAdd ? "增加地址" : "修改地址"
     wx.setNavigationBarTitle({
@@ -59,51 +53,39 @@ Page({
 
     if (!data.isAdd && data.addressId != null) {
       let that = this
-      addressVM.fetchAddress(UserUtils.user.id, data.addressId, {
+      console.log("===========asdfasdfa")
+    console.log(data.addressId)
+      addressVM.fetchAddress(UserUtils.user.userId, data.addressId, {
         success: (res) => {
           console.log(res.data)
-          let item = res.data
-          this.setData({
-            name: item.name,
-            phone: item.phone,
-            provinceId: item.provinceId,
-            provinceName: item.provinceName,
-            provinceId: item.provinceId,
-            cityName: item.cityName,
-            cityId: item.cityId,
-            countyName: item.countyName,
-            countyId: item.countyId,
-            townName: item.townName,
-            townId: item.townId,
-            address: item.address,
-            isDefault: item.isDefault,
-            item: item
-          })
-
-          let regionStr = this.getRegionStr()
-          this.setData({
-            regionStr: regionStr
-          })
+          if (res.code == 0) {
+            let item = res.data
+            this.setData({
+              name: item.name,
+              phone: item.phone,
+              communityId: item.communityId,
+              communityName: item.communityName,
+              address: item.address,
+              isDefault: item.isDefault,
+              item: item
+            })
+          } else {
+            wx.showToast({
+              title: "请求失败, 请稍后重试",
+              duration: 2000,
+              icon: "none",
+              complete: function() {
+                wx.navigateBack()
+              }
+            })
+          }
+          
         },
         fail: (err) => {
           console.log(err)
         }
       })
     }
-
-    addressVM.fetchAreas({
-      success: (res) => {
-        let data = res.data
-        if (data.code == 0) {
-          this.setData({
-            region: res.data.data,
-          })
-        }
-      },
-      fail: (err) => {
-        console.log(err)
-      }
-    })
   },
 
   /**
@@ -180,37 +162,49 @@ Page({
     })
   },
 
+  handleSelectCommunity: function(e) {
+    console.log("=====")
+    wx.navigateTo({
+      url: JHRouterUtils.addCommunity(this.data.communityId)
+    })
+  },
+
   onSave: function() {
     //保存地址
     let item = this.data.item
     if (item == null) {
       item = new Address()
     }
-    let userId = UserUtils.user.id
+    let userId = UserUtils.user.userId
+    console.log(UserUtils.user)
+    console.log("===================")
     let data = this.data
     item.userId = userId
     item.name = data.name
     item.phone = data.phone
-    item.provinceId = data.provinceId
-    item.provinceName = data.provinceName
-    item.cityName = data.cityName
-    item.cityId = data.cityId
-    item.countyId = data.countyId
-    item.countyName = data.countyName
-    item.townName = data.townName
-    item.townId = data.townId
+    item.communityId = data.communityId
+    item.communityName = data.communityName
     item.address = data.address
     item.isDefault = data.isDefault
     addressVM.saveAddress(userId, item, {
       success: (res) => {
+        console.log(res)
+        console.log("=======日你妈B微信======")
         //TODO toast提示并且返回上一层
-        wx.showToast({
-          title: "地址保存成功",
-          duration: 2000,
-          complete: function() {
-            wx.navigateBack()
-          }
-        })
+        if (res.code == 0) {
+          wx.showToast({
+            title: "地址保存成功",
+            duration: 2000,
+            complete: function() {
+              wx.navigateBack()
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            duration: 2000
+          })
+        }
       },
       fail: (err) => {
         console.log(err)
@@ -219,44 +213,6 @@ Page({
           duration: 2000
         })
       }
-    })
-  },
-
-  handleSelectRegionFinish:function(e) {
-    const region = e.detail["region"]
-    this.setData({
-      showRegionPicker: false,
-      provinceName: region[0].name,
-      provinceId: region[0].id,
-      cityName: region[1].name,
-      cityId: region[1].id,
-      countyName: region[2].name,
-      countyId: region[2].id,
-      townName: region[3].name,
-      townId: region[3].id,
-    })
-    let data = this.data
-    let regionStr = this.getRegionStr()
-    this.setData({
-      regionStr: regionStr
-    })
-    console.log(this.data.name)
-  },
-
-  getRegionStr:function(e) {
-    let data = this.data
-    return data.provinceName + " " + data.cityName + " " + data.countyName + " " + data.townName
-  },
-
-  onSelectRegion:function(e) {
-    this.setData({
-      showRegionPicker: true
-    })
-  },
-
-  handleHidePicker:function(e) {
-    this.setData({
-      showRegionPicker: false
     })
   }
 })

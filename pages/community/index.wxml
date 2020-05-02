@@ -1,0 +1,12 @@
+<!--pages/community/index.wxml-->
+<view class="container">
+  <view class="item {{selectedId == item.id ? 'selected-item' : ''}}"
+        wx:for="{{items}}" 
+        wx:key="{{item.id}}" 
+        item="{{item}}"
+        id="{{item}}"
+        data-id="{{index}}"
+        bind:tap="onTap">
+        {{item.name}}
+  </view>
+</view>
