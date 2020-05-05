@@ -4,21 +4,21 @@
   <view class="price-container">
     <view class="total-price price-item">
       <text class="title">商品金额</text>
-      <text class="value">¥{{price.totalPrice}}</text>
+      <text class="value">¥{{price.currentGoodPrice}}</text>
     </view>
     <view class="ship-price price-item">
       <text class="title">运费</text>
-      <text class="value">¥{{price.shipPrice}}</text>
+      <text class="value">¥{{price.postagePrice}}</text>
     </view>
     <view class="balance-price price-item">
       <text class="title">促销立减</text>
-      <text class="value">¥{{price.balancePrice}}</text>
+      <text class="value">¥{{price.reducePrice}}</text>
     </view>
     <view class="coupons-price price-item">
       <text class="title">优惠券</text>
-      <text class="value">¥{{price.couponsPrice}}</text>
+      <text class="value">¥0</text>
     </view>
   </view>
   <view class="sep-line"></view>
-  <text class="current-total-price">实付金额：<text class="value">¥{{price.currentTotalPrice}}</text></text>
+  <text class="current-total-price">实付金额：<text class="value">¥{{price.currentGoodPrice + price.postagePrice}}</text></text>
 </view>

@@ -62,7 +62,7 @@ class ShopCartViewModel {
 
   addGoodToShopCart(item, callback) {
     http.request({
-      url: apiConfig.add_good_to_cart,
+      url: apiConfig.cart_add_good,
       method: 'POST',
       data: {
         spuId: item.id,

@@ -6,7 +6,7 @@ Component({
   properties: {
     totalCount: {
       type: Number,
-      value: 2
+      value: 0
     },
     price: null
   },

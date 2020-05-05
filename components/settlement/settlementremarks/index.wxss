@@ -3,7 +3,7 @@
   width: 100%;
   height: 80rpx;
   background-color: white;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   margin-top: 20rpx;
   box-sizing: border-box;
   display: flex;
@@ -20,7 +20,7 @@
 .value {
   width: 78%;
   height: 100%;
-  font-size: 30rpx;
+  font-size: 28rpx;
   font-weight: normal;
   line-height: 80rpx;
 }

@@ -39,16 +39,16 @@
         "text": "限时购"
       },
       {
-        "pagePath": "pages/addresslist/index",
-        "selectedIconPath": "/images/tab/tab_cart_selected.png",
-        "iconPath": "/images/tab/tab_cart.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/classic/classic",
+        "pagePath": "pages/settlement/index",
         "selectedIconPath": "/images/tab/tab_classic_selected.png",
         "iconPath": "/images/tab/tab_classic.png",
         "text": "分类"
+      },
+      {
+        "pagePath": "pages/shopcart/index",
+        "selectedIconPath": "/images/tab/tab_cart_selected.png",
+        "iconPath": "/images/tab/tab_cart.png",
+        "text": "购物车"
       },
       {
         "pagePath": "pages/mine/index",

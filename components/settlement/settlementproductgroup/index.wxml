@@ -5,7 +5,6 @@
                     wx:key="{{item.id}}"
                     class="item"
                     item="{{item}}"
-                    catch:tap="onAddressItem"
                     data-id="{{item.id}}">
   </v-product-item>
 </view>

@@ -21,6 +21,8 @@ const apiConfig = {
   address_delete: "user/shipping/deleteItemByUpdateItem.do",
   fetch_deliverycommunity: "user/deliverycommunity/fetchAllItems.do",
   fetch_area: "area/fetchAreas.do?",
+  order_preview: "user/order/fetchPreOrder.do",
+  order_confirm: "user/order/confirmOrder.do",
   order_list: "",
   order_delete: "",
   order_commit: "",

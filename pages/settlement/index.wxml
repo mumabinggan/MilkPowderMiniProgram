@@ -33,7 +33,7 @@
   </scroll-view>
   <v-toolbar class="toolbar"
               price="{{price}}"
-              onBuy="{{handleBuy}}"
-              totalCount="{{totalCount}}">
+              totalCount="{{totalCount}}"
+              catch:onBuy="handleBuy">
   </v-toolbar>
 </view>

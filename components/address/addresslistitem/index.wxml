@@ -6,7 +6,7 @@
       <text class="name">{{item.name}}</text>
       <text class="phone">{{item.phone}}</text>
       <text class="address"><text class="default" wx:if="{{item.isDefault==true}}">默认</text>{{item.detailAddress}}
-      </text>  
+      </text>
     </view>
     <text class="edit">编辑</text>
   </view>

@@ -13,17 +13,28 @@ import {
 let http = new HTTP()
 
 class SettlementViewModel {
-  fetchSettlement(userId, productIds, callback) {
-    let res = SettlementResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  previewOrder(callback) {
     http.request({
-      url: apiConfig.product_detail,
+      url: apiConfig.order_preview,
+      method: 'POST',
+      success: (res) => {
+        callback.success(res)
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
+
+  confirmOrder(data, callback) {
+    http.request({
+      url: apiConfig.order_confirm,
       method: 'POST',
       data: {
-        userId: userId,
-        products: productIds
+        userId: data.userId,
+        shippingId: data.shippingId,
+        receiveTime: data.receiveTime,
+        remarks: data.remarks
       },
       success: (res) => {
         callback.success(res)

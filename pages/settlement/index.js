@@ -34,31 +34,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let address = Address.test()
-    this.setData({
-      address: address
-    })
-    let productIds = null
-    settlementVM.fetchSettlement(UserUtils.user.id, productIds, {
+    settlementVM.previewOrder({
       success: (res) => {
-        this.setData({
-          address: res.data.address,
-          products: res.data.products,
-          remarks: res.data.remarks,
-          price: res.data.price
-        })
+        console.log(res)
+        console.log("==============")
+        if (res.code == 0 && res.data != null) {
+          this.setData({
+            address: res.data.shipping,
+            products: res.data.goods,
+            price: res.data.price
+          })
+          let totalCount = 0
+          for (let item of this.data.products) {
+            totalCount += item.quantity
+          }
+          this.setData({
+            totalCount: totalCount
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            duration: 2000,
+            icon: "none"
+          })
+        }
       },
       fail: (err) => {
         console.log(err)
+        wx.showToast({
+          title: "网络错误, 请稍后再试",
+          duration: 2000,
+          icon: "none"
+        })
       }
-    })
-
-    let totalCount = 0
-    for (let item of this.data.products) {
-      totalCount += item.buyCount
-    }
-    this.setData({
-      totalCount: totalCount
     })
   },
 
@@ -130,6 +138,50 @@ Page({
   },
 
   handleBuy:function(e) {
+    console.log("=========")
+    //todo:容错处理
     //TODO 点击支付
+    let data = new Object();
+    data.userId = UserUtils.user.userId
+    data.shippingId = this.data.address.id
+    data.receiveTime = 0
+    data.remarks = this.data.remarks
+    settlementVM.confirmOrder(data, {
+      success: (res) => {
+        if (res.code == 0 && res.data != null) {
+          this.setData({
+            address: res.data.shipping,
+            products: res.data.goods,
+            price: res.data.price
+          })
+          let totalCount = 0
+          for (let item of this.data.products) {
+            totalCount += item.quantity
+          }
+          this.setData({
+            totalCount: totalCount
+          })
+          wx.showToast({
+            title: res.msg,
+            duration: 2000,
+            icon: "none"
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            duration: 2000,
+            icon: "none"
+          })
+        }
+      },
+      fail: (err) => {
+        console.log(err)
+        wx.showToast({
+          title: "网络错误, 请稍后再试",
+          duration: 2000,
+          icon: "none"
+        })
+      }
+    })
   }
 })
