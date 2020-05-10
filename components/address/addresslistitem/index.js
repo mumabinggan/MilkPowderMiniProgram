@@ -19,6 +19,10 @@ Component({
     isMore: {
       type: Boolean,
       value: false
+    },
+    showDefaultTips: {
+      type: Boolean,
+      value: true
     }
   },
 

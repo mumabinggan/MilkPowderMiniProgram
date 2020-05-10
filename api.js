@@ -23,10 +23,10 @@ const apiConfig = {
   fetch_area: "area/fetchAreas.do?",
   order_preview: "user/order/fetchPreOrder.do",
   order_confirm: "user/order/confirmOrder.do",
-  order_list: "",
+  order_list: "user/order/fetchItems.do",
   order_delete: "",
   order_commit: "",
-  order_detail: "",
+  order_detail: "user/order/fetchItemByOrderNo.do",
   login: "user/wxLogin.do?", 
   updateUserInfo: "user/wxUpdateUserInfo.do?"
 }

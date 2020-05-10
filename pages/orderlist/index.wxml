@@ -1,21 +1,31 @@
 <!--pages/orderlist/index.wxml-->
 <view class="container">
-  <v-order-tabsview class="tabsview">
+  <v-order-tabsview class="tabsview"
+                    catch:onItem="handleChangeIndex">
   </v-order-tabsview>
+
   <scroll-view class="scroll-view"
-                scroll-y>
-    <v-product-info-view class="item"
+                scroll-y
+                lower-threshold="160"
+                bindscrolltolower="onFooterRefresh">
+    <v-product-info-view  class="item"
                           wx:for="{{orderList}}" 
                           wx:key="{{item.id}}" 
                           item="{{item}}"
                           data-id="{{item.id}}"
+                          data-item="{{item}}"
                           catch:tap="handleToOrderDetail"
                           catch:onUrge="handleUrgeOrder"
                           catch:onDelete="handleDeleteOrder"
-                          catch:onPay="handlePayOrder"
-                          catch:onReBuy="handleReBuyOrder"
-                          catch:onComment="handleCommentOrder"
-                          catch:onConfirm="handleConfirmOrder">
+                          catch:onCancel="handleCancelOrder"
+                          catch:onPay="handlePayOrder">
     </v-product-info-view>
+    <view class="footer" wx:if="{{enableLoadingMore && orderList.length > 0}}">
+      <view class="finished-view">
+        <!-- <view class="line"></view> -->
+        <text class="text">"正在加载更多订单"</text>
+        <!-- <view class="line"></view> -->
+      </view>
+    </view>
   </scroll-view>
 </view>

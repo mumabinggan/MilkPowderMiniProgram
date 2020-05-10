@@ -15,7 +15,7 @@ Component({
    */
   data: {
     currentIndex: 0,
-    titles: ["全部", "待付款", "待收货", "待评论"]
+    titles: ["全部", "待付款", "待收货", "已完成"]
   },
 
   /**

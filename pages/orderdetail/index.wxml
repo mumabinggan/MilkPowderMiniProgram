@@ -7,13 +7,15 @@
     </v-order-delivery-view>
 
     <v-order-address-view class="address-container"
-                          item="{{order.address}}">
+                          item="{{order.shipping}}"
+                          isMore="{{false}}"
+                          showDefaultTips="{{false}}">
     </v-order-address-view>
     
     <v-sepline></v-sepline>
     
     <v-products-group class="products-container"
-                      products="{{order.products}}">
+                      products="{{order.goods}}">
     </v-products-group>
 
     <v-sepline></v-sepline>
@@ -35,9 +37,7 @@
                     catch:onUrge="handleUrgeOrder"
                     catch:onDelete="handleDeleteOrder"
                     catch:onPay="handlePayOrder"
-                    catch:onReBuy="handleReBuyOrder"
-                    catch:onComment="handleCommentOrder"
-                    catch:onConfirm="handleConfirmOrder">
+                    catch:onCancel="handleCancelOrder">
   </v-order-toolbar>
   
 </view>

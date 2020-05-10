@@ -139,14 +139,23 @@ Page({
 
   handleBuy:function(e) {
     console.log("=========")
+    let data = this.data
+    if (data.address == null) {
+      wx.showToast({
+        title: "没有选择收货地址",
+        duration: 2000,
+        icon: "none"
+      })
+      return
+    }
     //todo:容错处理
     //TODO 点击支付
-    let data = new Object();
-    data.userId = UserUtils.user.userId
-    data.shippingId = this.data.address.id
-    data.receiveTime = 0
-    data.remarks = this.data.remarks
-    settlementVM.confirmOrder(data, {
+    let requestData = new Object();
+    requestData.userId = UserUtils.user.userId
+    requestData.shippingId = data.address.id
+    requestData.receiveTime = 0
+    requestData.remarks = data.remarks
+    settlementVM.confirmOrder(requestData, {
       success: (res) => {
         if (res.code == 0 && res.data != null) {
           this.setData({

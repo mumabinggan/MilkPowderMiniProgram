@@ -5,16 +5,13 @@
   <text class="urge base-btn"
         wx:if="{{showUrge}}"
         catch:tap="onUrge">我要催单</text>
+  <text class="delete base-btn"
+        wx:if="{{showDelete}}"
+        catch:tap="onDelete">删除订单</text>
+  <text class="cancel base-btn"
+        wx:if="{{showCancel}}"
+        catch:tap="onCancel">取消订单</text>
   <text class="pay base-btn"
-        wx:if="{{showWaitPay}}"
-        catch:tap="onPay">待支付</text>
-  <text class="comment base-btn"
-        wx:if="{{showWaitComment}}"
-        catch:tap="onComment">待评论</text>
-  <text class="confirm base-btn"
-        wx:if="{{showWaitConfirm}}"
-        catch:tap="onConfirm">待确认</text>
-  <text class="reBuy base-btn"
-        wx:if="{{showReBuy}}"
-        catch:tap="onReBuy">再次购买</text>
+        wx:if="{{showPay}}"
+        catch:tap="onPay">支付</text>
 </view>

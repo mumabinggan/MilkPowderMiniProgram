@@ -1,16 +1,16 @@
 const JHRouter = {
   addressList: "/pages/addresslist/index",
   addAddress: "/pages/addaddress/index",
-  index: "pages/index/index",
-  home: "pages/home/index",
-  productList: "pages/productlist/index",
-  orderDetail: "pages/orderdetail/index",
-  orderList: "pages/orderlist/index",
-  settlement: "pages/settlement/index",
-  productDetail: "pages/productdetail/index",
-  mine: "pages/mine/index",
-  classic: "pages/classic/classic",
-  shopcart: "pages/shopcart/index",
+  index: "/pages/index/index",
+  home: "/pages/home/index",
+  productList: "/pages/productlist/index",
+  orderDetail: "/pages/orderdetail/index",
+  orderList: "/pages/orderlist/index",
+  settlement: "/pages/settlement/index",
+  productDetail: "/pages/productdetail/index",
+  mine: "/pages/mine/index",
+  classic: "/pages/classic/classic",
+  shopcart: "/pages/shopcart/index",
   addCommunity: "/pages/community/index"
 }
 
@@ -29,6 +29,14 @@ class JHRouterUtils {
 
   static addCommunity(id) {
     return JHRouter.addCommunity + "?id=" + id
+  }
+
+  static orderDetail(id) {
+    return JHRouter.orderDetail + "?id=" + id
+  }
+
+  static orderList() {
+    return JHRouter.orderList + "?"
   }
 }
 

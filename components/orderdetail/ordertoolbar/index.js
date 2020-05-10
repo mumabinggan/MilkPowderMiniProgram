@@ -46,20 +46,9 @@ Component({
       this.triggerEvent('onPay', { item })
     },
 
-    onComment: function (e) {
+    onCancel: function (e) {
       let item = this.properties.item
-      this.triggerEvent('onComment', { item })
-    },
-
-    onConfirm: function (e) {
-      let item = this.properties.item
-      this.triggerEvent('onConfirm', { item })
-    },
-
-    onReBuy: function (e) {
-      console.log("as")
-      let item = this.properties.item
-      this.triggerEvent('onReBuy', { item })
+      this.triggerEvent('onCancel', { item })
     }
   }
 })

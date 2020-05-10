@@ -1,46 +1,27 @@
 <!--components/orderlist/orderlistitem/index.wxml-->
 <view class="container">
   <view class="header">
-    <view class="store-view">
-      <image class="store-icon" 
-            mode='aspectFit'
-            src="{{storeIcon}}"
-            lazy-load="true">
-      </image>
-      <text class="store-name">{{item.storeName}}</text>
-    </view>
-    <view class="order-state-view">
-      <text class="order-state">{{item.stateStr}}</text>
-      <view class="order-sep-line">|</view>
-      <image class="delete-icon" 
-              mode='aspectFit'
-              src="{{deleteOrderIcon}}"
-              lazy-load="true"
-              catch:tap="onDelete">
-      </image>
-    </view>
+    <text class="title header-item">商品列表</text>
+    <text class="order-status header-item">{{orderStatus}}</text>
+    <text class="order-no header-item">订单号:{{item.orderNo}}</text>
+    <text class="order-time header-item">{{orderTime}}</text>
   </view>
 
   <view class="middle">
     <scroll-view class="products"
-                  scroll-x
-                  wx:if="{{item.products.length>1}}">
+                  scroll-x>
       <view class="product-item"
-            wx:for="{{item.products}}"
+            wx:for="{{item.goods}}"
             wx:key="{{index}}">
-        <image class="product-item-img" 
-                mode='aspectFit'
-                src="{{item.url}}"
-                lazy-load="true">
+        <image  class="product-item-img" 
+              mode='aspectFit'
+              src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584294871521&di=0c49eb0cea738eb0113930129ae6a0b9&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1073959151%2C665782074%26fm%3D214%26gp%3D0.jpg"
+              lazy-load="true">
         </image>
-        <text class="product-item-count">x{{item.buyCount}}</text>
+        <text class="product-item-count">x{{item.quantity}}</text>
       </view>  
     </scroll-view>
-    <view class="product"
-          wx:if="{{item.products.length==1}}">
-
-    </view>
-    <text class="total-count">共{{order.buyCount}}件商品 <text class="price-title">实付金额：</text><text class="price">￥{{item.currentTotalPrice}}</text></text>
+    <text class="total-count">共<text class="total-count-value">{{item.quantity}}</text>件<text class="price-title">合计:</text><text class="price"><text class="price-unit">￥</text>{{item.price.currentGoodPrice + item.price.postagePrice}}</text></text>
   </view>
   <view class="footer">
     <v-order-action-list class="order-action-list"
@@ -48,10 +29,7 @@
                           showOrderRemainTime="{{true}}"
                           catch:onUrge="onUrge"
                           catch:onDelete="onDelete"
-                          catch:onPay="onPay"
-                          catch:onComment="onComment"
-                          catch:onConfirm="onConfirm"
-                          catch:onReBuy="onReBuy">
+                          catch:onPay="onPay">
     </v-order-action-list>
   </view>
 </view>

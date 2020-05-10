@@ -205,7 +205,7 @@ Page({
         let spus = (data.pageNum == 1) ? [] : data.spus;
         const newSpus = res.data.list
         spus = spus.concat(newSpus)
-        const hasMore = (newSpus != null && newSpus.length >= data.pageSize)
+        const hasMore = !res.data.isLastPage
         this.setData({
           spus: spus,
           pageNum: pageNum+1,

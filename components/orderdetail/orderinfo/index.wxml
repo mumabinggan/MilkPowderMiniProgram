@@ -2,7 +2,7 @@
 <view class="container">
   <text class="container-title">订单信息</text>
   <view class="order-container">
-    <text class="title">订单编号：<text class="value">{{order.orderId}}</text></text>
+    <text class="title">订单编号：<text class="value">{{order.orderNo}}</text></text>
     <text class="title">下单时间：<text class="value">{{order.orderTimeStr}}</text></text>
     <text class="title">支付方式：<text class="value">{{order.pay.name}}</text></text>
     <text class="title">配送方式：<text class="value">{{order.delivery.name}}  {{ order.delivery.number}}</text></text>

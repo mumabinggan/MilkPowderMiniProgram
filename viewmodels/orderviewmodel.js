@@ -16,39 +16,35 @@ import {
 
 let http = new HTTP()
 
-class OrderViewModel {
-  fetchOrderList(userId, type, callback) {
-    let res = OrderListResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
-    http.request({
+class OrderViewModel {  
+
+  fetchOrderList(orderType, pageNum, pageSize, callback) {
+    let requestTask = http.request({
       url: apiConfig.order_list,
       method: 'POST',
       data: {
-        userId: userId,
-        type: type
+        orderType: orderType,
+        pageNum: pageNum,
+        pageSize: 10
       },
       success: (res) => {
+        console.log("===========test=======order")
+        console.log(res.data)
         callback.success(res)
       },
       fail: (err) => {
         callback.fail(err)
       }
     })
+    return requestTask
   }
 
-  fetchOrderDetail(userId, orderId, callback) {
-    let res = OrderDetailResponse.test()
-    console.log(res)
-    callback.success(res)
-    return
+  fetchOrderDetail(orderNo, callback) {
     http.request({
-      url: apiConfig.order_list,
+      url: apiConfig.order_detail,
       method: 'POST',
       data: {
-        userId: userId,
-        orderId: orderId
+        orderNo: orderNo
       },
       success: (res) => {
         callback.success(res)

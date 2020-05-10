@@ -39,13 +39,13 @@
         "text": "限时购"
       },
       {
-        "pagePath": "pages/settlement/index",
+        "pagePath": "pages/orderlist/index",
         "selectedIconPath": "/images/tab/tab_classic_selected.png",
         "iconPath": "/images/tab/tab_classic.png",
         "text": "分类"
       },
       {
-        "pagePath": "pages/shopcart/index",
+        "pagePath": "pages/settlement/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"

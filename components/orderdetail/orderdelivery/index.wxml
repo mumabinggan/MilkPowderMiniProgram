@@ -5,8 +5,9 @@
           mode="aspectFit">
   </image>
   <view class="des-info">
-    <text class="title">{{order.stateStr}}</text>
-    <text class="detail">{{order.stateDetailStr}}</text>
+    <text class="title">{{statusStr}}</text>
+    <text class="description">{{order.description}}</text>
   </view>
-  <text class="title2">XASDFASDFASDF</text>
+  <text class="reminderTimeTips"
+   wx:if="{{reminderTimeStr != null && reminderTimeStr != ''}}">{{reminderTimeStr}}</text>
 </view>

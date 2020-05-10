@@ -10,7 +10,10 @@
 }
 
 .scroll-view {
-  padding-bottom: 100rpx;
+  position: fixed;
+  top: 0rpx;
+  bottom: 100rpx;
+  /* padding-bottom: 100rpx; */
   box-sizing: border-box;
   background-color: #F2F2F2
 }
@@ -22,6 +25,4 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: red;
-  border-top: 1rpx solid #F3F4F7
 }

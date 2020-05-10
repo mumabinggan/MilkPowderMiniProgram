@@ -19,16 +19,10 @@
   margin-left: 20rpx;
 }
 
-.reBuy,.pay{
-  border-color: #E04429;
-  background-color: #E04429;
+.pay {
+  border-color: #3D8946;
+  background-color: #3D8946;
   color: white
-}
-
-.confirm {
-  border-color: #E04429;
-  background-color: white;
-  color: #E04429
 }
 
 .wait-pay-title {

@@ -20,14 +20,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let orderId = 0
-    orderVM.fetchOrderDetail(UserUtils.user.id, orderId, {
+    let orderNo = options.id
+    console.log(orderNo)
+    console.log("=====begin=====")
+    orderVM.fetchOrderDetail(orderNo, {
       success: (res) => {
+        console.log("=====back=====")
+        console.log(res)
         this.setData({
           order: res.data
         })
       },
       fail: (err) => {
+        console.log("=====back=====")
         console.log(err)
       }
     })
@@ -98,15 +103,7 @@ Page({
     console.log(e.detail)
   },
 
-  handleReBuyOrder: function (e) {
-    console.log(e.detail)
-  },
-
-  handleCommentOrder: function (e) {
-    console.log(e.detail)
-  },
-
-  handleConfirmOrder: function (e) {
+  handleCancelOrder: function (e) {
     console.log(e.detail)
   }
 })

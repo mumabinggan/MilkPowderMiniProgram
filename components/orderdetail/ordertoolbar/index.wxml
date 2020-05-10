@@ -6,8 +6,6 @@
                         catch:onUrge="onUrge"
                         catch:onDelete="onDelete"
                         catch:onPay="onPay"
-                        catch:onComment="onComment"
-                        catch:onConfirm="onConfirm"
-                        catch:onReBuy="onReBuy">
+                        catch:onCancel="onCancel">
   </v-order-action-list>
 </view>

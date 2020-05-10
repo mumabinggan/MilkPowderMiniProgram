@@ -26,8 +26,9 @@ export class HTTP {
         }
       },
       fail: (err) => {
-        if (params.error) {
-          params.error(err);
+        console.log(err)
+        if (params.fail) {
+          params.fail(err);
         }
       }
     })
@@ -40,5 +41,9 @@ export class HTTP {
       icon: 'none',
       duration: 3000
     })
+  }
+
+  static isAbort(msg) {
+    return msg == "request:fail abort"
   }
 }

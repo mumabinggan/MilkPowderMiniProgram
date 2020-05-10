@@ -44,10 +44,9 @@ Component({
     handleOrderChange: function (order) {
       this.setData({
         showUrge: OrderUtils.showUrge(order),
-        showReBuy: OrderUtils.showReBuy(order),
-        showWaitPay: OrderUtils.showWaitPay(order),
-        showWaitComment: OrderUtils.showWaitComment(order),
-        showWaitConfirm: OrderUtils.showWaitConfirm(order)
+        showPay: OrderUtils.showBuy(order),
+        showDelete: OrderUtils.showDelete(order),
+        showCancel: OrderUtils.showCancel(order)
       })
     },
 
@@ -61,25 +60,14 @@ Component({
       this.triggerEvent('onDelete', { item })
     },
 
+    onCancel: function(e) {
+      let item = this.properties.item
+      this.triggerEvent('onCancel', { item })
+    },
+
     onPay: function (e) {
       let item = this.properties.item
       this.triggerEvent('onPay', { item })
-    },
-
-    onComment: function (e) {
-      let item = this.properties.item
-      this.triggerEvent('onComment', { item })
-    },
-
-    onConfirm: function (e) {
-      let item = this.properties.item
-      this.triggerEvent('onConfirm', { item })
-    },
-
-    onReBuy: function (e) {
-      console.log("adsfasdfs")
-      let item = this.properties.item
-      this.triggerEvent('onReBuy', { item })
     }
   }
 })

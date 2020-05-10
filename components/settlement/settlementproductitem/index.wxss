@@ -70,7 +70,7 @@
   font-size: 32rpx;
   font-weight: bold;
   display: block;
-  color: #EC5C2A;
+  color: #3D8946;
 }
 
 .buy-count {
