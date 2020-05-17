@@ -33,11 +33,13 @@ App({
     let that = this
     wx.checkSession({
       success: function (res) {
+        console.log(res)
         UserUtils.fetchUser()
         console.log("check success")
         // 获取用户信息
         that.getUserInfo({
           success: function (res) {
+            console.log(res)
             that.wxUpdateUserInfo(res)
             that.fetchShopCartCount()
           }
@@ -45,28 +47,33 @@ App({
       },
 　　　 fail: function (res) {
         console.log("check fail")
-      　　that.wxLogin({
-            success: function (res) {
-              let data = res.data
-              if (res.code == 0 && !JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
-                UserUtils.setUser(res.data)
-              } else {
-                wx.showToast("登录错误, 请重试")
-              }
-              console.log(res)
-              console.log("wxLogin success")
-              // 获取用户信息
-              that.getUserInfo({
-                success: function(res) {
-                  that.wxUpdateUserInfo(res)
-                  that.fetchShopCartCount()
-                }
-              })
-            }
-         })
+        that.retryLogin()
 　　　 }
     })
     // 登录
+  },
+
+  retryLogin: function() {
+    let that = this
+    this.wxLogin({
+      success: function (res) {
+        let data = res.data
+        if (res.code == 0 && !JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
+          UserUtils.setUser(res.data)
+        } else {
+          wx.showToast("登录错误, 请重试")
+        }
+        console.log(res)
+        console.log("wxLogin success")
+        // 获取用户信息
+        that.getUserInfo({
+          success: function(res) {
+            that.wxUpdateUserInfo(res)
+            that.fetchShopCartCount()
+          }
+        })
+      }
+   })
   },
 
   wxLogin:function(param) {
@@ -164,6 +171,7 @@ App({
       return
     }
     console.log(UserUtils.user)
+    let that = this
     http.request({
       method: 'POST',
       url: apiConfig.updateUserInfo,
@@ -175,6 +183,11 @@ App({
       },
       success: function (res) {
         console.log(res)
+        if (res.code == 1000) {
+          UserUtils.setUser(null)
+          that.retryLogin()
+          return
+        }
         let data = res.data
         if (!JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
           UserUtils.setUser(data)
