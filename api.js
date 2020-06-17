@@ -13,7 +13,7 @@ const apiConfig = {
   cart_delete_product: "user/shopcart/deleteItemByDeleteItem.do",
   cart_fetch_products_count: "user/shopcart/fetchShopCartCount.do",
   product_list: "",
-  product_detail: "",
+  product_detail: "user/goods/fetchGoodsDetail.do",
   address_detail: "user/shipping/fetchItemByIdUserId.do",
   address_list: "user/shipping/fetchItemsByUserId.do",
   address_add: "user/shipping/addItemByItem.do",

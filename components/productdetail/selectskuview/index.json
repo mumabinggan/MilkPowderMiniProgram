@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-product-sku-select-spec-item-view": "/components/productdetail/selectskuspecitemview/index",
+    "v-add-products": "/components/classic/addproducts/index"
+  }
+}

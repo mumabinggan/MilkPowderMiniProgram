@@ -33,6 +33,12 @@
   z-index: 120
 }
 
+.content-container {
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
 .item {
   width: 100%;
 }

@@ -11,8 +11,8 @@
 }
 
 .line-view {
-  width: 60%;
-  height: 10rpx;
+  width: 80%;
+  height: 2rpx;
   background-color: #E8E8E8;
   top: 30rpx;
   position: relative;

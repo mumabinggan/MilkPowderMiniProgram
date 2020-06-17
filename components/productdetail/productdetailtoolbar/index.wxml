@@ -14,7 +14,7 @@
             src="{{product.isFavorite ? favoriteIcon : unFavoriteIcon}}"
             mode="aspectFit">
     </image>
-    <text class="title">收藏</text>
+    <text class="title">客服</text>
   </view>
   <text class="shop-cart-view"
         catch:tap="onAddToShopCart">加入购物车</text>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/productdetail/index",
     "pages/index/index",
     "pages/community/index",
     "pages/addresslist/index",
@@ -7,13 +8,12 @@
     "pages/shopcart/index",
     "pages/classic/classic",
     "pages/tests/index",
-    "pages/productlist/index",
     "pages/home/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",
-    "pages/productdetail/index",
     "pages/mine/index",
+    "pages/productlist/index",
     "components/classic/titlelist/index",
     "components/classic/productlist/index",
     "components/common/refreshscrollview/index"
@@ -33,7 +33,7 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/productdetail/index",
         "selectedIconPath": "/images/tab/tab_home_selected.png",
         "iconPath": "/images/tab/tab_home.png",
         "text": "限时购"

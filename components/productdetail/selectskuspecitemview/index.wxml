@@ -1,0 +1,15 @@
+<!--components/productdetail/selectskuspecitemview/index.wxml-->
+<view class="container">
+  <view class="title">
+    {{spec.name}}
+  </view>
+  <view class="content">
+    <view class="{{(item.id == specValueId)?'content-item-selected':''}} 'content-item'"
+          wx:for="{{spec.subList}}"
+          wx:key="{{index}}" 
+          data-id="{{item.id}}"
+          catch:tap="onSelected">
+        {{item.name}}
+    </view>
+  </view>
+</view>

@@ -27,7 +27,7 @@
 
 .home-image {
   width: 100%;
-  height: 50%;
+  height: 40%;
 }
 
 .favorite-view {
@@ -41,25 +41,28 @@
 
 .favorite-image {
   width: 100%;
-  height: 50%;
+  height: 40%;
 }
 
 .shop-cart-view {
-  width: 35%;
-  height: 100%;
-  font-size: 32rpx;
-  line-height: 100rpx;
+  margin-left: 40rpx;
+  width: 30%;
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
   text-align: center;
-  background-color: #F3C342;
-  color: white
+  background-color: #3D8946;
+  color: white;
+  border-radius: 35rpx 0 0 35rpx
 }
 
 .buy-view {
-  width: 35%;
-  height: 100%;
-  font-size: 32rpx;
-  line-height: 100rpx;
+  width: 28%;
+  height: 70rpx;
+  font-size: 28rpx;
+  line-height: 70rpx;
   text-align: center;
-  background-color: #EB5D29;
-  color: white
+  background-color: #3D7D46;
+  color: white;
+  border-radius: 0 35rpx 35rpx 0
 }

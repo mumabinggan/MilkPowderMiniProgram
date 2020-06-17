@@ -4,6 +4,10 @@
                         product="{{product}}"
                         bind:onShare="handleShare">
   </v-product-info-view>
+  <v-product-select-spec-view class="product-select-spec-view"
+                          content="{{selectedSpecContent}}"
+                          ontap="handleSelectSku">
+  </v-product-select-spec-view>
   <v-product-detail-view class="product-detail-view"
                           product="{{product}}">
   </v-product-detail-view>
@@ -21,4 +25,8 @@
                         onToShopCart="handleToShopCart"
                         onToTop="handleToTop">
   </v-product-quick-tool>
+  <v-product-pop-select-spec-view class="select-sku-pop-view"
+                product="{{product}}"
+                catchtouchmove="handleMove">
+  </v-product-pop-select-spec-view>
 </view>

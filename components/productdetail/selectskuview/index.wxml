@@ -1,0 +1,47 @@
+<!--components/productdetail/selectskuview/index.wxml-->
+<view class="container">
+  <view class="mask">
+  </view>
+  <view class="content-view">
+      <view class="header-view">
+        <image class="header-image"
+            src="{{skuUrl}}"
+            mode="aspectFill">
+        </image>
+        <text class="price"><text class="price-unit">¥</text>
+          <text class="current-price-int">{{200}}</text>
+          <text class="origin-price">¥{{100}}</text>
+        </text>
+        <image class="close-image"
+            src="{{closeIcon}}"
+            mode="aspectFit">
+        </image>
+      </view>
+      <scroll-view class="select-view"
+                    scroll-y="true">
+        <v-product-sku-select-spec-item-view class="spec-view"
+            wx:for="{{product.specList}}"
+            wx:key="{{index}}" 
+            data-id="{{index}}"
+            spec="{{item}}"
+            specValueId="{{specList[index].specValueId}}"
+            index="{{index}}"
+            catch:onSelected="onSelected">
+        </v-product-sku-select-spec-item-view>
+        <view class="buy-count">
+          <text class="buy-count-title">购买数量：</text>
+          <v-add-products class="buy-count-view"
+                        count="{{count}}"
+                        bind:onAdd="handleAddCount"
+                        bind:onSub="handleSubCount">
+          </v-add-products>
+        </view>
+      </scroll-view>
+      <view class="footer-view">
+        <text class="shop-cart-view"
+        catch:tap="onAddToShopCart">加入购物车</text>
+        <text class="buy-view"
+        catch:tap="onBuy">立即购买</text>
+      </view>
+  </view>
+</view>

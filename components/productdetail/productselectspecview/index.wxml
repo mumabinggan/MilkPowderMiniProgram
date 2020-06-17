@@ -1,0 +1,8 @@
+<!--components/productdetail/productselectspecview/index.wxml-->
+<view class="container">
+  <text class="title">选择</text>
+  <text class="content">{{content}}</text>
+  <image class="arr"
+            src="{{more}}"
+            mode="aspectFit"></image>
+</view>

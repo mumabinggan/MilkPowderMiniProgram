@@ -4,6 +4,8 @@
     "v-product-detail-view": "/components/productdetail/productdetailview/index",
     "v-product-price-des-view": "/components/productdetail/pricedetailpricedes/index",
     "v-product-detail-toolbar": "/components/productdetail/productdetailtoolbar/index",
-    "v-product-quick-tool": "/components/productlist/productlistquicktool/index"
+    "v-product-quick-tool": "/components/productlist/productlistquicktool/index",
+    "v-product-select-spec-view": "/components/productdetail/productselectspecview/index",
+    "v-product-pop-select-spec-view": "/components/productdetail/selectskuview/index"
   }
 }

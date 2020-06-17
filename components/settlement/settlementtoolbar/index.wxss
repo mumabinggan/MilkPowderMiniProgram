@@ -14,17 +14,17 @@
   line-height: 100rpx;
   font-size: 44rpx;
   font-weight: bold;
-  color: #EC5C2A
+  color: #3D8946
 }
 
 .price-unit {
   font-size: 30rpx;
-  color: #EC5C2A
+  /* color: #EC5C2A */
 }
 
 .current-price-dots {
   font-size: 26rpx;
-  color: #EC5C2A
+  /* color: #EC5C2A */
 }
 
 .origin-price {

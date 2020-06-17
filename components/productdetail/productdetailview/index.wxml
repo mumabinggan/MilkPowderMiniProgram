@@ -5,10 +5,10 @@
   </v-product-detail-item-title>
   <view class="content-container">
     <image class="item"
-            wx:for="{{product.detailPictures}}"
+            wx:for="{{product.bannerImageList}}"
             wx:key="{{index}}" 
             data-id="{{index}}"
-            src="{{item}}"
+            src="{{item.absoluteImageUrl}}"
             mode="aspectFit">
     </image>
   </view>

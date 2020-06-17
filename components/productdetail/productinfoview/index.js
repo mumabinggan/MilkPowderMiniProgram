@@ -1,10 +1,18 @@
 // components/productdetail/productinfo/index.js
+import { JHArrayUtils } from '../../../utils/arrayutils.js'
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    product: null
+    product: {
+      type: Object,
+      value: null,
+      observer: function (newValue, oldValue, changePath) {
+        this.handleProductChange(newValue)
+      }
+    },
   },
 
   /**
@@ -12,6 +20,9 @@ Component({
    */
   data: {
     shareIcon: 'images/detail_share.png',
+    priceTitle: '',
+    indicatorColor: '#E6E6E6',
+    indicatorActiveColor: '#3D8946'
   },
 
   /**
@@ -20,6 +31,19 @@ Component({
   methods: {
     onShare:function(e) {
       this.triggerEvent('onShare', {})
+    },
+
+    handleProductChange: function(e) {
+      let product = this.properties.product
+      let priceTitle = ''
+      if (JHArrayUtils.isNullOrEmpty(product.specList)) {
+        priceTitle = product.price
+      } else {
+        priceTitle = product.minPrice
+      }
+      this.setData({
+        priceTitle: priceTitle
+      })
     }
   }
 })
