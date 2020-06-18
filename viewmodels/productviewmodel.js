@@ -28,6 +28,27 @@ class ProductViewModel {
       }
     })
   }
+
+  fetchGoodsSku(spuId, specValues, callback) {
+    http.request({
+      url: apiConfig.product_fetch_sku,
+      method: 'POST',
+      data: {
+        spuId: spuId,
+        specValues: specValues
+      },
+      success: (res) => {
+        if (res.code == 0) {
+          callback.success(res)
+        } else {
+          callback.fail(res.msg)
+        }
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
 }
 
 export { ProductViewModel }

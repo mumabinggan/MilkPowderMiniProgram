@@ -266,6 +266,7 @@ Page({
     }
     //todo
     item.skuId = item.skuIds[0]
+    item.count = 1
     this.handleAddToCart(item)
     // if (skuIds.length == 1) {
     //   //无规格

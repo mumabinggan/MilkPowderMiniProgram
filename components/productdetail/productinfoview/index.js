@@ -22,7 +22,8 @@ Component({
     shareIcon: 'images/detail_share.png',
     priceTitle: '',
     indicatorColor: '#E6E6E6',
-    indicatorActiveColor: '#3D8946'
+    indicatorActiveColor: '#3D8946',
+    showSkuPrice: false
   },
 
   /**
@@ -42,7 +43,8 @@ Component({
         priceTitle = product.minPrice
       }
       this.setData({
-        priceTitle: priceTitle
+        priceTitle: priceTitle,
+        showSkuPrice: (product.skuId != null)
       })
     }
   }

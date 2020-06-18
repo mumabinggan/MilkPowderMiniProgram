@@ -12,8 +12,7 @@ Component({
    */
   data: {
     homeIcon: 'images/home_icon.png',
-    favoriteIcon: 'images/favorite_icon.png',
-    unFavoriteIcon: 'images/unfavorite_icon.png'
+    chatIcon: 'images/chat_icon.png'
   },
 
   /**
@@ -28,7 +27,7 @@ Component({
       this.triggerEvent('onFavorite', {})
     },
 
-    onAddShopCart: function (e) {
+    onAddToShopCart: function (e) {
       this.triggerEvent('onAddToShopCart', {})
     },
   

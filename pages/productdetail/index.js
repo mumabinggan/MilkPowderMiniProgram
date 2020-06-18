@@ -16,7 +16,9 @@ Page({
     product: null,
     showTopIcon: true,
     shopCount: 2,
-    selectedSpecContent: ""
+    selectedSpecContent: "",
+    entrance: 2,
+    isShowingSelectSkuView: false
   },
 
   /**
@@ -120,11 +122,25 @@ Page({
   },
 
   handleAddToShopCart: function () {
+    this.setData({
+      entrance: 2,
+      isShowingSelectSkuView: true
+    })
     console.log("toAddToShopCart")
   },
 
   handleBuy: function () {
-    console.log("toBuy")
+    this.setData({
+      entrance: 3,
+      isShowingSelectSkuView: true
+    })
+  },
+
+  handleCloseSelectSkuView: function(e) {
+    console.log("=fsd")
+    this.setData({
+      isShowingSelectSkuView: false
+    })
   },
 
   //跳至顶部

@@ -25,8 +25,12 @@
                         onToShopCart="handleToShopCart"
                         onToTop="handleToTop">
   </v-product-quick-tool>
-  <v-product-pop-select-spec-view class="select-sku-pop-view"
+  <v-product-pop-select-spec-view 
+                wx:if="{{isShowingSelectSkuView}}"
+                class="select-sku-pop-view"
                 product="{{product}}"
-                catchtouchmove="handleMove">
+                entrance="{{entrance}}"
+                catchtouchmove="handleMove"
+                catch:onClose="handleCloseSelectSkuView">
   </v-product-pop-select-spec-view>
 </view>

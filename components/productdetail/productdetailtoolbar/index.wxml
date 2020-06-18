@@ -8,10 +8,10 @@
     </image>
     <text class="title">首页</text>
   </view>
-  <view class="favorite-view"
+  <view class="chat-view"
         catch:tap="onFavorite">
-    <image class="favorite-image"
-            src="{{product.isFavorite ? favoriteIcon : unFavoriteIcon}}"
+    <image class="chat-image"
+            src="{{chatIcon}}"
             mode="aspectFit">
     </image>
     <text class="title">客服</text>

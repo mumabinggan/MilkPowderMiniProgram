@@ -20,9 +20,9 @@
   <view class="product-brief-info">
     <text class="title">{{product.name}}</text>
     <text class="sub-title">{{product.subTitle}}</text>
-    <text class="price"><text class="price-unit">¥ </text>
-      <text class="current-price-int">{{priceTitle}}<text class="current-price-int-low">起</text></text>
-      <text class="origin-price">{{product.crossedPrice}}</text>
+    <text class="price"><text class="price-unit">¥</text>
+      <text class="current-price-int">{{priceTitle}}<text wx:if="{{!showSkuPrice}}" class="current-price-int-low">起</text></text>
+      <text wx:if="{{showSkuPrice}}" class="origin-price">¥{{product.crossedPrice}}</text>
     </text>
     <image class="shareIcon"
             src="{{shareIcon}}"

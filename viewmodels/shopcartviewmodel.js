@@ -67,7 +67,7 @@ class ShopCartViewModel {
       data: {
         spuId: item.id,
         skuId: item.skuId,
-        count: 1,
+        count: item.count,
         checked: true,
       },
       success: (res) => {

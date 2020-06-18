@@ -1,20 +1,23 @@
 <!--components/productdetail/selectskuview/index.wxml-->
 <view class="container">
-  <view class="mask">
+  <view class="mask" 
+        animation="{{maskAnimation}}"
+        catch:tap="onClose">
   </view>
-  <view class="content-view">
+  <view class="content-view" animation="{{contentAnimation}}">
       <view class="header-view">
         <image class="header-image"
-            src="{{skuUrl}}"
+            src="{{skuImageUrl}}"
             mode="aspectFill">
         </image>
         <text class="price"><text class="price-unit">¥</text>
-          <text class="current-price-int">{{200}}</text>
-          <text class="origin-price">¥{{100}}</text>
+          <text class="current-price-int">{{priceTitle}}<text wx:if="{{!showSkuPrice}}" class="current-price-int-low">起</text></text>
+          <text wx:if="{{showSkuPrice}}" class="origin-price">¥{{sku.crossedPrice}}</text>
         </text>
         <image class="close-image"
             src="{{closeIcon}}"
-            mode="aspectFit">
+            mode="aspectFit"
+            catch:tap="onClose">
         </image>
       </view>
       <scroll-view class="select-view"
@@ -38,10 +41,14 @@
         </view>
       </scroll-view>
       <view class="footer-view">
-        <text class="shop-cart-view"
-        catch:tap="onAddToShopCart">加入购物车</text>
-        <text class="buy-view"
-        catch:tap="onBuy">立即购买</text>
+        <text wx:if="{{entrance != 1}}" 
+              class="common confirm-view"
+              catch:tap="onConfirm">确定</text>
+        <text wx:if="{{entrance == 1}}" class="common shop-cart-view"
+              catch:tap="onAddToShopCart">加入购物车</text>
+        <text wx:if="{{entrance == 1}}" 
+              class="common buy-view"
+              catch:tap="onBuy">立即购买</text>
       </view>
   </view>
 </view>

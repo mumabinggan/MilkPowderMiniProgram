@@ -12,7 +12,7 @@
   width: 100%;
   height: 50%;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0;
 }
 
 .content-view {
@@ -23,12 +23,14 @@
   background-color: white;
   /* background-color: red; */
   border-radius: 20rpx 20rpx 0rpx 0rpx;
+  transform:translateY(590rpx);
 }
 
 .header-view {
   width: 100%;
   height: 120rpx;
-  background-color: green;
+  background-color: white;
+  border-bottom: 2rpx solid #F6F6F6;
 }
 
 .header-image {
@@ -51,36 +53,42 @@
   line-height: 80rpx;
   font-size: 44rpx;
   font-weight: bold;
-  color: #EC5C2A
+  display: inline-block;
+  color: #3D8946
 }
 
 .price-unit {
-  font-size: 30rpx;
-  color: #EC5C2A
+  font-size: 26rpx;
 }
 
 .current-price-dots {
   font-size: 26rpx;
-  color: #EC5C2A
+}
+
+.current-price-int-low {
+  font-size: 26rpx;
 }
 
 .origin-price {
-  margin-left: 14rpx;
+  padding-left: 10rpx;
   font-size: 28rpx;
   color: gray;
   text-decoration: line-through;
   font-weight: normal;
 }
 
-.close-image {
-  position: relative;
-  right: -320rpx;
-  top: -70rpx;
-  width: 90rpx;
-  height: 90rpx;
-  background-color: red;
+.select-count {
+  
 }
 
+.close-image {
+  position: fixed;
+  right: 0rpx;
+  width: 90rpx;
+  height: 90rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
 
 .select-view {
   width: 100%;
@@ -123,8 +131,7 @@
   box-sizing: border-box;
 }
 
-.shop-cart-view {
-  width: 40%;
+.footer-view .common {
   height: 70rpx;
   font-size: 28rpx;
   line-height: 70rpx;
@@ -134,16 +141,18 @@
   border-radius: 35rpx
 }
 
+.confirm-view {
+  width: 100%;
+}
+
+.shop-cart-view {
+  width: 40%;
+}
+
 .buy-view {
   width: 40%;
-  height: 70rpx;
-  font-size: 28rpx;
-  line-height: 70rpx;
-  text-align: center;
-  background-color: #3D8946;
-  color: white;
-  border-radius: 35rpx
 }
+
 
 
 /* .header-image  */
