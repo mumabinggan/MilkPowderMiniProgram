@@ -3,6 +3,9 @@ import { ProductViewModel }
 from '../../../viewmodels/productviewmodel.js'
 
 import { JHArrayUtils } from '../../../utils/arrayutils.js'
+
+import { JHRouterUtils } from '../../../utils/jsrouterutils.js'
+
 import { ShopCartViewModel } 
 from '../../../viewmodels/shopcartviewmodel.js'
 
@@ -44,6 +47,7 @@ Component({
     //内容
     sku: null,
     priceTitle: '',
+    crossedPriceTitle: '',
     showSkuPrice: false,
   },
 
@@ -78,11 +82,16 @@ Component({
     handleProductChange: function(e) {
       let product = this.properties.product
       let priceTitle = ''
+      let showSkuPrice = (product.skuId != null)
+      let crossedPriceTitle = ''
       if (JHArrayUtils.isNullOrEmpty(product.specList)) {
         priceTitle = product.price
+        crossedPriceTitle = product.crossedPrice
       } else {
         priceTitle = product.minPrice
       }
+      console.log("====================")
+      console.log(showSkuPrice)
       let indexGoodsImage = product.indexGoodsImage
       let imageUrl = ''
       if (indexGoodsImage != null) {
@@ -90,6 +99,8 @@ Component({
       }
       this.setData({
         priceTitle: priceTitle,
+        showSkuPrice: showSkuPrice,
+        crossedPriceTitle: crossedPriceTitle,
         skuImageUrl: imageUrl
       })
     },
@@ -134,6 +145,7 @@ Component({
           this.setData({
             sku: data,
             priceTitle: data.price,
+            crossedPriceTitle: data.crossedPrice,
             showSkuPrice: true,
             skuImageUrl: imageUrl
           })
@@ -145,23 +157,15 @@ Component({
       })
     },
 
+    fetchStock: function() {
+      let product = this.properties.product
+      console.log(product)
+      return (product.skuId == null) ? this.data.sku.stock : product.stock
+    },
+
     onConfirm: function() {
-      let data = this.data
-      if (data.sku == null) {
-        wx.showToast({
-          title: "没有选择规格",
-          duration: 2000,
-          icon: "none"
-        })
+      if (!this.checkNextStep()) {
         return
-      }
-      if (data.sku.stock < data.count) {
-        wx.showToast({
-          title: "库存不足, 购买数量已调整到合理数量",
-          duration: 2000,
-          icon: "none"
-        })
-        return;
       }
 
       let entrance = this.properties.entrance
@@ -174,12 +178,42 @@ Component({
         }
     },
 
+    //是否可以下一步加入购物车/立即购买
+    checkNextStep: function() {
+      let data = this.data
+      if (!JHArrayUtils.isNullOrEmpty(this.properties.product.specList) && data.sku == null) {
+        wx.showToast({
+          title: "没有选择规格",
+          duration: 2000,
+          icon: "none"
+        })
+        return false
+      }
+      if (this.fetchStock() < data.count) {
+        wx.showToast({
+          title: "库存不足, 购买数量已调整到合理数量",
+          duration: 2000,
+          icon: "none"
+        })
+        return false
+      }
+      return true
+    },
+
+    fetchSkuId: function() {
+      let data = this.data
+      return (data.sku == null) ? data.product.skuId : data.sku.skuId
+    },
+
     onAddToShopCart: function() {
+      if (!this.checkNextStep()) {
+        return
+      }
       let data = this.data
       let item = new Object()
-      item.count = data.count
       item.id = data.product.id
-      item.skuId = data.sku.skuId
+      item.skuId = this.fetchSkuId()
+      item.count = data.count
       if (UserUtils.isLogined()) {
         shopCartModel.addGoodToShopCart(item, {
           success: (res) => {
@@ -201,7 +235,16 @@ Component({
     },
 
     onBuy: function() {
-
+      if (!this.checkNextStep()) {
+        return
+      }
+      this.onClose()
+      let item = new Object()
+      item.spuId = this.properties.product.id
+      item.skuId = this.fetchSkuId()
+      item.count = this.data.count
+      let itemStr = JSON.stringify(item)
+      JHRouterUtils.preOrder(itemStr)
     },
 
     handleAddCount: function() {

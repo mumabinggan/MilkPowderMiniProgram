@@ -23,6 +23,7 @@ const apiConfig = {
   fetch_deliverycommunity: "user/deliverycommunity/fetchAllItems.do",
   fetch_area: "area/fetchAreas.do?",
   order_preview: "user/order/fetchPreOrder.do",
+  order_preview_by_item: "user/order/fetchPreOrderByGoodsItem.do",
   order_confirm: "user/order/confirmOrder.do",
   order_list: "user/order/fetchItems.do",
   order_delete: "",

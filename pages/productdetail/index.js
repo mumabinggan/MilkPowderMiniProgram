@@ -5,6 +5,13 @@ from '../../viewmodels/productviewmodel.js'
 import { UserUtils } from
   '../../utils/userutil.js'
 
+import { JHRouterUtils } from '../../utils/jsrouterutils.js'
+import { JHArrayUtils } from '../../utils/arrayutils.js'
+
+import { ShopCartViewModel } 
+from '../../viewmodels/shopcartviewmodel.js'
+
+const shopCartModel = new ShopCartViewModel()
 const productVM = new ProductViewModel()
 
 Page({
@@ -18,6 +25,7 @@ Page({
     shopCount: 2,
     selectedSpecContent: "",
     entrance: 2,
+    shouldShowSelectSkuView: true,
     isShowingSelectSkuView: false
   },
 
@@ -25,7 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let spuId = 48
+    let spuId = options.id
     productVM.fetchProductDetail(spuId, {
       success: (res) => {
         var bannerItem = new Object()
@@ -100,17 +108,23 @@ Page({
 
   handleProductChange:function() {
     let specList = this.data.product.specList
+    /**暂时注释, 不管是否需要选择规格都要弹sku选择框 */
+    var shouldShowSelectSkuView = false
+    if (!JHArrayUtils.isNullOrEmpty(specList)) {
+      shouldShowSelectSkuView = true
+    }
     let specContent = ""
     specList.forEach(item => {
       specContent += (item.name + " ")
     })
     this.setData({
+      shouldShowSelectSkuView: shouldShowSelectSkuView,
       selectedSpecContent: specContent
     })
   },
 
   handleToHome:function() {
-    console.log("toHome")
+    JHRouterUtils.toTab(0)
   },
 
   handleFavorite: function () {
@@ -118,22 +132,62 @@ Page({
   },
 
   handleSelectSku: function() {
+    this.setData({
+      entrance: 1,
+      isShowingSelectSkuView: true
+    })
     console.log("handleSelectSku")
   },
 
   handleAddToShopCart: function () {
-    this.setData({
-      entrance: 2,
-      isShowingSelectSkuView: true
-    })
+    let shouldShowSkuSelectView = true
+    if (shouldShowSkuSelectView) {
+      //弹出选择sku的选择框
+      this.setData({
+        entrance: 2,
+        isShowingSelectSkuView: true
+      })
+    } else {
+      //直接加入购物车
+      if (UserUtils.isLogined()) {
+        shopCartModel.addGoodToShopCart(item, {
+          success: (res) => {
+            console.log("=====success====")
+            console.log(res)
+            wx.showToast({
+              title: res.msg,
+            })
+            this.onClose()
+          },
+          fail: (err) => {
+            console.log("=====fail====")
+            wx.showToast({
+              title: "网络错误, 请稍后重试",
+            })
+          }
+        })
+      }
+    }
     console.log("toAddToShopCart")
   },
 
   handleBuy: function () {
-    this.setData({
-      entrance: 3,
-      isShowingSelectSkuView: true
-    })
+    if (this.data.shouldShowSelectSkuView) {
+      this.setData({
+        entrance: 3,
+        isShowingSelectSkuView: true
+      })
+    } else {
+      if (UserUtils.isLogined()) {
+        let product = this.data.product
+        let item = new Object()
+        item.spuId = product.id
+        item.skuId = product.skuId
+        item.count = 1
+        let itemStr = JSON.stringify(item)
+        JHRouterUtils.preOrder(itemStr)
+      }
+    }
   },
 
   handleCloseSelectSkuView: function(e) {
@@ -150,6 +204,7 @@ Page({
 
   //跳转到购物车
   handleToShopCart: function () {
+    JHRouterUtils.toShopCart()
     console.log("handleToShopCart")
   }
 })

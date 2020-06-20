@@ -10,33 +10,68 @@ const JHRouter = {
   productDetail: "/pages/productdetail/index",
   mine: "/pages/mine/index",
   classic: "/pages/classic/classic",
-  shopcart: "/pages/shopcart/index",
+  shopcartTab: "/pages/shopcart/index",
+  shopcartList: "/pages/shopcart/index",
   addCommunity: "/pages/community/index"
 }
 
 class JHRouterUtils {
+
+  static navigateTo(url) {
+    wx.navigateTo({
+      url: url,
+    })
+  }
+
   static addressList(canAdd, isSelected) {
-    return JHRouter.addressList + "canAdd=" + canAdd + "&isSelected=" + isSelected
+    this.navigateTo(JHRouter.addressList + "canAdd=" + canAdd + "&isSelected=" + isSelected)
   }
 
   static addAddress() {
-    return JHRouter.addAddress + "?isAdd=" + 1
+    this.navigateTo(JHRouter.addAddress + "?isAdd=" + 1)
   }
 
   static editAddress(addressId) {
-    return JHRouter.addAddress + "?isAdd=" + 0 + "&addressId=" + addressId
+    this.navigateTo(JHRouter.addAddress + "?isAdd=" + 0 + "&addressId=" + addressId)
   }
 
   static addCommunity(id) {
-    return JHRouter.addCommunity + "?id=" + id
+    this.navigateTo(JHRouter.addCommunity + "?id=" + id)
   }
 
   static orderDetail(id) {
-    return JHRouter.orderDetail + "?id=" + id
+    this.navigateTo(JHRouter.orderDetail + "?id=" + id)
   }
 
   static orderList() {
-    return JHRouter.orderList + "?"
+    this.navigateTo(JHRouter.orderList + "?")
+  }
+
+  static toProductDetail(id) {
+    this.navigateTo(JHRouter.productDetail + "?id=" + id)
+  }
+
+  static toShopCart() {
+    this.navigateTo(JHRouter.shopcartList + "?")
+  }
+
+  static preOrder(item) {
+    this.navigateTo(JHRouter.settlement + "?item=" + item)
+  }
+
+  static toTab(index) {
+    console.log(index)
+    var url = JHRouter.index
+    if (index == 1) {
+      url = JHRouter.classic
+    } else if (index == 2) {
+      url = JHRouter.shopcartTab
+    } else if (index == 3) {
+      url = JHRouter.mine
+    }
+    wx.switchTab({
+      url: url + "?",
+    })
   }
 }
 

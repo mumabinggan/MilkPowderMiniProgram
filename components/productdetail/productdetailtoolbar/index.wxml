@@ -16,8 +16,9 @@
     </image>
     <text class="title">客服</text>
   </view>
-  <text class="shop-cart-view"
+  <text wx:if="{{onSale}}" class="common-view shop-cart-view"
         catch:tap="onAddToShopCart">加入购物车</text>
-  <text class="buy-view"
+  <text wx:if="{{onSale}}" class="common-view buy-view"
         catch:tap="onBuy">立即购买</text>
+  <text wx:if="{{!onSale}}" class="common-view off-sale-view">{{statusTitle}}</text>      
 </view>

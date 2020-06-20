@@ -34,40 +34,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    settlementVM.previewOrder({
-      success: (res) => {
-        console.log(res)
-        console.log("==============")
-        if (res.code == 0 && res.data != null) {
-          this.setData({
-            address: res.data.shipping,
-            products: res.data.goods,
-            price: res.data.price
-          })
-          let totalCount = 0
-          for (let item of this.data.products) {
-            totalCount += item.quantity
-          }
-          this.setData({
-            totalCount: totalCount
-          })
-        } else {
-          wx.showToast({
-            title: res.msg,
-            duration: 2000,
-            icon: "none"
-          })
+    let itemStr = options.item
+    console.log(itemStr)
+    console.log("==================")
+    if (itemStr == null) {
+      settlementVM.previewOrder({
+        success: (res) => {
+          this.handlePreOrderSuccess(res)
+        },
+        fail: (err) => {
+          this.handlePreOrderFail(err)
         }
-      },
-      fail: (err) => {
-        console.log(err)
-        wx.showToast({
-          title: "网络错误, 请稍后再试",
-          duration: 2000,
-          icon: "none"
-        })
-      }
-    })
+      })
+    } else {
+      let item = JSON.parse(itemStr)
+      settlementVM.previewOrderByItem(item, {
+        success: (res) => {
+          this.handlePreOrderSuccess(res)
+        },
+        fail: (err) => {
+          this.handlePreOrderFail(err)
+        }
+      })
+    }
+    
   },
 
   /**
@@ -117,6 +107,31 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  handlePreOrderSuccess: function(res) {
+    let data = res.data
+    this.setData({
+      products: res.data.goods,
+      price: data.price,
+      address: data.shipping,
+    })
+    let totalCount = 0
+    for (let item of this.data.products) {
+      totalCount += item.quantity
+    }
+    this.setData({
+      totalCount: totalCount
+    })
+  },
+
+  handlePreOrderFail: function(err) {
+    console.log(err)
+    wx.showToast({
+      title: err,
+      duration: 2000,
+      icon: "none"
+    })
   },
 
   //点击地址

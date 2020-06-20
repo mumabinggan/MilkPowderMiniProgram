@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/productdetail/index",
     "pages/index/index",
+    "pages/productdetail/index",
     "pages/community/index",
     "pages/addresslist/index",
     "pages/addaddress/index",
@@ -33,13 +33,13 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/productdetail/index",
+        "pagePath": "pages/index/index",
         "selectedIconPath": "/images/tab/tab_home_selected.png",
         "iconPath": "/images/tab/tab_home.png",
         "text": "限时购"
       },
       {
-        "pagePath": "pages/orderlist/index",
+        "pagePath": "pages/classic/classic",
         "selectedIconPath": "/images/tab/tab_classic_selected.png",
         "iconPath": "/images/tab/tab_classic.png",
         "text": "分类"

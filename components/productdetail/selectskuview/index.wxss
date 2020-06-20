@@ -77,10 +77,6 @@
   font-weight: normal;
 }
 
-.select-count {
-  
-}
-
 .close-image {
   position: fixed;
   right: 0rpx;

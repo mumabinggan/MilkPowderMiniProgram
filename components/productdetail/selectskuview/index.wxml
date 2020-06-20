@@ -12,7 +12,7 @@
         </image>
         <text class="price"><text class="price-unit">¥</text>
           <text class="current-price-int">{{priceTitle}}<text wx:if="{{!showSkuPrice}}" class="current-price-int-low">起</text></text>
-          <text wx:if="{{showSkuPrice}}" class="origin-price">¥{{sku.crossedPrice}}</text>
+          <text wx:if="{{showSkuPrice}}" class="origin-price">¥{{crossedPriceTitle}}</text>
         </text>
         <image class="close-image"
             src="{{closeIcon}}"

@@ -22,6 +22,7 @@ import {
 
 import { ShopCartViewModel } 
 from '../../viewmodels/shopcartviewmodel.js'
+import { JHRouterUtils } from '../../utils/jsrouterutils.js'
 
 let classicModel = new ClassicModel()
 let shopCartModel = new ShopCartViewModel()
@@ -238,6 +239,11 @@ Page({
         refreshingTimeoutId: refreshingTimeoutId,
       })
     }
+  },
+
+  onClick: function(e) {
+    let id = e.currentTarget.dataset.id
+    JHRouterUtils.toProductDetail(id)
   },
 
   /**

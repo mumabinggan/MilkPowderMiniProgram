@@ -42,6 +42,7 @@
 }
 
 .origin-price {
+  margin-left: 8rpx;
   font-size: 28rpx;
   color: gray;
   text-decoration: line-through;

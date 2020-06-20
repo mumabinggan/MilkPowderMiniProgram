@@ -30,30 +30,21 @@ let shopcartVM = new ShopCartViewModel()
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    let tim = ["12", "43", "1222"]
-    var jsonStr = JSON.stringify(tim)
-    console.log("=========")
-    console.log(jsonStr)
-    let time = [{"key":"dss", "key1":"asda"}]
-    console.log("=========")
-    console.log(JSON.stringify(time))
-    let mid = {"key":"dss", "key1":"asda"}
-    console.log("=========")
-    console.log(JSON.stringify(mid))
     let that = this
     wx.checkSession({
       success: function (res) {
+        console.log("======checkout Success===========")
         console.log(res)
         UserUtils.fetchUser()
         console.log("check success")
         // 获取用户信息
-        that.getUserInfo({
-          success: function (res) {
-            console.log(res)
-            that.wxUpdateUserInfo(res)
-            that.fetchShopCartCount()
-          }
-        })
+        // that.getUserInfo({
+        //   success: function (res) {
+        //     console.log(res)
+        //     that.wxUpdateUserInfo(res)
+        //     that.fetchShopCartCount()
+        //   }
+        // })
       },
 　　　 fail: function (res) {
         console.log("check fail")

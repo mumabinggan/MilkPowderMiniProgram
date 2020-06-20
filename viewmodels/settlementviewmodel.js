@@ -18,7 +18,33 @@ class SettlementViewModel {
       url: apiConfig.order_preview,
       method: 'POST',
       success: (res) => {
-        callback.success(res)
+        if (res.code == 0) {
+          callback.success(res)
+        } else {
+          callback.fail(res.msg)
+        }
+      },
+      fail: (err) => {
+        callback.fail(err)
+      }
+    })
+  }
+
+  previewOrderByItem(item, callback) {
+    http.request({
+      url: apiConfig.order_preview_by_item,
+      method: 'POST',
+      data: {
+        spuId: item.spuId,
+        skuId: item.skuId,
+        count: item.count
+      },
+      success: (res) => {
+        if (res.code == 0) {
+          callback.success(res)
+        } else {
+          callback.fail(res.msg)
+        }
       },
       fail: (err) => {
         callback.fail(err)
