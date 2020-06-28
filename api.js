@@ -30,7 +30,8 @@ const apiConfig = {
   order_commit: "",
   order_detail: "user/order/fetchItemByOrderNo.do",
   login: "user/wxLogin.do?", 
-  updateUserInfo: "user/wxUpdateUserInfo.do?"
+  updateUserInfo: "user/wxUpdateUserInfo.do?",
+  home: "user/home/fetchItem.do?"
 }
 
 export { apiConfig }

@@ -1,0 +1,16 @@
+<!--components/home/category/index.wxml-->
+<view class="container">
+  <view class="item-view"
+        wx:for="{{list}}" 
+        wx:key="{{item.categoryId}}" 
+        item="{{item}}"
+        data-id="{{item}}"
+        bind:tap="onClick">
+        <image class="item-img" 
+              mode='aspectFit'
+              src="{{item.absoluteImageUrl}}"
+              lazy-load="true">
+        </image>
+        <text class="item-title">{{item.name}}</text>
+  </view>
+</view>

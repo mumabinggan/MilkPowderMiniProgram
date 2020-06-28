@@ -1,0 +1,5 @@
+<!--pages/shopcarttab/index.wxml-->
+<view class="container">
+  <v-shopcart class="shopcart">
+  </v-shopcart>
+</view>

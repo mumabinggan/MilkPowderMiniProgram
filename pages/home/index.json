@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "v-swiper": "/components/home/carousel/index",
+    "v-broadcast": "/components/home/broadcast/index",
+    "v-category": "/components/home/category/index",
+    "v-shop": "/components/home/shop/index",
+    "v-home-category": "/components/home/homecategory/index",
+    "v-product-pop-select-spec-view": "/components/productdetail/selectskuview/index"
+  }
 }

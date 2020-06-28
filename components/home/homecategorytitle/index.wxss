@@ -1,0 +1,37 @@
+/* components/home/homecategorytitle/index.wxss */
+.container {
+  width: auto;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.base-icon {
+  width: 40rpx;
+  display: inline-block;
+}
+
+.middle {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.right {
+  -moz-transform:scaleX(-1);
+  -webkit-transform:scaleX(-1);
+  -o-transform:scaleX(-1);
+  transform:scaleX(-1);
+}
+
+.more {
+  width: 80rpx;
+  height: 80rpx;
+  padding: 26rpx;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 10rpx;
+  right: 0rpx;
+}

@@ -14,6 +14,14 @@ class JHArrayUtils {
     }
     return false
   }
+
+  static count(arr) {
+    if (this.isNullOrEmpty(arr)) {
+      return 0
+    } else {
+      return arr.length
+    }
+  }
 }
 
 export { JHArrayUtils }

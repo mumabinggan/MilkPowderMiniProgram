@@ -10,9 +10,10 @@ const JHRouter = {
   productDetail: "/pages/productdetail/index",
   mine: "/pages/mine/index",
   classic: "/pages/classic/classic",
-  shopcartTab: "/pages/shopcart/index",
-  shopcartList: "/pages/shopcart/index",
-  addCommunity: "/pages/community/index"
+  shopcartTab: "/pages/shopcarttab/index",
+  shopcartList: "/pages/shopcartlist/index",
+  addCommunity: "/pages/community/index",
+  classicgoodlist: "/pages/classicgoodlist/index"
 }
 
 class JHRouterUtils {
@@ -24,7 +25,7 @@ class JHRouterUtils {
   }
 
   static addressList(canAdd, isSelected) {
-    this.navigateTo(JHRouter.addressList + "canAdd=" + canAdd + "&isSelected=" + isSelected)
+    this.navigateTo(JHRouter.addressList + "?canAdd=" + canAdd + "&isSelected=" + isSelected)
   }
 
   static addAddress() {
@@ -57,6 +58,18 @@ class JHRouterUtils {
 
   static preOrder(item) {
     this.navigateTo(JHRouter.settlement + "?item=" + item)
+  }
+
+  static setting() {
+    this.navigateTo(JHRouter.orderList + "?")
+  }
+
+  static chat() {
+    this.navigateTo(JHRouter.orderList + "?")
+  }
+
+  static toClassicGoodList(id) {
+    this.navigateTo(JHRouter.classicgoodlist + "?id=" + id)
   }
 
   static toTab(index) {

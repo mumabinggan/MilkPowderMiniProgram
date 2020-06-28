@@ -23,6 +23,7 @@ import {
 import { ShopCartViewModel } 
 from '../../viewmodels/shopcartviewmodel.js'
 import { JHRouterUtils } from '../../utils/jsrouterutils.js'
+import { JHArrayUtils } from '../../utils/arrayutils.js'
 
 let classicModel = new ClassicModel()
 let shopCartModel = new ShopCartViewModel()
@@ -45,7 +46,13 @@ Page({
     pageNum: 1,
     pageSize: 15,
     spusRequest: null,
-    refreshingTimeoutId: null
+    refreshingTimeoutId: null,
+
+    //选择sku弹出框
+    shouldShowSelectSkuView: true,
+    isShowingSelectSkuView: false,
+    entrance: 2,
+    product: null
   },
 
   /**
@@ -242,8 +249,8 @@ Page({
   },
 
   onClick: function(e) {
-    let id = e.currentTarget.dataset.id
-    JHRouterUtils.toProductDetail(id)
+    let item = e.currentTarget.dataset.id
+    JHRouterUtils.toProductDetail(item.id)
   },
 
   /**
@@ -254,33 +261,36 @@ Page({
   },
 
   handleAddToCartIfNeed: function(e) {
-    let index = e.detail
-    let items = this.data.spus
-    let item = items[index]
+    let item = e.detail
+    console.log(item)
+    console.log(item)
+    console.log("handleAddToCartIfNeed")
     if (JHObjectUtils.isNullOrUndefined(item)) {
       wx.showToast({
         title: '数据有错误, 刷新后重试',
       })
       return
     }
-    const skuIds = item.skuIds
-    if (JHObjectUtils.isNullOrUndefined(skuIds)) {
-      wx.showToast({
-        title: '数据有错误, 刷新后重试',
-      })
-      return
+
+    let shouldShowSelectSkuView = false
+    let isShowingSelectSkuView = false
+    console.log("====asdfasd==============")
+    if (item.skuId != null) {
+      //直接加入购物车
+      shouldShowSelectSkuView = false
+      isShowingSelectSkuView = false
+      item.count = 1
+      this.handleAddToCart(item)
+    } else {
+      //弹出选择spu框
+      shouldShowSelectSkuView = true
+      isShowingSelectSkuView = true
     }
-    //todo
-    item.skuId = item.skuIds[0]
-    item.count = 1
-    this.handleAddToCart(item)
-    // if (skuIds.length == 1) {
-    //   //无规格
-    //   this.handleAddToCart(item)
-    // } else {
-    //   //有规格
-    // }
-    
+    this.setData({
+      shouldShowSelectSkuView: shouldShowSelectSkuView,
+      isShowingSelectSkuView: isShowingSelectSkuView,
+      product: item
+    })
   },
 
   handleAddToCart: function(item) {
@@ -302,7 +312,6 @@ Page({
         }
       })
     } else {
-      item.skuId = item.skuIds[0]
       let localItem = ShopCartProductLocalItem.fromProduct(item)
       console.log(localItem)
       OMCartStorageUtils.addItemToCartAsync(localItem)
@@ -328,5 +337,24 @@ Page({
     this.setData({
       [ab]: buyCount
     })
-  }
+  },
+
+  /**
+   * =====================pop sku select begin==================
+   */
+  //sku选择框回调方法
+  handleMove: function(e) {
+    // return
+  },
+
+  handleCloseSelectSkuView: function(e) {
+    console.log("=fsd")
+    this.setData({
+      isShowingSelectSkuView: false
+    })
+  },
+
+  /**
+   * =====================pop sku select end==================
+   */
 })

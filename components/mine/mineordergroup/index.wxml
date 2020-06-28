@@ -3,12 +3,12 @@
   <view class="order-title-container">
     <text class="order-title">{{title}}</text>
     <image class="order-detail-icon"
+            wx:if="{{detailTitle}}"
             src="{{moreIcon}}"
             mode="aspectFit"
-            wx:if="{{detailTitle}}"></image>
+            bind:tap="onMore"></image>
     <text class="order-detail-des">{{detailTitle}}</text>
   </view>
-  <view class="order-sep-line"></view>
   <view class="order-items-container">
     <v-order-group-item class="item"
                         wx:for="{{list}}" 

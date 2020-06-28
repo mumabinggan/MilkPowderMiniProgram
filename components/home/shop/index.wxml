@@ -1,0 +1,24 @@
+<!--components/home/shop/index.wxml-->
+<view class="container">
+  <view class="shop-view">
+    <image class="shop-img" 
+              mode='aspectFit'
+              src="{{shop.absoluteImageUrl}}"
+              lazy-load="true">
+    </image>
+    <text class="shop-title">欢迎光临{{shop.name}}</text>
+    <image class="shop-phone" 
+            mode='aspectFit'
+            src="{{phoneIcon}}"
+            lazy-load="true"
+            bind:tap="onPhone">
+    </image>
+    <image class="shop-chat" 
+            mode='aspectFit'
+            src="{{chatIcon}}"
+            lazy-load="true"
+            bind:tap="onChat">
+    </image>
+  </view>
+  <v-broadcast class="broadcast-view"></v-broadcast>
+</view>

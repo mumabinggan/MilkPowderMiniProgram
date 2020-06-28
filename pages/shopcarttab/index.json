@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-shopcart": "/components/shopcart/shopcart/index"
+  }
+}

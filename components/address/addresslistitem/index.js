@@ -31,7 +31,7 @@ Component({
    */
   data: {
     firstName: null,
-    addressMore: 'images/address_more.png'
+    addressMore: '/images/address_more.png'
   },
 
   /**

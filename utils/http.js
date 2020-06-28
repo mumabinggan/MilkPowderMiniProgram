@@ -18,7 +18,7 @@ export class HTTP {
       data: params.data,
       // header: params.header,
       header: {
-        'token': UserUtils.token(),
+        'token': UserUtils.token()
       },
       success: (res) => {
         if (params.success) {

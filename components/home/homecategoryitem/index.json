@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-home-category-item-good": "/components/home/homecategoryitemgood/index",
+    "v-home-category-item-title": "/components/home/homecategorytitle/index"
+  }
+}

@@ -1,0 +1,20 @@
+<!--components/home/homecategoryitem/index.wxml-->
+<view class="container">
+  <view class="title-view">
+    <v-home-category-item-title class="title" 
+                title="{{item.name}}"
+                showMore="{{true}}"
+                bind:onMore="onMore">
+    </v-home-category-item-title>
+  </view>
+  <scroll-view class="content-view"
+                scroll-x>
+    <v-home-category-item-good class="item-view"
+              wx:for="{{item.spuList}}" 
+              wx:key="{{item.id}}" 
+              item="{{item}}"
+              data-id="{{item}}"
+              bind:onBuy="onBuy">
+    </v-home-category-item-good>
+  </scroll-view>
+</view>

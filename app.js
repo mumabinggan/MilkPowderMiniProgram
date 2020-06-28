@@ -30,24 +30,28 @@ let shopcartVM = new ShopCartViewModel()
 App({
   onLaunch: function () {
     // 展示本地存储能力
+    console.log("开始app")
     let that = this
     wx.checkSession({
       success: function (res) {
         console.log("======checkout Success===========")
         console.log(res)
         UserUtils.fetchUser()
+        console.log(UserUtils.user)
         console.log("check success")
         // 获取用户信息
-        // that.getUserInfo({
-        //   success: function (res) {
-        //     console.log(res)
-        //     that.wxUpdateUserInfo(res)
-        //     that.fetchShopCartCount()
-        //   }
-        // })
+        that.getUserInfo({
+          success: function (res) {
+            console.log("getUserInfo success")
+            console.log(res)
+            that.wxUpdateUserInfo(res)
+            //that.fetchShopCartCount()
+          }
+        })
       },
 　　　 fail: function (res) {
         console.log("check fail")
+        console.log(res)
         that.retryLogin()
 　　　 }
     })
@@ -59,6 +63,7 @@ App({
     this.wxLogin({
       success: function (res) {
         let data = res.data
+        console.log(res)
         if (res.code == 0 && !JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
           UserUtils.setUser(res.data)
         } else {
@@ -82,26 +87,37 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log("wx.login success")
+        console.log(res.errMsg)
         console.log(res)
-        http.request({
-          url: apiConfig.login,
-          method: 'POST',
-          data: {
-            code: res.code
-          },
-          success: (res) => {
-            if (res.data == null) {
-              wx.showToast("登录错误, 请稍候重试")
-            } else {
-              if (res.code == 0) {                
-                param.success(res)
-              }
-            }            
-          },
-          fail: (err) => {
-            param.fail(err)
-          }
-        })
+        let code = res.code
+        if (!JHObjectUtils.isNullOrUndefined(code)) {
+          http.request({
+            url: apiConfig.login,
+            method: 'POST',
+            data: {
+              code: code
+            },
+            success: (res) => {
+              console.log("=====server login success======")
+              console.log(res)
+              if (res.data == null) {
+                wx.showToast("登录错误, 请稍候重试")
+              } else {
+                if (res.code == 0) {                
+                  param.success(res)
+                }
+              }            
+            },
+            fail: (err) => {
+              console.log("=====server login fail======")
+              param.fail(err)
+            }
+          })
+        } else {
+          let err = "wx.login error"
+          param.fail(err)
+        }
       }
     })
   },

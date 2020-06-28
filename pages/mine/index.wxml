@@ -3,16 +3,23 @@
   <image class="header-bg-image"></image>
   <scroll-view class="content-container"
                 scroll-y>
-    <v-user-info-group class="user-info-group">
+    <v-user-info-group class="user-info-group"
+                        catch:onIntegration="handleIntegration"
+                        catch:onCoupon="handleCoupon">
     </v-user-info-group>
+    <view class="section-line"></view>
     <v-service-group class="order-container"
                       title="我的订单"
                       detailTitle="查看全部订单"
-                      list="{{orderList}}">
+                      list="{{orderList}}"
+                      catch:onMore="handleMoreService"
+                      catch:onItem="handleItem">
     </v-service-group>
+    <view class="servic-section-line"></view>
     <v-service-group class="service-container"
                       title="我的服务"
-                      list="{{serviceList}}">
+                      list="{{serviceList}}"
+                      catch:onItem="handleItem">
     </v-service-group>
   </scroll-view>
 </view>

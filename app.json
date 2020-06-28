@@ -1,22 +1,24 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/index/index",
+    "pages/classic/classic",
     "pages/productdetail/index",
     "pages/community/index",
     "pages/addresslist/index",
     "pages/addaddress/index",
     "pages/shopcart/index",
-    "pages/classic/classic",
     "pages/tests/index",
-    "pages/home/index",
     "pages/orderdetail/index",
     "pages/orderlist/index",
     "pages/settlement/index",
-    "pages/mine/index",
     "pages/productlist/index",
     "components/classic/titlelist/index",
     "components/classic/productlist/index",
-    "components/common/refreshscrollview/index"
+    "components/common/refreshscrollview/index",
+    "pages/mine/index",
+    "pages/shopcarttab/index",
+    "pages/classicgoodlist/index"
   ],
   "window": {
     "onReachBottomDistance": 50,
@@ -33,10 +35,10 @@
     "color": "#c7c7c7",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "selectedIconPath": "/images/tab/tab_home_selected.png",
-        "iconPath": "/images/tab/tab_home.png",
-        "text": "限时购"
+        "pagePath": "pages/home/index",
+        "selectedIconPath": "/images/tab/tab_mine_selected.png",
+        "iconPath": "/images/tab/tab_mine.png",
+        "text": "会员"
       },
       {
         "pagePath": "pages/classic/classic",
@@ -45,16 +47,16 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/shopcart/index",
+        "pagePath": "pages/shopcarttab/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"
       },
       {
         "pagePath": "pages/mine/index",
-        "selectedIconPath": "/images/tab/tab_mine_selected.png",
-        "iconPath": "/images/tab/tab_mine.png",
-        "text": "会员"
+        "selectedIconPath": "/images/tab/tab_home_selected.png",
+        "iconPath": "/images/tab/tab_home.png",
+        "text": "限时购"
       }
     ]
   }

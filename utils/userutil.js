@@ -14,7 +14,7 @@ class UserUtils {
 
   static user = null
 
-  static userStoreKey = "kUserKey"
+  static userStoreKey = "kUserKeyyyy"
 
   static fetchUser() {
     let str = JHStorageUtils.fetchItemSync(this.userStoreKey)

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-product-list": "/components/shopcart/shopcartproductlist/index",
+    "v-settlement": "/components/shopcart/shopcartsettlement/index"
+  }
+}

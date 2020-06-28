@@ -20,15 +20,16 @@
   height: 100rpx;
   text-align: center;
   line-height: 100rpx;
-  font-size: 30rpx;
-  font-weight: normal;
+  font-size: 26rpx;
+  font-weight: bold;
   position: relative;
-  color: black
+  color: #646464;
 }
 
 .selected {
+  font-size: 30rpx;
   color: #3D8946;
-  font-weight: bold;
+  font-weight: bolder;
   background-color: white
 }
 

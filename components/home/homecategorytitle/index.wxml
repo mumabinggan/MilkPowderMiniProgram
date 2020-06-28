@@ -1,0 +1,13 @@
+<!--components/home/homecategorytitle/index.wxml-->
+<view class="container">
+  <view class="left base-icon">🎉</view>
+  <text class="middle">{{title}}</text>
+  <view class="right base-icon">🎉</view>
+  <image class="more"
+          wx:if="{{showMore}}"
+          mode='aspectFit'
+          src="{{moreIcon}}"
+          catch:tap="onMore">
+  </image>
+</view>
+

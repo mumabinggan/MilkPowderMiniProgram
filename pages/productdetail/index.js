@@ -21,8 +21,12 @@ Page({
    */
   data: {
     product: null,
+
+    //浮云条(购物车数量+置顶)
     showTopIcon: true,
     shopCount: 2,
+    
+    //选择框
     selectedSpecContent: "",
     entrance: 2,
     shouldShowSelectSkuView: true,
@@ -37,10 +41,10 @@ Page({
     productVM.fetchProductDetail(spuId, {
       success: (res) => {
         var bannerItem = new Object()
-        bannerItem.absoluteImageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592070287641&di=da66deac2fdaf60bc6c2b44ec654e570&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2386942312%2C3102627437%26fm%3D214%26gp%3D0.jpg"
+        bannerItem.absoluteImageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593365136597&di=31522137d7a217268f447c65ff708f59&imgtype=0&src=http%3A%2F%2Fpic93.nipic.com%2Ffile%2F20160325%2F19761498_231107509919_2.jpg"
         var bannerItem2 = new Object()
         bannerItem2.absoluteImageUrl = "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3647895025,2428663167&fm=26&gp=0.jpg"
-        res.data.bannerImageList = [bannerItem, bannerItem2]
+        res.data.bannerImageList = [bannerItem2, bannerItem]
         this.setData({
           product: res.data
         })
@@ -100,10 +104,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  handleMove: function(e) {
-    // return
   },
 
   handleProductChange:function() {
@@ -188,6 +188,10 @@ Page({
         JHRouterUtils.preOrder(itemStr)
       }
     }
+  },
+
+  handleMove: function(e) {
+    // return
   },
 
   handleCloseSelectSkuView: function(e) {

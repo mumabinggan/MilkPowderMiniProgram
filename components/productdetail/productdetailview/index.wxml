@@ -9,7 +9,7 @@
             wx:key="{{index}}" 
             data-id="{{index}}"
             src="{{item.absoluteImageUrl}}"
-            mode="aspectFit">
+            mode="widthFix">
     </image>
   </view>
 </view>

@@ -1,0 +1,10 @@
+<!--components/home/homecategory/index.wxml-->
+<view class="container">
+  <v-home-category-item class="item-view"
+        wx:for="{{items}}" 
+        wx:key="{{item.id}}" 
+        item="{{item}}"
+        data-id="{{item.id}}"
+        bind:onBuy="onBuy">
+  </v-home-category-item>
+</view>

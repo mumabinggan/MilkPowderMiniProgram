@@ -1,0 +1,11 @@
+<!--components/home/broadcast/index.wxml-->
+<view class="container">
+  <image class="item-img" 
+          mode='aspectFit'
+          src="{{broadcastIcon}}"
+          lazy-load="true">
+  </image>
+  <view class="item-title-view">
+    <text class="title" style="{{orientation}}:{{marqueeDistance}}px;font-size:{{size}}px;">{{text}}</text>
+  </view>
+</view>

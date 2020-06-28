@@ -1,0 +1,24 @@
+<!--components/home/homecategoryitemgood/index.wxml-->
+<view class="container">
+  <view class="content-view"
+        catch:tap="onClick">
+    <image class="item-img" 
+              mode='aspectFit'
+              src="{{item.indexImageItem.absoluteImageUrl}}"
+              lazy-load="true">
+    </image>
+    <view class="item-des">
+      <text class="item-title">{{item.name}}</text>
+      <view class="price-view">
+        <text class="price-title">¥{{item.price}}</text> 
+        <text class="crossed-price-title">¥{{item.crossedPrice}}</text>
+      </view>
+      <text class="buy-count-title">{{item.saleCount}}人购买</text>
+      <image class="buy"
+            mode='aspectFit'
+            src="{{buyIcon}}"
+            catch:tap="onBuy">
+      </image>
+    </view>
+  </view>
+</view>

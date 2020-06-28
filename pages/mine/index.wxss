@@ -7,45 +7,42 @@
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: #F6F6F6;
 }
 
 .header-bg-image {
-  display: block;
+  /* display: block; */
+  position: absolute;
   width: 100%;
-  height: 300rpx;
-  background-color: red;
+  height: 200rpx;
+  background-color: #3D8946;
 }
 
 .content-container {
   width: 100%;
   height: 100%;
-  position: relative;
-  bottom: 0;
-  top: 0;
-  top: -300rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: center;
 }
 
 .user-info-group {
-  display: inline-block;
+  width: 100%;
+}
+
+.section-line {
+  width: 100%;
+  height: 40rpx;
 }
 
 .order-container {
-  margin-top: 40rpx;
-  display: inline-block;
-  width: 712rpx;
+  width: 100%;
+}
+
+.servic-section-line {
+  width: 100%;
+  height: 30rpx;
 }
 
 .service-container {
-  margin-top: 40rpx;
-  display: inline-block;
-  width: 712rpx;
-  box-sizing: border-box;
-  padding-bottom: 30rpx;
+  width: 100%;
 }
 
 

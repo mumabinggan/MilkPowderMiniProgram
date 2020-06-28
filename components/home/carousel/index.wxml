@@ -1,2 +1,19 @@
 <!--components/home/carousel/index.wxml-->
-<text>components/home/carousel/index.wxml</text>
+<view class="container">
+  <swiper class="carousel-view"
+          indicator-dots
+          circular
+          autoplay
+          indicator-color="{{indicatorColor}}"
+          indicator-active-color="{{indicatorActiveColor}}">
+    <swiper-item class="carousel-view-item" 
+                  wx:for="{{items}}" 
+                  wx:key="{{item.id}}" 
+                  item="{{item}}"
+                  data-id="{{item.id}}">
+      <image class="slide-image"
+              src="{{item.absoluteImageUrl}}"
+              mode='aspectFill'/>
+    </swiper-item>
+  </swiper>
+</view>

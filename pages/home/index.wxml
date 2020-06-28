@@ -1,17 +1,25 @@
 <!--pages/home/index.wxml-->
 <view class="container">
-  <swiper class="carousel-view"
-          indicator-dots
-          circular
-          autoplay>
-    <swiper-item class="carousel-view-item" 
-                  wx:for="{{product.urls}}" 
-                  wx:key="{{item.id}}" 
-                  item="{{item}}"
-                  data-id="{{item.id}}">
-      <image class="slide-image"
-              src="{{item}}"
-              mode='aspectFit'/>
-    </swiper-item>
-  </swiper>
+  <v-swiper class="carousel-view"
+            items="{{home.carouselList}}">
+  </v-swiper>
+  <v-broadcast items="{{home.broadcastList}}"></v-broadcast>
+  <v-category class="category-view"
+              list="{{home.categoryList}}">
+  </v-category>
+  <v-shop class="shop-view"
+          shop="{{home.shop}}"
+          bind:onChat="handleChat">
+  </v-shop>
+  <v-home-category items="{{home.homeCategoryList}}"
+                    bind:onItemBuy="handleHomeCategoryGoodBuy">
+  </v-home-category>
+  <v-product-pop-select-spec-view 
+                wx:if="{{isShowingSelectSkuView}}"
+                class="select-sku-pop-view"
+                product="{{product}}"
+                entrance="{{entrance}}"
+                catchtouchmove="handleMove"
+                catch:onClose="handleCloseSelectSkuView">
+  </v-product-pop-select-spec-view>
 </view>

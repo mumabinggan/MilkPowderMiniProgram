@@ -1,0 +1,29 @@
+/* components/home/homecategoryitem/index.wxss */
+.container {
+  width: 100%;
+  height: auto;
+}
+
+.title-view {
+  width: 100%;
+  height: 100rpx;
+  background-color: white;
+}
+
+.title {
+  width: 100%;
+  height: 100%;
+}
+
+.content-view {
+  width: 100%;
+  height: auto;
+  white-space: nowrap;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  background-color: #F6F6F6;
+}
+
+.item-view {
+  display:inline-block;
+}

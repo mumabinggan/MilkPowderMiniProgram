@@ -1,11 +1,24 @@
 <!--components/mine/userinfogroup/index.wxml-->
 <view class="container">
-  <image class="user-header-bg"
-          src="{{userHeaderBg}}"
-          mode="aspectFit">
-  </image>
   <view class="user-info-container">
-    <image class="user-avatar"></image>
-    <text class="user-name"></text>
+    <view class="user-base-info-container">
+      <image class="user-avatar"
+            src="{{userHeaderImageUrl}}"
+            mode="aspectFit">
+      </image>
+      <text class="user-name">{{name}}</text>
+    </view>
+    <view class="user-business-info-container">
+      <view class="integration-view common-business-item-view"
+            catch:tap="onIntegration">
+        <text class="count">{{0}}</text>
+        <text class="title">积分商场</text>
+      </view>
+      <view class="coupon-view common-business-item-view"
+            catch:tap="onCoupon">
+        <text class="count">{{0}}</text>
+        <text class="title">优惠卷</text>
+      </view>
+    </view>
   </view>
 </view>

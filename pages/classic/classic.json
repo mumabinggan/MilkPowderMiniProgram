@@ -5,6 +5,7 @@
     "v-title-list": "/components/classic/titlelist/index",
     "v-classic-item": "/components/classic/classicitem/index",
         "v-refresh-scrollview": "/components/common/refreshscrollview/index",
-    "v-product-row-item": "/components/productlist/productrowitem/index"
+    "v-product-row-item": "/components/productlist/productrowitem/index",
+    "v-product-pop-select-spec-view": "/components/productdetail/selectskuview/index"
   }
 }

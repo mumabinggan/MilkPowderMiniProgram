@@ -1,0 +1,8 @@
+/* components/home/homecategory/index.wxss */
+.container {
+  width: 100%;
+  height: auto;
+  background-color: #E6E6E6;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}

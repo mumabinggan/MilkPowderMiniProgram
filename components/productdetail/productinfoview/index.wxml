@@ -4,7 +4,6 @@
           indicator-dots
           indicator-color="{{indicatorColor}}"
           indicator-active-color="{{indicatorActiveColor}}"
-          indicatorActiveColor
           circular
           autoplay>
     <swiper-item class="carousel-view-item" 

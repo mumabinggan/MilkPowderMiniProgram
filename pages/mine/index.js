@@ -3,6 +3,12 @@ import {
   ServiceItem
 } from '../../models/serviceitem.js'
 
+import { UserUtils } from
+  '../../utils/userutil.js'
+
+import { JHRouterUtils } from
+  '../../utils/jsrouterutils.js'
+
 Page({
 
   /**
@@ -12,14 +18,11 @@ Page({
     orderList: [ServiceItem.waitPay(),
                 ServiceItem.waitShip(),
                 ServiceItem.waitReceipt(),
-                ServiceItem.waitComment()
+                ServiceItem.allOrder()
                 ],
-    serviceList: [ServiceItem.waitPay(),
-                  ServiceItem.waitShip(),
-                  ServiceItem.waitReceipt(),
-                  ServiceItem.waitComment(),
-                  ServiceItem.waitReceipt(),
-                  ServiceItem.waitComment()
+    serviceList: [ServiceItem.address(),
+                  ServiceItem.chat(),
+                  ServiceItem.setting()
                   ]
   },
 
@@ -30,6 +33,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '会员',
     })
+    console.log("===============")
+    console.log(UserUtils.user)
   },
 
   /**
@@ -79,5 +84,38 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  handleIntegration: function() {
+    //todo: 还没有开发
+  },
+
+  handleCoupon: function() {
+    //todo: 还没有开发
+  },
+
+  handleMoreOrder: function() {
+    JHRouterUtils.orderList()
+  },
+
+  handleItem: function(e) {
+    console.log(e.detail)
+    let id = e.detail.id
+    console.log("==============")
+    if (id == 1) {
+      JHRouterUtils.orderList()
+    } else if (id == 2) {
+      JHRouterUtils.orderList()
+    } else if (id == 3) {
+      JHRouterUtils.orderList()
+    } else if (id == 5) {
+      JHRouterUtils.orderList()
+    } else if (id == 100) {
+      JHRouterUtils.addressList(true, false)
+    } else if (id == 101) {
+      JHRouterUtils.chat()
+    } else if (id == 102) {
+      JHRouterUtils.setting()
+    }
   }
 })
