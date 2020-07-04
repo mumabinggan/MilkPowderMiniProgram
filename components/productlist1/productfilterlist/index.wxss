@@ -1,0 +1,60 @@
+/* components/productlist/productfilterlist/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column
+}
+
+.content-view {
+  width: 100%;
+  height: 600rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column
+}
+
+.scroll-view {
+  width: 100%;
+  height: 500rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column
+}
+
+.item {
+  display: inline-block;
+  width: 50%;
+}
+
+.action-container {
+  flex-grow: 1
+}
+
+.base-action-view {
+  font-size: 34rpx;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #F3F4F7
+}
+
+.reset {
+  color: black;
+}
+
+.confirm {
+  color: white;
+  background-color: #EC5C29;
+}
+
+.mask-bg {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  opacity: 0.2;
+  flex-grow: 1
+}

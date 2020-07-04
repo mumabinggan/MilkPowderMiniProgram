@@ -12,4 +12,9 @@
                 shopcart="{{shopcart}}"
                 bind:onSelect="handleSelectAllProduct">
   </v-settlement>
+  <v-empty-view wx:if="{{showEmptyView}}"
+                class="empty-view"
+                imageName="{{emptyIcon}}"
+                title="购物车还没有商品">
+  </v-empty-view>
 </view>

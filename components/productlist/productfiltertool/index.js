@@ -8,25 +8,19 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    sortfilterCondition: {
-      type: ProductSortFilterCondition,
-      value: null,
-      observer: function (newValue, oldValue, changePath) {
-        this.handleConditionChange()
-      }
-    }
+    selectedIndex: null,
+    isRowType: null
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    hasSelectedBranch: false,
-    hasSelectedClassic: false,
-    moreDownIcon: 'images/more_down_icon.png',
-    moreDownSelectedIcon: 'images/more_down_selected_icon.png',
-    moreUpIcon: 'images/more_up_icon.png',
-    moreUpSelectedIcon: 'images/more_up_selected_icon.png',
+    
+    ascPrice: null,
+    priceIcon: 'images/price_icon.png',
+    priceDownIcon: 'images/price_down_icon.png',
+    priceUpIcon: 'images/price_up_icon.png',
     showRowListIcon: 'images/show_row_icon.png',
     showColumnListIcon: 'images/show_column_icon.png',
   },
@@ -36,44 +30,42 @@ Component({
    */
   methods: {
 
-    handleConditionChange:function() {
-      const hasSelectedBranch = this.hasSelectedArr(this.data.sortfilterCondition.branches)
-      const hasSelectedClassic = this.hasSelectedArr(this.data.sortfilterCondition.classics)
+    //综合
+    onComplex:function(e) {
       this.setData({
-        hasSelectedBranch: hasSelectedBranch,
-        hasSelectedClassic: hasSelectedClassic,
+        ascPrice: null
       })
-    },
-
-    hasSelectedArr: function (arr) {
-      let hasSelected = false
-      for (const item of arr) {
-        if (item.isSelected) {
-          hasSelected = true
-          break
-        }
-      }
-      return hasSelected
-    },
-
-    //行, 列
-    changeShowType:function(e) {
-      this.triggerEvent('onChangeShowType', e.detail)
+      console.log(this.data.ascPrice)
+      this.triggerEvent('onComplex')
     },
     
-    //排序
-    showSortList:function(e) {
-      this.triggerEvent('onSort', e.detail)
+    //销量
+    onSaleCount:function(e) {
+      this.setData({
+        ascPrice: null
+      })
+      console.log(this.data.ascPrice)
+      this.triggerEvent('onSaleCount')
     },
 
     //品类
-    showClassicList: function (e) {
-      this.triggerEvent('onClassic', e.detail)
+    onPrice: function (e) {
+      let isUp = this.data.ascPrice
+      if (isUp == true) {
+        isUp = false
+      } else {
+        isUp = true
+      }
+      this.setData({
+        ascPrice: isUp
+      })
+      console.log(this.data.ascPrice)
+      this.triggerEvent('onPrice', isUp)
     },
 
-    //品牌
-    showBranchList: function (e) {
-      this.triggerEvent('onBranch', e.detail)
+    changeShowType: function() {
+      let showRow = this.properties.isRowType
+      this.triggerEvent('onChangeShowType', !showRow)
     }
   }
 })

@@ -1,16 +1,17 @@
 // pages/productlist/index.js
-import { ProductListViewModel } from '../../viewmodels/productlistvm.js'
-
+import { ClassicModel } from '../../viewmodels/classicmodel.js'
 import { ShopCartViewModel } from '../../viewmodels/shopcartviewmodel.js'
-
-import {
-  ProductSortFilterCondition, ProductSortItem
-} from '../../models/productsortfiltercondition.js'
 
 import { UserUtils } from '../../utils/userutil.js'
 import { JHArrayUtils } from '../../utils/arrayutils.js'
 
-const productListVM = new ProductListViewModel()
+import { JHRouterUtils } from '../../utils/jsrouterutils.js'
+
+import {
+  JHObjectUtils
+} from '../../utils/objectutils.js'
+
+const classicVM = new ClassicModel()
 const shopcartVM = new ShopCartViewModel()
 const app = getApp();
 
@@ -20,15 +21,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [],
-    sortfilterCondition: productListVM.sortfilterCondition,
-    sortlist: productListVM.sortfilterCondition.sortlist,
-    resetclassics: [...productListVM.sortfilterCondition.classics],
-    classiclist: [...productListVM.sortfilterCondition.classics],
-    resetbranches: [...productListVM.sortfilterCondition.branches],
-    branchlist: [...productListVM.sortfilterCondition.branches],
+
+    classicId: null,
+    type: 1,      //首页还是分类页面
+
+    spus:[],
+    isRefreshing: false,  //正在下拉
+    isLoadingMore: false, //正在上拉
+    enableLoadingMore: true,
+    isRequestSpus: false,
+    pageNum: 1,
+    pageSize: 15,
+    spusRequest: null,
+    refreshingTimeoutId: null,
+
+    offset: 0,
+
+    selectedIndex: 0,
+    
+    isRowType: false,
+
     shopCount: app.globalData.shopcartCount,
-    showTopIcon: false
+    showTopIcon: false,
+
+    //选择sku弹出框
+    shouldShowSelectSkuView: true,
+    isShowingSelectSkuView: false,
+    entrance: 2,
+    product: null
   },
 
   /**
@@ -38,25 +58,22 @@ Page({
     wx.setNavigationBarTitle({
       title: '搜索',
     })
-    console.log(this.data.sortfilterCondition.title)
-    //TODO:拿到上级传的信息
-    productListVM.fetchProductList({
-      success: (res) => {
-        this.setData({
-          list: res.data
-        })
-      },
-      fail: (err) => {
-        console.log(err)
-      }
+    let classicId = options.id
+    let type = options.type
+    // classicId = 100034
+    // type = 1
+    this.setData({
+      type: type,
+      classicId: classicId
     })
+    this.setRefreshing(true, 0)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -101,183 +118,116 @@ Page({
 
   },
 
-  //加入购物车操作
-  handleAddToCart:function(e) {
-    //加入购物车
-    if (UserUtils.isLogined) {
-      const productId = e.detail
-      let userId = UserUtils.user.id
-      shopcartVM.changeCartShopCount(true, productId, userId, {
-        success: (res) => {
-          this.handleAddToShopCartSuccess(productId)
-        },
-        fail: (err) => {
-          console.log(err)
-        }
+  //处理行,列展示
+  handleChangeShowType: function (e) {
+    this.setData({
+      isRowType: e.detail,
+    })
+  },
+
+  handleComplex: function() {
+    this.setData({
+      selectedIndex: 0
+    })
+    this.requestData(false)
+  },
+
+  handleSaleCount: function() {
+    this.setData({
+      selectedIndex: 1
+    })
+    this.requestData(false)
+  },
+
+  handlePrice: function(e) {
+    this.setData({
+      selectedIndex: e.detail ? 2 : 3
+    })
+    this.requestData(false)
+  },
+
+  requestData(isMore) {
+    if (!isMore) {
+      this.setData({
+        pageNum: 1
+      })
+    }
+    const pageNum = this.data.pageNum
+    const pageSize = this.data.pageSize
+    const type = this.data.type
+    const orderBy = this.data.selectedIndex + 1
+    const classicId = this.data.classicId
+    classicVM.fetchSpusByClassicId(classicId, type, orderBy, pageNum, pageSize, {
+      success: (res) => {
+        const data = this.data
+        let spus = (data.pageNum == 1) ? [] : data.spus;
+        const newSpus = res.data.list
+        spus = spus.concat(newSpus)
+        const hasMore = !res.data.isLastPage
+        this.setData({
+          spus: spus,
+          pageNum: pageNum+1,
+          enableLoadingMore: hasMore
+        })
+        this.setRefreshing(false, 0)
+      },
+      fail: (err) => {
+        console.log(err)
+        this.setRefreshing(false, 0)
+      }
+    })
+  },
+
+  setRefreshing:function(isRefreshing, timeout) {
+    clearTimeout(this.data.refreshingTimeoutId)
+    if (timeout == 0) {
+      this.setData({
+        isRefreshing: isRefreshing,
       })
     } else {
-      //TODO:登录
-    }
-  },
-
-  //处理加入购物车成功(增加数量)
-  handleAddToShopCartSuccess: function(productId) {
-
-  },
-
-  //处理行,列展示
-  handleChangeShowType: function () {
-    let rowType = this.data.sortfilterCondition.isRowType
-    this.setData({
-      'sortfilterCondition.isRowType': !rowType,
-    })
-  },
-
-  handleHideBranchFilterList:function(e) {
-    this.setData({
-      'sortfilterCondition.isShowBranchList': false
-    })
-  },
-
-  handleHideClassicFilterList: function (e) {
-    this.setData({
-      'sortfilterCondition.isShowClassicList': false
-    })
-  },
-
-  handleHideSortList:function(e) {
-    this.setData({
-      'sortfilterCondition.isShowSortList': false
-    })
-  },
-
-  handleShowSortList:function(e) {
-    const show = this.data.sortfilterCondition.isShowSortList
-    this.setData({
-      'sortfilterCondition.isShowSortList': !show,
-      'sortfilterCondition.isShowClassicList': false,
-      'sortfilterCondition.isShowBranchList': false
-    })
-  },
-
-  handleShowClassicList: function (e) {
-    const show = this.data.sortfilterCondition.isShowClassicList
-    this.setData({
-      'sortfilterCondition.isShowSortList': false,
-      'sortfilterCondition.isShowClassicList': !show,
-      'sortfilterCondition.isShowBranchList': false
-    })
-  },
-
-  handleShowBranchList: function (e) {
-    const show = this.data.sortfilterCondition.isShowBranchList
-    this.setData({
-      'sortfilterCondition.isShowSortList': false,
-      'sortfilterCondition.isShowClassicList': false,
-      'sortfilterCondition.isShowBranchList': !show
-    })
-  },
-
-  handleSortItem:function(e) {
-    this.handleHideSortList()
-    var arr = this.data.sortfilterCondition.sortlist
-    let id = e.detail
-    for (let item of arr) {
-      if (item.id == id) {
-        item.isSelected = true
-        this.setData({
-          'sortfilterCondition.sortItem': item
+      const that = this
+      var refreshingTimeoutId = setTimeout(function () {
+        that.setData({
+          isRefreshing: isRefreshing,
         })
-      } else {
-        item.isSelected = false
-      }
+      }, timeout);
+      that.setData({
+        refreshingTimeoutId: refreshingTimeoutId,
+      })
     }
+  },
+
+  onHeaderRefresh() {
     this.setData({
-      sortlist: arr
+      pageNum: 1
+    })
+    this.setRefreshing(true, 0)
+    this.requestData(false)
+  },
+
+  onFooterRefresh() {
+    this.setData({
+        isLoadingMore: true
+    })
+    this.requestData(true)
+  },
+
+  onEndHeaderTriggered() {
+    this.setRefreshing(false, 0)
+  },
+
+  onEndFooterTriggered() {
+    this.setData({
+      isLoadingMore: false
     })
   },
 
-  handleClassicFilterItem:function(e) {
-    let id = e.detail
-    let classics = this.data.classiclist
-    for (let item of classics) {
-      if (item.id == id) {
-        item.isSelected = !item.isSelected
-        break
-      }
-    }
-    this.setData({
-      classiclist: classics
-    })
-  },
-
-  handleBranchFilterItem: function (e) {
-    let id = e.detail
-    let branches = this.data.branchlist
-    for (let item of branches) {
-      if (item.id == id) {
-        item.isSelected = !item.isSelected
-        break
-      }
-    }
-    this.setData({
-      branchlist: branches
-    })
-  },
-
-  handleResetBranch:function() {
-    const resetbranches = [...this.data.resetbranches]
-    const hasSelectedBranch = this.hasSelectedArr(resetbranches)
-    this.setData({
-      branchlist: resetbranches,
-      'sortfilterCondition.branches': resetbranches,
-      'sortfilterCondition.hasSelectedBranch': hasSelectedBranch
-    })
-  },
-
-  handleResetClassic: function () {
-    const resetclassics = [...this.data.resetclassics]
-    const hasSelectedClassic = this.hasSelectedArr(resetclassics)
-    this.setData({
-      classiclist: resetclassics,
-      'sortfilterCondition.classics': resetclassics,
-      'sortfilterCondition.hasSelectedClassic': hasSelectedClassic
-    })
-  }, 
-
-  handleConfirmBranch: function () {
-    const hasSelectedBranch = this.hasSelectedArr(this.data.branchlist)
-    this.setData({
-      'sortfilterCondition.branches': this.data.branchlist,
-      'sortfilterCondition.hasSelectedBranch': hasSelectedBranch
-    })
-    this.handleHideBranchFilterList()
-  },
-
-  handleConfirmClassic: function () {
-    const hasSelectedClassic = this.hasSelectedArr(this.data.classiclist)
-    this.setData({
-      'sortfilterCondition.classics': this.data.classiclist,
-      'sortfilterCondition.hasSelectedClassic': hasSelectedClassic
-    })
-    this.handleHideClassicFilterList()
-  },
-
-  hasSelectedArr:function(arr) {
-    let hasSelected = false
-    for (const item of arr) {
-      if (item.isSelected) {
-        hasSelected = true
-        break
-      }
-    }
-    return hasSelected
-  },
 
   //跳转到购物车
   handleToShopCart:function() {
-
+    console.log("================")
   },
+
   //跳至顶部
   handleToTop: function () {
 
@@ -290,5 +240,79 @@ Page({
     this.setData({
       showTopIcon: top > windowHeight
     })
-  }
+  },
+
+  onClick(e) {
+    let item = e.currentTarget.dataset.id
+    JHRouterUtils.toProductDetail(item.id)
+  },
+
+  //加入购物车
+  handleAddToCartIfNeed: function(e) {
+    let item = e.detail
+    console.log(item)
+    console.log("handleAddToCartIfNeed")
+    if (JHObjectUtils.isNullOrUndefined(item)) {
+      wx.showToast({
+        title: '数据有错误, 刷新后重试',
+      })
+      return
+    }
+
+    let shouldShowSelectSkuView = false
+    let isShowingSelectSkuView = false
+    console.log("====asdfasd==============")
+    if (item.skuId != null) {
+      //直接加入购物车
+      shouldShowSelectSkuView = false
+      isShowingSelectSkuView = false
+      item.count = 1
+      this.handleAddToCart(item)
+    } else {
+      //弹出选择spu框
+      shouldShowSelectSkuView = true
+      isShowingSelectSkuView = true
+    }
+    this.setData({
+      shouldShowSelectSkuView: shouldShowSelectSkuView,
+      isShowingSelectSkuView: isShowingSelectSkuView,
+      product: item
+    })
+  },
+
+  handleAddToCart: function(item) {
+    console.log("===handleAddToCart===")
+    if (UserUtils.isLogined()) {
+      shopcartVM.addGoodToShopCart(item, {
+        success: (res) => {
+          console.log("=====success====")
+          console.log(res)
+          wx.showToast({
+            title: res.msg,
+          })
+        },
+        fail: (err) => {
+          console.log("=====fail====")
+          wx.showToast({
+            title: "网络错误, 请稍后重试",
+          })
+        }
+      })
+    }
+  },
+
+  /**
+   * =====================pop sku select begin==================
+   */
+  //sku选择框回调方法
+  handleMove: function(e) {
+    // return
+  },
+
+  handleCloseSelectSkuView: function(e) {
+    console.log("=fsd")
+    this.setData({
+      isShowingSelectSkuView: false
+    })
+  },
 })

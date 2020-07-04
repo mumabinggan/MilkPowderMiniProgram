@@ -1,0 +1,20 @@
+<!--components/productlist/productrowitem/index.wxml-->
+<view class="container">
+    <image  class="product-img" 
+              mode='aspectFit'
+              src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584294871521&di=0c49eb0cea738eb0113930129ae6a0b9&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1073959151%2C665782074%26fm%3D214%26gp%3D0.jpg"
+              lazy-load="true">
+    </image>
+    <view class="product-des">
+      <text class="title">{{item.name}}</text>
+      <text class="price">￥{{item.price}}</text>
+      <text class="buy-count">{{item.saleCount}}人购买</text>
+      <image class="buy"
+              mode='aspectFit'
+              src="{{buyIcon}}"
+              catch:tap="onBuy">
+      </image>
+    </view>
+    <view class="line-view"></view>
+    <!-- src="{{item.url}}" -->
+</view>

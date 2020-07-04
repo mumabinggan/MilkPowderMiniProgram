@@ -1,0 +1,57 @@
+/* components/productlist/productlistquicktool/index.wxss */
+.container {
+}
+
+.base-item {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background-color: white;
+  border: 1rpx solid #e4e4e4;
+}
+
+.shopcart {
+  position: relative
+}
+
+.shopcart-icon {
+  width: 100%;
+  height: 100%;
+  padding: 18rpx 20rpx 18rpx 16rpx;
+  box-sizing: border-box
+}
+
+.shop-count {
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 28rpx;
+  background-color: #EC5C2A;
+  color: white;
+  font-size: 22rpx;
+  text-align: center;
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+}
+
+.to-top {
+  margin-top: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.to-top-icon {
+  width: 80%;
+  height: 40%;
+}
+
+.to-top-title {
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 24rpx;
+  text-align: center;
+}

@@ -32,8 +32,9 @@
 }
 
 .product-des .title {
-  font-size: 26rpx;
-  color: black;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666666;
   word-wrap: break-word;
   word-break: break-all;
   white-space: pre-line;
@@ -44,26 +45,19 @@
   -webkit-box-orient: vertical
 }
 
-.product-des .price {
-  font-size: 28rpx;
-  font-weight: bold;
-  display: block;
-  margin-top: 16rpx;
-  color: #3D8946;
-}
-
 .product-des .buy-count {
   font-size: 22rpx;
-  color: gray;
+  font-weight: bold;
+  color: #999999;
 }
 
 .product-des .buy {
   width: 80rpx;
   height: 80rpx;
-  padding: 20rpx;
+  padding: 16rpx;
   box-sizing: border-box;
   position: absolute;
-  right: 10rpx;
+  right: 6rpx;
   bottom: -4rpx;
 }
 

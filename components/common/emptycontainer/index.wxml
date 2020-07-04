@@ -1,0 +1,14 @@
+<!--components/common/emptycontainer/index.wxml-->
+<view class="container">
+  <view class="bg-view">
+    <image  class="empty-img" 
+              mode='aspectFit'
+              src="{{imageName}}"
+              lazy-load="true">
+    </image>
+    <text class="title">{{title}}</text>
+    <text wx:if="{{btnTitle != null}}" 
+          class="retry"
+          ontap="onClick">{{btnTitle}}</text>
+  </view>
+</view>

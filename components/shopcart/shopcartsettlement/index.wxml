@@ -11,5 +11,5 @@
     <text class="totalPrice">总价:￥{{shopcart.price.currentGoodPrice}}　优惠:￥{{shopcart.price.reducePrice}}</text>
   </view>
   <view class="settlement"
-        bind:tap="onSettlement">去结算({{selectedProductsCount}})</view>
+        bind:tap="onSettlement">结算({{selectedProductsCount}})</view>
 </view>

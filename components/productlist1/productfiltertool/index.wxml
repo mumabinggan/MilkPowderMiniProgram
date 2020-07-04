@@ -1,0 +1,32 @@
+<!--components/productlist/productfiltertool/index.wxml-->
+<view class="container">
+  <view class="sort-list base-select"
+        bind:tap="showSortList">
+    <text class="title selected-title">{{sortfilterCondition.sortItem.title}}</text>
+    <image class="sort-icon"
+            src="{{sortfilterCondition.isShowSortList ? (moreUpSelectedIcon) : (moreDownSelectedIcon)}}">
+    </image>
+  </view>
+
+  <view class="classic base-select"
+        bind:tap="showClassicList">
+    <text class="title {{hasSelectedClassic?'selected-title' : ''}}">品类</text>
+    <image class="sort-icon"
+            src="{{sortfilterCondition.isShowClassicList ? (hasSelectedClassic ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedClassic ? moreDownSelectedIcon : moreDownIcon)}}">
+    </image>
+  </view>
+  
+  <view class="filter base-select"
+        bind:tap="showBranchList">
+    <text class="title {{hasSelectedBranch?'selected-title' : ''}}">品牌</text>
+    <image class="sort-icon"
+            src="{{sortfilterCondition.isShowBranchList ? (hasSelectedBranch ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedBranch ? moreDownSelectedIcon : moreDownIcon)}}">
+    </image>
+  </view>
+  
+  <image class="show-type"
+          src="{{sortfilterCondition.isRowType ? showColumnListIcon: showRowListIcon}}"
+          mode="aspectFit"
+          bind:tap="changeShowType">
+  </image>
+</view>

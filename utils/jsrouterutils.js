@@ -12,8 +12,7 @@ const JHRouter = {
   classic: "/pages/classic/classic",
   shopcartTab: "/pages/shopcarttab/index",
   shopcartList: "/pages/shopcartlist/index",
-  addCommunity: "/pages/community/index",
-  classicgoodlist: "/pages/classicgoodlist/index"
+  addCommunity: "/pages/community/index"
 }
 
 class JHRouterUtils {
@@ -68,8 +67,8 @@ class JHRouterUtils {
     this.navigateTo(JHRouter.orderList + "?")
   }
 
-  static toClassicGoodList(id) {
-    this.navigateTo(JHRouter.classicgoodlist + "?id=" + id)
+  static toProductList(id, type) {
+    this.navigateTo(JHRouter.productList + "?id=" + id + '&type=' + type)
   }
 
   static toTab(index) {

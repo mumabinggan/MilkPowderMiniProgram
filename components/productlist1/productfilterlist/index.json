@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-sort-filter-item": "/components/productlist/sortfilteritem/index"
+  }
+}

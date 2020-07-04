@@ -22,8 +22,7 @@ Component({
   methods: {
     onMore: function(e) {
       let item = this.properties.item
-      //todo:直接跳转
-      JHRouterUtils.toClassicGoodList(item.id)
+      JHRouterUtils.toProductList(item.id, 1)
     },
 
     onBuy: function(e) {

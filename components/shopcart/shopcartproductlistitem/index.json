@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "v-add-products": "/components/classic/addproducts/index"
+    "v-add-products": "/components/classic/addproducts/index",
+    "v-product-price": "/components/productlist/productrowitemprice/index"
   }
 }

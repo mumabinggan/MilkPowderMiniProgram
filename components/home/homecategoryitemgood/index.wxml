@@ -9,10 +9,10 @@
     </image>
     <view class="item-des">
       <text class="item-title">{{item.name}}</text>
-      <view class="price-view">
-        <text class="price-title">¥{{item.price}}</text> 
-        <text class="crossed-price-title">¥{{item.crossedPrice}}</text>
-      </view>
+      <v-product-price class="price-view"
+                        price="{{item.minPrice}}"
+                        crossedPrice="{{item.crossedPrice}}">
+      </v-product-price>
       <text class="buy-count-title">{{item.saleCount}}人购买</text>
       <image class="buy"
             mode='aspectFit'

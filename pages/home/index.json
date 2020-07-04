@@ -6,5 +6,6 @@
     "v-shop": "/components/home/shop/index",
     "v-home-category": "/components/home/homecategory/index",
     "v-product-pop-select-spec-view": "/components/productdetail/selectskuview/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

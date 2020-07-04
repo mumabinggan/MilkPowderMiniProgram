@@ -42,11 +42,15 @@ class ClassicModel {
     console.log(request)
   }
 
-  fetchSpusByClassicId(id, pageNum, pageSize, callback) {
-    // let res = ClassicResponse.test()
-    // console.log(res)
-    // callback.success(res)
-    // return
+  /**
+   * 
+   * @param {*} id 
+   * @param {1:分类tab 2:首页推荐分类} type 
+   * @param {*} pageNum 
+   * @param {*} pageSize 
+   * @param {*} callback 
+   */
+  fetchSpusByClassicId(id, type, orderBy, pageNum, pageSize, callback) {
     if (this.spusRequest != null) {
       this.spusRequest.abort()
       this.spusRequest = null
@@ -56,12 +60,18 @@ class ClassicModel {
       url: apiConfig.classic_spus,
       data: {
         id: id,
+        type: type,
+        orderBy: orderBy,
         pageNum: pageNum,
         pageSize: pageSize
       },
       success: (res) => {
         console.log(res)
-        callback.success(res)
+        if (res.code == 0) {
+          callback.success(res)
+        } else {
+          callback.fail(res.msg)
+        }
       },
       fail: (err) => {
         callback.fail(err)

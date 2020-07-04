@@ -1,0 +1,18 @@
+<!--components/productlist/productcolumnitem/index.wxml-->
+<view class="container">
+  <image  class="product-img" 
+              mode='aspectFit'
+              src="{{item.url}}"
+              lazy-load="true">
+  </image>
+  <view class="product-des">
+    <text class="title">{{item.title}}</text>
+    <text class="buy-count">{{item.totalBuyCount}}人购买</text>
+    <text class="price">￥{{item.currentPrice}}</text>
+    <image class="buy"
+              mode='aspectFit'
+              src="{{buyIcon}}"
+              catch:tap="onBuy">
+    </image>
+  </view>
+</view>

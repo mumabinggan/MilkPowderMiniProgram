@@ -22,35 +22,6 @@ class ProductListViewModel {
     this.sortfilterCondition = ProductSortFilterCondition.test()
   }
 
-  fetchChildrenClassicIds() {
-    var ids = []
-    for (let item of sortfilterCondition.classics) {
-      if (item.isSelected) {
-        ids.push(item.id)
-      }
-    }
-    return ids
-  }
-
-  fetchBranchIds() {
-    var ids = []
-    for (let item of sortfilterCondition.branches) {
-      if (item.isSelected) {
-        ids.push(item.id)
-      }
-    }
-    return ids
-  }
-
-  getSortType() {
-    for (let item of sortfilterCondition.sortlist) {
-      if (item.isSelected) {
-        return item.id
-      }
-    }
-    return 0
-  }
-
   fetchProductList(callback) {
     let res = ProductListResponse.test()
     console.log(res)

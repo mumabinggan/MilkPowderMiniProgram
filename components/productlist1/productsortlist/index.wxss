@@ -1,0 +1,23 @@
+/* components/productlist/productsortlist/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column
+}
+
+.scroll-view {
+  width: 100%;
+  height: 400rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column
+}
+
+.mask-bg {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  opacity: 0.2;
+  flex-grow: 1
+}

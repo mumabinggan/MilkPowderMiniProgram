@@ -1,31 +1,25 @@
 <!--components/productlist/productfiltertool/index.wxml-->
 <view class="container">
-  <view class="sort-list base-select"
-        bind:tap="showSortList">
-    <text class="title selected-title">{{sortfilterCondition.sortItem.title}}</text>
-    <image class="sort-icon"
-            src="{{sortfilterCondition.isShowSortList ? (moreUpSelectedIcon) : (moreDownSelectedIcon)}}">
-    </image>
+  <view class="complex base-select"
+        bind:tap="onComplex">
+    <text class="title {{selectedIndex == 0? 'selected-title' : ''}}">综合</text>
   </view>
 
-  <view class="classic base-select"
-        bind:tap="showClassicList">
-    <text class="title {{hasSelectedClassic?'selected-title' : ''}}">品类</text>
-    <image class="sort-icon"
-            src="{{sortfilterCondition.isShowClassicList ? (hasSelectedClassic ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedClassic ? moreDownSelectedIcon : moreDownIcon)}}">
-    </image>
+  <view class="sale-count base-select"
+        bind:tap="onSaleCount">
+    <text class="title {{(selectedIndex == 1)?'selected-title' : ''}}">销量</text>
   </view>
   
-  <view class="filter base-select"
-        bind:tap="showBranchList">
-    <text class="title {{hasSelectedBranch?'selected-title' : ''}}">品牌</text>
+  <view class="price base-select"
+        bind:tap="onPrice">
+    <text class="title {{(selectedIndex == 2)?'selected-title' : ''}}">价格</text>
     <image class="sort-icon"
-            src="{{sortfilterCondition.isShowBranchList ? (hasSelectedBranch ? moreUpSelectedIcon : moreUpIcon) : (hasSelectedBranch ? moreDownSelectedIcon : moreDownIcon)}}">
+            src="{{ascPrice == true ? priceUpIcon : (ascPrice == null ? priceIcon : priceDownIcon)}}">
     </image>
   </view>
   
   <image class="show-type"
-          src="{{sortfilterCondition.isRowType ? showColumnListIcon: showRowListIcon}}"
+          src="{{isRowType ? showColumnListIcon: showRowListIcon}}"
           mode="aspectFit"
           bind:tap="changeShowType">
   </image>

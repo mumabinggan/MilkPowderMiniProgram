@@ -1,0 +1,6 @@
+<!--components/productlist/productrowitemprice/index.wxml-->
+<view class="container">
+  <text class="unit">¥</text>
+  <text class="price">{{price}}</text>
+  <text class="crossed-price">¥{{crossedPrice}}</text>
+</view>

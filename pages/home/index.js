@@ -72,7 +72,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.loadData()
   },
 
   /**
@@ -108,10 +108,12 @@ Page({
             icon: 'none'
           })
         }
+        wx.stopPullDownRefresh()
       },
       fail: (err) => {
         console.log(err)
         wx.hideLoading()
+        wx.stopPullDownRefresh()
       }
     })
   },

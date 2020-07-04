@@ -43,7 +43,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    shopcart: null
+    shopcart: null,
+    emptyIcon: "/images/empty_data.png",
+    showEmptyView: true
   },
 
   /**
@@ -64,8 +66,14 @@ Component({
     this.loadDatas({
       success: (res) => {
         console.log(res)
+        let data = res.data
+        let showEmpty = true
+        if (data != null && !JHArrayUtils.isNullOrEmpty(data.products)) {
+          showEmpty = false
+        }
         this.setData({
-          shopcart: res.data
+          shopcart: data,
+          showEmptyView: showEmpty
         })
       },
       fail: (err) => {

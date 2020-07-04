@@ -1,0 +1,52 @@
+/* components/common/emptycontainer/index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-view {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-img {
+  width: 250rpx;
+  height: 250rpx;
+}
+
+.title {
+  width: 100%;
+  height: 80rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  color: gray;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.retry {
+  height: 70rpx;
+  padding: 0 60rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #666666;
+  line-height: 70rpx;
+  background-color: white;
+  border: 2rpx solid;
+  border-radius: 35rpx;
+  border-color: #E6E6E6;
+}
+

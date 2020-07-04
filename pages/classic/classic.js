@@ -66,17 +66,12 @@ Page({
     wx.showLoading()
     classicModel.fetchClassic({
       success: (res) => {
-        console.log(res.data)
-        console.log(res.code)
         wx.hideLoading()
         if (res.code == 0) {
           this.setData({
             classic: res.data
           })
           this.setRefreshing(true, 0)
-          if (JHDeviceUtils.isDevTools) {
-            this.fetchProducts()
-          }
         } else {
           //todo:重试loading
           console.log("asdfasdfasdf")
@@ -207,7 +202,7 @@ Page({
     const pageNum = this.data.pageNum
     const pageSize = this.data.pageSize
     console.log(pageNum)
-    classicModel.fetchSpusByClassicId(classicItem.id, pageNum, pageSize, {
+    classicModel.fetchSpusByClassicId(classicItem.id, 2, 1, pageNum, pageSize, {
       success: (res) => {
         const data = this.data
         let spus = (data.pageNum == 1) ? [] : data.spus;

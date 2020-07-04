@@ -37,7 +37,8 @@
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
-  flex-direction: column
+  flex-direction: column;
+  font-weight: bold;
 }
 
 .currentTotalPriceTitle {
@@ -45,7 +46,7 @@
 }
 
 .currentTotalPrice {
-  color: #ED604E
+  color: #3D8946
 }
 
 .currentTotalPriceFont {
@@ -61,17 +62,19 @@
   height: 40rpx;
   font-size: 24rpx;
   line-height: 40rpx;
+  color: #999999;
 }
 
 .settlement {
   width: auto;
   height: 76rpx;
-  background-color: #ED604E;
-  font-size: 36rpx;
+  background-color: #3D8946;
+  font-size: 32rpx;
   font-weight: bold;
   line-height: 76rpx;
-  padding: 0 40rpx;
-  border-radius: 40rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  border-radius: 38rpx;
   color: white
 }
 

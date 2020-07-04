@@ -1,4 +1,6 @@
 // components/home/category/index.js
+import { JHRouterUtils } from '../../../utils/jsrouterutils.js'
+
 Component({
   /**
    * 组件的属性列表
@@ -21,7 +23,7 @@ Component({
     onClick: function(e) {
       let item = e.currentTarget.dataset.id
       console.log(item)
-      this.triggerEvent('onClick', { item })
+      JHRouterUtils.toProductList(item.categoryId, 2)
     }
   }
 })

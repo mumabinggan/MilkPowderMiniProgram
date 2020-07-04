@@ -1,0 +1,7 @@
+<!--components/productlist/sortitem/index.wxml-->
+<view class="container">
+  <text class="title {{item.isSelected?'selected-title':''}}">{{item.title}}</text>
+  <image class="selected-img"
+          wx:if="{{item.isSelected}}"
+          src="{{selectedIcon}}"></image>
+</view>

@@ -6,11 +6,6 @@
                 bind:onClick="handleTitleItem"
                 selectedIndex="{{selectedTitleIndex}}">
   </v-title-list>
-  <!-- <v-product-list class="product-list"
-                  list="{{products}}"
-                  bind:onAdd="handleAddCount"
-                  bind:onSub="handleSubCount">
-  </v-product-list> -->
 
   <v-refresh-scrollview class="classicitem-content"
                         headerTriggered="{{isRefreshing}}"
