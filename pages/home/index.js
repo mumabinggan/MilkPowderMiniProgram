@@ -114,6 +114,11 @@ Page({
         console.log(err)
         wx.hideLoading()
         wx.stopPullDownRefresh()
+        wx.showToast({
+          title: '请稍后重试',
+          duration: 2000,
+          icon: 'none'
+        })
       }
     })
   },

@@ -31,6 +31,8 @@ class SettlementViewModel {
   }
 
   previewOrderByItem(item, callback) {
+    console.log("=======previewOrderByItem=======")
+    console.log(item)
     http.request({
       url: apiConfig.order_preview_by_item,
       method: 'POST',

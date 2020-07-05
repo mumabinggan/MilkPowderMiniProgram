@@ -11,6 +11,7 @@
   background-color: white;
   font-size: 32rpx;
   font-weight: bold;
+  color: #666666;
   border-bottom: 1rpx solid #e4e4e4;
   padding-left: 30rpx;
   box-sizing: border-box;

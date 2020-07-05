@@ -10,7 +10,8 @@
   </v-product-list>
   <v-settlement class="settlement"
                 shopcart="{{shopcart}}"
-                bind:onSelect="handleSelectAllProduct">
+                bind:onSelect="handleSelectAllProduct"
+                bind:onSettle="handleSettlement">
   </v-settlement>
   <v-empty-view wx:if="{{showEmptyView}}"
                 class="empty-view"

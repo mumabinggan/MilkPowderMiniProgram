@@ -11,26 +11,15 @@
             lazy-load="true">
   </image>
   <view class="product-des">
-      <text class="title">{{item.name}}我们是虽是是是是是是是是是是</text>
-      <text class="sub-title">{{item.specList}}是是是</text>
-      <!-- <text class="price">￥{{item.price}}</text> -->
+      <text class="title">{{item.name}}</text>
+      <text class="sub-title">{{item.specList}}</text>
       <view class="price-count">
-        <text class="price">￥{{item.price}}</text>
+        <v-product-price class="price"
+                      price="{{item.price}}"
+                      crossedPrice="{{item.crossPrice}}">
+        </v-product-price>
         <text class="buy-count">x{{item.quantity}}</text>
       </view>
-      <!-- <v-add-products class="buy"
-                      count="{{item.count}}"
-                      bind:onAdd="handleAddCount"
-                      bind:onSub="handleSubCount">
-      </v-add-products> -->
   </view>
-
-  <!-- <view class="product-des">
-    <text class="title">{{item.name}}</text>
-    <view class="price-count">
-      <text class="price">￥{{item.price}}</text>
-      <text class="buy-count">x{{item.quantity}}</text>
-    </view>
-  </view> -->
   <view class="line-view"></view>
 </view>

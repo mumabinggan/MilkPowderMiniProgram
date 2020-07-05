@@ -55,6 +55,20 @@
   width: 160rpx;
   height: 160rpx;
   margin-right: 20rpx;
+  position: relative;
+}
+
+.sale-off {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 30rpx;
+  border-radius: 80rpx;
+  box-sizing: border-box;
+  background-color: #F6F6F666;
 }
 
 .product-des {

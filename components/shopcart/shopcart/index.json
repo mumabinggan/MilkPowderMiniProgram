@@ -4,5 +4,6 @@
     "v-product-list": "/components/shopcart/shopcartproductlist/index",
     "v-settlement": "/components/shopcart/shopcartsettlement/index",
     "v-empty-view": "/components/common/emptycontainer/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

@@ -11,6 +11,9 @@ from '../../viewmodels/settlementviewmodel.js'
 import { UserUtils } from 
 '../../utils/userutil.js'
 
+import { JHObjectUtils } from 
+'../../utils/objectutils.js'
+
 import { JHArrayUtils } 
 from '../../utils/arrayutils.js'
 
@@ -35,11 +38,10 @@ Page({
    */
   onLoad: function (options) {
     let itemStr = options.item
-    console.log(itemStr)
-    console.log("==================")
-    if (itemStr == null) {
+    if (JHObjectUtils.isNullOrEmptyOrUndefined(itemStr)) {
       settlementVM.previewOrder({
         success: (res) => {
+          console.log(res)
           this.handlePreOrderSuccess(res)
         },
         fail: (err) => {

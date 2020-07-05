@@ -125,7 +125,6 @@ class ShopCartViewModel {
       },
       success: (res) => {
         callback.success(res)
-        console.log(res)
       },
       fail: (err) => {
         console.log(err)
@@ -155,6 +154,19 @@ class ShopCartViewModel {
   fetchCartShopProductsCount(callback) {
     http.request({
       url: apiConfig.cart_fetch_products_count,
+      method: 'POST',
+      success: (res) => {
+        callback.success(res)
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
+  }
+
+  settleCartShopProducts(callback) {
+    http.request({
+      url: apiConfig.cart_settlement,
       method: 'POST',
       success: (res) => {
         callback.success(res)

@@ -9,13 +9,15 @@ import {
 import {
   ShopCartProductLocalItem
 } from '../../../models/shopcartproductlocalitem.js'
-import {
-  ShopCart
-} from '../../../models/shopcart.js'
+
 import {
   JHLoadingUtils
 } from '../../../utils/jhloadingutils.js'
+import {
+  JHToastUtils
+} from '../../../utils/jhtoastutils.js'
 
+import { JHRouterUtils } from '../../../utils/jsrouterutils.js'
 
 let shopcartVM = new ShopCartViewModel()
 
@@ -108,6 +110,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
+    loadDatas: function() {
+      this.loadDatas({
+        success: (res) => {
+          console.log(res.data)
+          this.setData({
+            shopcart: res.data
+          })
+        },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    },
+
     loadDatas: function (callback) {
       if (UserUtils.isLogined()) {
         shopcartVM.fetchShopCartList({
@@ -280,15 +297,17 @@ Component({
     },
   
     handleResponse: function(res) {
-      if (res.code == 0) {
+      let code = res.code
+      if (code == 0 || code == 12416) {
+        console.log("进入")
+        if (code == 12416) {
+          JHToastUtils.show(res.msg)
+        }
         this.setData({
           shopcart: res.data
         })
       } else {
-        wx.showToast({
-          title: res.msg,
-          icon: "none"
-        })
+        JHToastUtils.show(res.msg)
       }
     },
   
@@ -336,11 +355,51 @@ Component({
     //跳转到详情页面
     handleTouchProduct:function(e) {
       let index = e.detail
-      let products = this.data.shopcart.products[index]
+      let products = this.data.shopcart.products
       if (JHArrayUtils.isNullOrEmpty(products)) {
         return
       }
       let item = products[index]
+      // console.log(products)
+      JHRouterUtils.toProductDetail(item.spuId)
+    },
+
+    //结算
+    handleSettlement:function(e) {
+      let products = this.data.shopcart.products
+      let checked = false
+      for(let index in products) {
+        let item = products[index]
+        checked = item.checked
+        if (checked) {
+          break
+        }
+      } 
+      if (!checked) {
+        JHToastUtils.show("没有选中商品")
+        return
+      }
+      wx.showLoading()
+      shopcartVM.settleCartShopProducts({
+        success: (res) => {
+          wx.hideLoading()
+          if (res.code == 0) {
+            JHRouterUtils.preOrder("")
+            //跳转到订单页面
+            return
+          } else if (res.code == 12417) {
+            this.setData({
+              shopcart: res.data
+            })
+          }
+          console.log(res)
+          JHToastUtils.show(res.msg)
+        },
+        fail: (err) => {
+          wx.hideLoading()
+          JHToastUtils.show(err)
+        }
+      })
     }
   }
 })

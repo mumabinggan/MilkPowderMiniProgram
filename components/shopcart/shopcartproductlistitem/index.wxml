@@ -10,6 +10,12 @@
     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584294871521&di=0c49eb0cea738eb0113930129ae6a0b9&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1073959151%2C665782074%26fm%3D214%26gp%3D0.jpg"
             mode='aspectFit'
             lazy-load="true">
+            <image wx:if="{{isSaleOff}}"
+                    class="sale-off"
+                    mode='aspectFit'
+                    src="{{saleOffImage}}"
+                    lazy-load="true">
+            </image>
     </image>
     <view class="product-des">
       <text class="title">{{item.name}}</text>

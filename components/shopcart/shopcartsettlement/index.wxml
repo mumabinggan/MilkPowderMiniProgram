@@ -3,13 +3,14 @@
   <view class="select-products">
     <image class="select-button"
             src="{{isSelectedAll ? selectedStateImage : unselectedStateImage}}"
-            bind:tap="onSelect"></image>
+            bind:tap="onSelect">
+    </image>
     <text class="select-text">全选</text>
   </view>
   <view class="price">
-    <text class="currentTotalPriceTitle currentTotalPriceFont">合计:<text class="currentTotalPrice currentTotalPriceFont">￥{{shopcart.price.totalGoodPrice}}</text></text>
-    <text class="totalPrice">总价:￥{{shopcart.price.currentGoodPrice}}　优惠:￥{{shopcart.price.reducePrice}}</text>
+    <text class="currentTotalPriceTitle currentTotalPriceFont">合计:<text class="currentTotalPrice currentTotalPriceFont">￥{{shopcart.price.currentGoodPrice}}</text></text>
+    <text class="totalPrice">总价:￥{{shopcart.price.totalGoodPrice}}　优惠:￥{{shopcart.price.reducePrice}}</text>
   </view>
   <view class="settlement"
-        bind:tap="onSettlement">结算({{selectedProductsCount}})</view>
+        bind:tap="onSettle">结算({{selectedProductsCount}})</view>
 </view>

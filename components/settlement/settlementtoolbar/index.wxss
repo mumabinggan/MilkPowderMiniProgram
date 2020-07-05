@@ -28,17 +28,18 @@
 }
 
 .origin-price {
-  margin-left: 30rpx;
+  margin-left: 10rpx;
   font-size: 28rpx;
-  color: gray;
+  font-weight: bold;
+  color: #999999;
   text-decoration: line-through;
-  font-weight: normal;
 }
 
 .count {
   margin-left: 20rpx;
   font-size: 26rpx;
-  color: gray;
+  font-weight: bold;
+  color: #999999;
 }
 
 .buy {

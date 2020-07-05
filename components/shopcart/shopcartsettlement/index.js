@@ -5,6 +5,10 @@ import {
 
 import { JHArrayUtils } from '../../../utils/arrayutils.js'
 
+import {
+  JHProductUtils
+} from '../../../utils/jhproductutils.js'
+
 Component({
   /**
    * 组件的属性列表
@@ -14,7 +18,6 @@ Component({
       type: ShopCart,
       value: null,
       observer: function (newValue, oldValue, changePath) {
-        console.log("shopcart change")
         this.handleShopCartChange()
       }
     }
@@ -34,12 +37,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onSettlement:function() {
-      this.setData({
-        a: this.data.b,
-        b: this.data.a + this.data.b,
-      })
-      console.log(this.data.a)
+    onSettle:function() {
+      console.log("===========")
+      this.triggerEvent('onSettle')
     },
 
     handleShopCartChange:function() {
@@ -53,7 +53,7 @@ Component({
           if (item.checked) {
             selectedProductsCount += item.count
           }
-          if (isSelectedAll) {
+          if (isSelectedAll && !JHProductUtils.isSaleOff(item.status, item.stock)) {
             isSelectedAll = item.checked
           }
         }

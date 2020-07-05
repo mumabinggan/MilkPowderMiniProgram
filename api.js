@@ -12,6 +12,7 @@ const apiConfig = {
   cart_check_all_product: "user/shopcart/updateAllItemsCheckedByChecked.do",
   cart_delete_product: "user/shopcart/deleteItemByDeleteItem.do",
   cart_fetch_products_count: "user/shopcart/fetchShopCartCount.do",
+  cart_settlement: "user/shopcart/checkCheckedItemsValid.do",
   product_list: "",
   product_detail: "user/goods/fetchGoodsDetail.do",
   product_fetch_sku: "user/goods/fetchGoodsSku.do",

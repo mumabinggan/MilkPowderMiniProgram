@@ -35,7 +35,9 @@
 .title {
   width: 30%;
   font-size: 28rpx;
+  font-weight: bold;
   line-height: 50rpx;
+  color: #999999;
 }
 
 .value {
@@ -63,6 +65,8 @@
   box-sizing: border-box;
   line-height: 80rpx;
   font-size: 30rpx;
+  font-weight: bold;
+  color: #666666;
   text-align: right;
 }
 
