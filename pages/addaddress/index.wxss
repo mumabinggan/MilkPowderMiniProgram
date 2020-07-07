@@ -6,10 +6,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: white;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between */
+  background-color: #F6F6F6;
 }
 
 .address-info {
@@ -38,7 +35,8 @@
   width: 160rpx;
   height: 100%;
   font-size: 28rpx;
-  color: gray;
+  font-weight: bold;
+  color: #666666;
   line-height: 110rpx;
 }
 
@@ -48,7 +46,7 @@
   padding-right: 30rpx;
   font-size: 28rpx;
   line-height: 110rpx;
-  font-weight: 100rpx;
+  font-weight: bold;
   color: black
 }
 
@@ -59,6 +57,7 @@
 
 .address {
   width: 100%;
+  background-color: white;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between
@@ -68,12 +67,14 @@
   width: 595rpx;
   padding: 22rpx 0;
   font-size: 28rpx;
+  font-weight: bold;
   color: black
 }
 
 .address-extra-info {
   width: 100%;
   height: 110rpx;
+  background-color: white;
   border-top: 20rpx solid #F6F6F6;
   border-bottom: 1rpx solid #F6F6F6;
   display: flex;
@@ -100,14 +101,10 @@
   font-size: 36rpx;
   font-weight: bold;
   text-align: center;
-  color: white;
-  background-color: #EC5C2A
+  color: #3D8946;
+  background-color: white
 }
 
-.region-picker {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+.fix-full-view {
+  height: 160rpx;
 }

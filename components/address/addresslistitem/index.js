@@ -16,9 +16,9 @@ Component({
         this.handleAddressChange()
       }
     },
-    isMore: {
+    canEdit: {
       type: Boolean,
-      value: false
+      value: true
     },
     showDefaultTips: {
       type: Boolean,
@@ -31,13 +31,19 @@ Component({
    */
   data: {
     firstName: null,
-    addressMore: '/images/address_more.png'
+    editIcon: '/images/address_edit.png'
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+
+    onEdit: function(e) {
+      console.log(this.dataset.id)
+      this.triggerEvent('onEdit', this.dataset.id)
+    },
+
     handleAddressChange:function() {
       console.log(this.properties.item)
       this.setData({

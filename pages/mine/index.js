@@ -111,7 +111,7 @@ Page({
     } else if (id == 5) {
       JHRouterUtils.orderList()
     } else if (id == 100) {
-      JHRouterUtils.addressList(true, false)
+      JHRouterUtils.addressList(1, 0)
     } else if (id == 101) {
       JHRouterUtils.chat()
     } else if (id == 102) {

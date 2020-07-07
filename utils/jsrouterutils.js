@@ -28,11 +28,11 @@ class JHRouterUtils {
   }
 
   static addAddress() {
-    this.navigateTo(JHRouter.addAddress + "?isAdd=" + 1)
+    this.navigateTo(JHRouter.addAddress + "?isAdd=1")
   }
 
   static editAddress(addressId) {
-    this.navigateTo(JHRouter.addAddress + "?isAdd=" + 0 + "&addressId=" + addressId)
+    this.navigateTo(JHRouter.addAddress + "?isAdd=0" + "&addressId=" + addressId)
   }
 
   static addCommunity(id) {

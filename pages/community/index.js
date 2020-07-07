@@ -15,9 +15,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
-      "ss", "学府名都去掉的都掉", "asfd"
-    ],
+    items: [],
     selectedId: 0
   },
 
@@ -25,6 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: "小区列表",
+    })
     this.setData({
       selectedId: options.id
     })

@@ -46,7 +46,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/shopcarttab/index",
+        "pagePath": "pages/shopcartlist/index",
         "selectedIconPath": "/images/tab/tab_cart_selected.png",
         "iconPath": "/images/tab/tab_cart.png",
         "text": "购物车"

@@ -302,9 +302,7 @@ Page({
 
   handleToOrderDetail:function(e) {
     let item = e.currentTarget.dataset.item
-    wx.navigateTo({
-      url: JHRouterUtils.orderDetail(item.orderNo)
-    })
+    JHRouterUtils.orderDetail(item.orderNo)
   },
 
   handleUrgeOrder: function (e) {

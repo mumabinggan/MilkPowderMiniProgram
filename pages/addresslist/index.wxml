@@ -1,18 +1,19 @@
 <!--pages/address/index.wxml-->
 <view class="container">
-  <view class="address-container {{canAdd?'address-container-padding':''}}">
+  <view class="address-container {{canAdd?'address-container-padding':''}} {{(canAdd && isFullSucreen)?'fix-full-address-container':''}}">
     <v-address-list-item wx:for="{{items}}" 
                           wx:key="{{item.id}}"
                           class="item"
                           item="{{item}}"
-                          catch:tap="onAddressItem"
-                          data-id="{{item.id}}"
+                          data-id="{{item}}"
                           data-index="{{index}}"
+                          catch:tap="handleClickItem"
+                          bind:onEdit="handleEditItem"
                           bindtouchstart="touchstart" bindtouchmove="touchmove"
                           bind:onDelete="handleDelete">
     </v-address-list-item>
   </view>
-  <text class="add-address"
+  <text class="add-address {{isFullSucreen?'fix-full-view':''}}"
         wx:if="{{canAdd}}"
         catch:tap="onAddAddress">添加新地址</text>
 </view>

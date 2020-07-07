@@ -31,6 +31,7 @@ App({
   onLaunch: function () {
     // 展示本地存储能力
     console.log("开始app")
+    this.checkFullSucreen()
     let that = this
     wx.checkSession({
       success: function (res) {
@@ -55,7 +56,21 @@ App({
         that.retryLogin()
 　　　 }
     })
-    // 登录
+  },
+
+  checkFullSucreen: function () {
+    const self = this    
+    wx.getSystemInfo({
+      success: function (res) {
+        // 根据 屏幕高度 进行判断
+        if (res.model.search('iPhone X') != -1) {
+          self.globalData.isFullSucreen = true
+        }
+    //     if (res.screenHeight - res.windowHeight - res.statusBarHeight - 32 > 72) {
+    //       self.globalData.isFullSucreen = true
+    //     }
+      }
+   })
   },
 
   retryLogin: function() {
@@ -214,6 +229,7 @@ App({
   },
 
   globalData: {
+    isFullSucreen: false, 
     userInfo: null,
     triggerRefreshShopcart: true,
     shopcartBriefListOfLogout: [], //没有登录的购物车商品简要信息

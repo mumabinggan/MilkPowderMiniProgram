@@ -29,7 +29,11 @@ class AddressViewModel {
         userId: userId
       },
       success: (res) => {
-        callback.success(res)
+        if (res.code == 0) {
+          callback.success(res)
+        } else {
+          callback.fail(res.msg)
+        }
       },
       fail: (err) => {
         callback.fail(err)

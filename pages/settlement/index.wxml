@@ -1,12 +1,13 @@
 <!--pages/settlement/index.wxml-->
 <view class="container">
-  <scroll-view class="scroll-view"
+  <scroll-view class="scroll-view {{isFullSucreen?'fix-full-scroll-view':''}}"
                 scroll-y>
     <v-address-item class="address"
                   wx:if="{{address}}"
                   item="{{address}}"
                   isMore="{{true}}"
-                  catch:tap="onAddress">
+                  catch:tap="onAddress"
+                  catch:onEdit="onAddress">
     </v-address-item>
     <v-empty-address-item class="address"
                           wx:if="{{address == null}}">
@@ -31,7 +32,7 @@
     </v-price>
     <view class="footer"></view>
   </scroll-view>
-  <v-toolbar class="toolbar"
+  <v-toolbar class="toolbar {{isFullSucreen?'fix-full-view':''}}"
               price="{{price}}"
               totalCount="{{totalCount}}"
               catch:onBuy="handleBuy">

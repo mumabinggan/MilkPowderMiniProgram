@@ -26,16 +26,22 @@
       <text class="address-title title-css">详细地址</text>
       <textarea class="address-textarea"
                 auto-height="true"
-                bindinput="handleInputAddress">{{address}}</textarea>
+                value="{{address}}"
+                placeholder="例:6单元6栋606室"
+                placeholder-style="color:#D6D6D6;"
+                bindinput="handleInputAddress">
+      </textarea>
     </view>
   </view>
   <view class="address-extra-info">
     <text class="set-default-address-title title-css">设置默认地址</text>
-    <switch class="set-default-address-switch" bindchange="switchChange" checked="{{isDefault}}"/>
+    <switch class="set-default-address-switch" 
+         bindchange="switchChange" 
+    checked="{{isDefault}}"/>
   </view>
-  <view class="action-view"
+  <view class="action-view {{isFullSucreen?'fix-full-view':''}}"
         bind:tap="onSave"
         wx:if="false">
-    <text class="">保存</text>
+    <text class="">保 存</text>
   </view>
 </view>

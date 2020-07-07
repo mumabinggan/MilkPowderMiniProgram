@@ -14,6 +14,10 @@
   padding-bottom: 100rpx;
 }
 
+.fix-full-address-container {
+  padding-bottom: 160rpx;
+}
+
 .add-address {
   width: 100%;
   height: 100rpx;
@@ -26,4 +30,8 @@
   text-align: center;
   color: #3D8946;
   background-color: white
+}
+
+.fix-full-view {
+  height: 160rpx;
 }

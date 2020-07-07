@@ -17,6 +17,8 @@ import { JHObjectUtils } from
 import { JHArrayUtils } 
 from '../../utils/arrayutils.js'
 
+import { JHRouterUtils } from '../../utils/jsrouterutils.js'
+
 let settlementVM = new SettlementViewModel()
 
 Page({
@@ -25,6 +27,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isFullSucreen: getApp().globalData.isFullSucreen,
+    
     address: null,
     products: null,
     remarks: null,
@@ -37,6 +41,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '订单确认',
+    })
     let itemStr = options.item
     if (JHObjectUtils.isNullOrEmptyOrUndefined(itemStr)) {
       settlementVM.previewOrder({
@@ -138,7 +145,8 @@ Page({
 
   //点击地址
   onAddress: function(e) {
-
+    console.log("=======")
+    JHRouterUtils.addressList(1, 1)
   },
 
   handleRemarksUnFocus:function(e) {

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "v-address-list-item": "/components/address/addresslistitem/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

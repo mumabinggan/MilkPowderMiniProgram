@@ -8,7 +8,12 @@
       <text class="address"><text class="default" wx:if="{{item.isDefault==true && showDefaultTips}}">默认</text>{{item.detailAddress}}
       </text>
     </view>
-    <text class="edit" wx:if="{{isMore}}">编辑</text>
+    <image wx:if="{{canEdit}}"
+            class="edit"
+            mode='aspectFit'
+            src="{{editIcon}}"
+            catch:tap="onEdit">
+    </image>
   </view>
   <view class="delete" catch:tap="handleDelete">删除</view>
 </view>

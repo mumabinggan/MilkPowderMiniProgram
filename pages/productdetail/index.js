@@ -20,6 +20,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isFullSucreen: getApp().globalData.isFullSucreen,
+    
     product: null,
 
     //浮云条(购物车数量+置顶)
@@ -37,6 +39,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '商品详情',
+    })
     let spuId = options.id
     productVM.fetchProductDetail(spuId, {
       success: (res) => {

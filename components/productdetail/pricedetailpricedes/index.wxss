@@ -1,10 +1,11 @@
 /* components/productdetail/pricedetailpricedes/index.wxss */
 .container {
   width: 100%;
+  height: auto;
 }
 
 .price-des-container {
-  padding: 0 20rpx 130rpx;
+  padding: 0 20rpx 30rpx;
   box-sizing: border-box;
 }
 

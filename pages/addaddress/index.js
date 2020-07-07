@@ -25,6 +25,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isFullSucreen: getApp().globalData.isFullSucreen,
+    
     isAdd: false,
     addressId: null,
     item: null,
@@ -40,6 +42,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    console.log(options.isAdd)
     this.setData({
       isAdd: (options.isAdd == "1")?true:false,
       addressId: options.addressId
@@ -164,9 +168,7 @@ Page({
 
   handleSelectCommunity: function(e) {
     console.log("=====")
-    wx.navigateTo({
-      url: JHRouterUtils.addCommunity(this.data.communityId)
-    })
+    JHRouterUtils.addCommunity(this.data.communityId)
   },
 
   onSave: function() {

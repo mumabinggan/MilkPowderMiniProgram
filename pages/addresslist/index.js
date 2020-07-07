@@ -8,6 +8,10 @@ import {
   JHRouterUtils
 } from '../../utils/jsrouterutils.js' 
 
+import {
+  JHToastUtils
+} from '../../utils/jhtoastutils.js' 
+
 let addressVM = new AddressViewModel()
 
 Page({
@@ -16,6 +20,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isFullSucreen: getApp().globalData.isFullSucreen,
+    
     items: null,
     canAdd: true,
     isSelected: false,
@@ -27,11 +33,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let userId = UserUtils.user.id
+    wx.setNavigationBarTitle({
+      title: "地址列表",
+    })
+    let canAdd = options.canAdd == '1'
+    let isSelected = options.isSelected == '1'
+    console.log("==========")
+    console.log(canAdd)
     //接收参数
     this.setData({
-      canAdd: options.canAdd,
-      isSelected: options.isSelected
+      canAdd: canAdd,
+      isSelected: isSelected
     })
   },
 
@@ -46,25 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    addressVM.fetchAddressList(UserUtils.user.userId, {
-      success: (res) => {
-        console.log(res)
-        if (res.code == 0) {
-          res.data.forEach(function (v, i) {
-            if (v.isTouchMove)//只操作为true的
-              v.isTouchMove = false;
-          })
-          this.setData({
-            items: res.data,
-          })
-        } else {
-          //todo重试
-        }
-      },
-      fail: (err) => {
-        console.log(err)
-      }
-    })
+    this.fetchDatas()
   },
 
   /**
@@ -85,7 +79,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.fetchDatas()
   },
 
   /**
@@ -102,25 +96,51 @@ Page({
 
   },
 
-  onAddAddress: function(e) {
-    //TODO 添加地址
-    wx.navigateTo({
-      url: JHRouterUtils.addAddress()
+  fetchDatas: function(e) {
+    wx.showLoading()
+    addressVM.fetchAddressList(UserUtils.user.userId, {
+      success: (res) => {
+        console.log(res)
+        wx.hideLoading()
+        let data = res.data
+        data.forEach(function (v, i) {
+          if (v.isTouchMove)//只操作为true的
+            v.isTouchMove = false;
+        })
+        this.setData({
+          items: data,
+        })
+      },
+      fail: (err) => {
+        console.log(err)
+        wx.hideLoading()
+        JHToastUtils.show(err)
+      }
     })
   },
 
-  onAddressItem: function(e) {
-    let addressId = e.target.dataset.id
-    console.log(addressId)
+  onAddAddress: function(e) {
+    //TODO 添加地址
+    JHRouterUtils.addAddress()
+  },
+
+  handleClickItem: function(e) {
+    let item = e.target.dataset.id
+    console.log(item)
     if (this.data.isSelected) {
       //TODO 选择地址
-    } else {
-      //编辑地址
-      console.log(JHRouterUtils.editAddress())
-      wx.navigateTo({
-        url: JHRouterUtils.editAddress(addressId)
+      let pages = getCurrentPages()
+      let prevPage = pages[pages.length - 2]
+      prevPage.setData({
+        address: item
       })
+      wx.navigateBack()
     }
+  },
+
+  handleEditItem: function(e) {
+    let item = e.target.dataset.id
+    JHRouterUtils.editAddress(item.id)
   },
 
   handleDelete: function (e) {
