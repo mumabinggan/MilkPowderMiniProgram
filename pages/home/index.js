@@ -37,6 +37,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '蔬果到家',
     })
+    console.log("======home index===========")
     this.loadData()
   },
 
@@ -51,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -152,6 +153,18 @@ Page({
    */
   handleChat: function() {
     console.log("点击聊天")
+    wx.getUserProfile({
+      desc: "获取你的昵称、头像、地区及性别",
+      success: res => {
+        console.log("wwwwwwww")
+        console.log(res)
+        let wxUserInfo = res.userInfo;
+      },
+      fail: res => {
+         //拒绝授权
+        // that.showErrorModal('您拒绝了请求');
+        return;
+      }})
     //todo:聊天界面
   },
 

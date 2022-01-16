@@ -21,14 +21,19 @@ export class HTTP {
         'token': UserUtils.token()
       },
       success: (res) => {
+        let data = res.data
+        console.log(data)
+        console.log("测试")
         if (params.success) {
-          params.success(res.data)
+          params.success(data)
+        } else {
+          params.fail(data.code, data.msg)
         }
       },
       fail: (err) => {
         console.log(err)
         if (params.fail) {
-          params.fail(err);
+          params.fail(-10, err);
         }
       }
     })

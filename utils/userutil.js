@@ -18,7 +18,7 @@ class UserUtils {
 
   static fetchUser() {
     let str = JHStorageUtils.fetchItemSync(this.userStoreKey)
-    if (!JHObjectUtils.isNullOrUndefined(str)) {
+    if (!JHObjectUtils.isNullOrEmptyOrUndefined(str)) {
       let item = JSON.parse(str)
       this.user = item
     }

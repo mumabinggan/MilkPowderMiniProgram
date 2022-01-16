@@ -2,6 +2,7 @@
   "usingComponents": {
     "v-order-tabsview": "/components/orderlist/ordertabsview/index",
     "v-product-info-view": "/components/orderlist/orderlistitem/index",
-    "v-refresh-scrollview": "/components/common/refreshscrollview/index"
+    "v-refresh-scrollview": "/components/common/refreshscrollview/index",
+    "v-empty-view": "/components/common/emptycontainer/index"
   }
 }

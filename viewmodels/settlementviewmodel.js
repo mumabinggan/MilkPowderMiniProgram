@@ -13,10 +13,14 @@ import {
 let http = new HTTP()
 
 class SettlementViewModel {
-  previewOrder(callback) {
+  previewOrder(param, callback) {
     http.request({
       url: apiConfig.order_preview,
       method: 'POST',
+      data: {
+        useIntegration: param.useIntegration,
+        coupons: param.coupons
+      },
       success: (res) => {
         if (res.code == 0) {
           callback.success(res)
@@ -30,7 +34,7 @@ class SettlementViewModel {
     })
   }
 
-  previewOrderByItem(item, callback) {
+  previewOrderByItem(item, param, callback) {
     console.log("=======previewOrderByItem=======")
     console.log(item)
     http.request({
@@ -39,7 +43,9 @@ class SettlementViewModel {
       data: {
         spuId: item.spuId,
         skuId: item.skuId,
-        count: item.count
+        count: item.count,
+        useIntegration: param.useIntegration,
+        coupons: param.coupons
       },
       success: (res) => {
         if (res.code == 0) {

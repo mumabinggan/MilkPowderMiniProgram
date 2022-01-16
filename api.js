@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8099"
+const baseUrl = "http://localhost:8088"
 
 const apiConfig = {
   classic_path: "user/category/fetchAllList.do",

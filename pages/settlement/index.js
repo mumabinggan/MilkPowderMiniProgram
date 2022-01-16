@@ -46,7 +46,10 @@ Page({
     })
     let itemStr = options.item
     if (JHObjectUtils.isNullOrEmptyOrUndefined(itemStr)) {
-      settlementVM.previewOrder({
+      let obj = new Object()
+      obj.useIntegration = true
+      obj.coupons = {1221:true}
+      settlementVM.previewOrder(obj, {
         success: (res) => {
           console.log(res)
           this.handlePreOrderSuccess(res)

@@ -32,6 +32,7 @@ App({
     // 展示本地存储能力
     console.log("开始app")
     this.checkFullSucreen()
+    UserUtils.fetchUser()
     let that = this
     wx.checkSession({
       success: function (res) {
@@ -41,14 +42,14 @@ App({
         console.log(UserUtils.user)
         console.log("check success")
         // 获取用户信息
-        that.getUserInfo({
-          success: function (res) {
-            console.log("getUserInfo success")
-            console.log(res)
-            that.wxUpdateUserInfo(res)
-            //that.fetchShopCartCount()
-          }
-        })
+        // that.getUserInfo({
+        //   success: function (res) {
+        //     console.log("getUserInfo success")
+        //     console.log(res)
+        //     that.wxUpdateUserInfo(res)
+        //     //that.fetchShopCartCount()
+        //   }
+        // })
       },
 　　　 fail: function (res) {
         console.log("check fail")
@@ -85,14 +86,15 @@ App({
           wx.showToast("登录错误, 请重试")
         }
         console.log(res)
+        console.log("==========wwxx")
         console.log("wxLogin success")
         // 获取用户信息
-        that.getUserInfo({
-          success: function(res) {
-            that.wxUpdateUserInfo(res)
-            that.fetchShopCartCount()
-          }
-        })
+        // that.getUserInfo({
+        //   success: function(res) {
+        //     that.wxUpdateUserInfo(res)
+        //     that.fetchShopCartCount()
+        //   }
+        // })
       }
    })
   },
@@ -106,13 +108,13 @@ App({
         console.log(res.errMsg)
         console.log(res)
         let code = res.code
+        console.log("===========")
+        console.log(code)
         if (!JHObjectUtils.isNullOrUndefined(code)) {
           http.request({
             url: apiConfig.login,
             method: 'POST',
-            data: {
-              code: code
-            },
+            data: code,
             success: (res) => {
               console.log("=====server login success======")
               console.log(res)
@@ -126,12 +128,16 @@ App({
             },
             fail: (err) => {
               console.log("=====server login fail======")
-              param.fail(err)
+              if (param.fail) {
+                param.fail(err)
+              }
             }
           })
         } else {
           let err = "wx.login error"
-          param.fail(err)
+          if (param.fail) {
+            param.fail(err)
+          }
         }
       }
     })
@@ -143,7 +149,8 @@ App({
     wx.getSetting({
       success: res => {
         console.log("}}}}}}}}}}}}}===")
-        if (res.authSetting['scope.userInfo']) {
+        console.log(res)
+        // if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           console.log("}}}}}}}}}}}}}==={{{")
           wx.getUserInfo({
@@ -152,6 +159,7 @@ App({
               this.globalData.userInfo = res.userInfo
               // UserUtils.user = 
               console.log("}}}}}}}}}}}}}")
+              console.log(res)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -162,7 +170,7 @@ App({
               }
             }
           })
-        }
+        // }
       }
     })
   },
@@ -215,14 +223,17 @@ App({
       },
       success: function (res) {
         console.log(res)
-        if (res.code == 1000) {
-          UserUtils.setUser(null)
-          that.retryLogin()
-          return
-        }
         let data = res.data
         if (!JHObjectUtils.isNullOrEmptyOrUndefined(data)) {
           UserUtils.setUser(data)
+        }
+      },
+      fail: function (code, msg) {
+        console.log("=====||=====")
+        if (code == 1000) {
+          UserUtils.setUser(null)
+          that.retryLogin()
+          return
         }
       }
     })

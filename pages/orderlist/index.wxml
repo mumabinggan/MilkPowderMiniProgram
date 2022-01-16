@@ -27,5 +27,10 @@
         <!-- <view class="line"></view> -->
       </view>
     </view>
+    <v-empty-view wx:if="{{showEmptyView}}"
+                class="empty-view"
+                imageName="{{emptyIcon}}"
+                title="暂无订单">
+  </v-empty-view>
   </scroll-view>
 </view>

@@ -43,6 +43,8 @@ Page({
     isLoadingFinishedList: false,
     enableLoadingFinishedMore: true,
 
+    showEmptyView: true,
+    emptyIcon: "/images/empty_order_data.png"
     // isRefreshing: false,  //正在下拉
     // isLoadingMore: false, //正在上拉
     // enableLoadingMore: true,
@@ -52,6 +54,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '订单列表',
+    })
     this.fetchOrderList(false, 0)
   },
 
@@ -270,7 +275,9 @@ Page({
     }
     console.log("=========test")
     console.log(list)
+    
     this.setData({
+      showEmptyView: JHArrayUtils.isNullOrEmpty(list),
       currentIndex: index,
       orderList: list,
       // isLoadingMore: false,
